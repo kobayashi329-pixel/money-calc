@@ -33,6 +33,7 @@ import {
   HEALTH_MONTHLY_STANDARD_MAX,
   PENSION_MONTHLY_STANDARD_MAX,
 } from "./constants-2025";
+import { getPrefectureHealthRateEmployee } from "./prefectures-2025";
 import type {
   TakeHomeInput,
   TakeHomeResult,
@@ -96,6 +97,8 @@ function lookupByTotalIncome(
 export function calcSocialInsurance(
   annualIncome: number,
   age: number,
+  /** 健康保険料率（本人負担分・小数）。都道府県別。未指定なら東京都の既定値。 */
+  healthRateEmployee: number = HEALTH_INSURANCE_RATE_EMPLOYEE,
 ): SocialInsuranceBreakdown {
   const income = Math.max(0, annualIncome);
   const monthly = income / 12;
@@ -106,7 +109,7 @@ export function calcSocialInsurance(
 
   const isCareAge = age >= LONG_TERM_CARE_AGE_MIN && age <= LONG_TERM_CARE_AGE_MAX;
 
-  const health = Math.round(healthBase * HEALTH_INSURANCE_RATE_EMPLOYEE);
+  const health = Math.round(healthBase * healthRateEmployee);
   const longTermCare = isCareAge
     ? Math.round(healthBase * LONG_TERM_CARE_RATE_EMPLOYEE)
     : 0;
@@ -213,8 +216,11 @@ export function calculateTakeHome(input: TakeHomeInput): TakeHomeResult {
   const annualIncome = Math.max(0, Math.round(input.annualIncome));
   const empIncome = employmentIncome(annualIncome);
 
+  // 都道府県別の健康保険料率（本人負担分）。未指定なら東京都。
+  const healthRateEmployee = getPrefectureHealthRateEmployee(input.prefecture);
+
   // 社会保険料・所得税は「当年」の年収ベース
-  const socialInsurance = calcSocialInsurance(annualIncome, input.age);
+  const socialInsurance = calcSocialInsurance(annualIncome, input.age, healthRateEmployee);
   const incomeTax = calcIncomeTax(empIncome, socialInsurance.total, input.dependents);
 
   // 住民税は「前年」の所得ベース（前年収入が指定されればそれを、無ければ当年と同じとみなす）
@@ -223,7 +229,11 @@ export function calculateTakeHome(input: TakeHomeInput): TakeHomeResult {
       ? Math.round(input.priorYearIncome)
       : annualIncome;
   const priorEmpIncome = employmentIncome(residentTaxBasisIncome);
-  const priorSocialTotal = calcSocialInsurance(residentTaxBasisIncome, input.age).total;
+  const priorSocialTotal = calcSocialInsurance(
+    residentTaxBasisIncome,
+    input.age,
+    healthRateEmployee,
+  ).total;
   const residentTax = calcResidentTax(
     priorEmpIncome,
     priorSocialTotal,

@@ -177,3 +177,40 @@ describe("前年収入オプション（住民税は前年所得ベース）", (
     expect(sum).toBe(6_000_000);
   });
 });
+
+describe("都道府県別の健康保険料率（協会けんぽ・令和7年度）", () => {
+  const inc = 5_000_000;
+  it("都道府県未指定は東京都（13）と同じ", () => {
+    const def = calculateTakeHome({ ...base, annualIncome: inc });
+    const tokyo = calculateTakeHome({ ...base, annualIncome: inc, prefecture: "13" });
+    expect(def.socialInsurance.health).toBe(tokyo.socialInsurance.health);
+  });
+  it("東京都の健康保険料（年収500万・30歳）＝247,750円", () => {
+    const r = calculateTakeHome({ ...base, annualIncome: inc, prefecture: "13" });
+    expect(r.socialInsurance.health).toBe(247_750);
+  });
+  it("佐賀県(最高10.78%)＞東京都＞沖縄県(最低9.44%)", () => {
+    const saga = calculateTakeHome({ ...base, annualIncome: inc, prefecture: "41" });
+    const tokyo = calculateTakeHome({ ...base, annualIncome: inc, prefecture: "13" });
+    const okinawa = calculateTakeHome({ ...base, annualIncome: inc, prefecture: "47" });
+    expect(saga.socialInsurance.health).toBeGreaterThan(tokyo.socialInsurance.health);
+    expect(tokyo.socialInsurance.health).toBeGreaterThan(okinawa.socialInsurance.health);
+    expect(saga.socialInsurance.health).toBe(269_500); // 5,000,000 × 10.78%/2
+  });
+  it("無効な都道府県コードは東京都にフォールバック", () => {
+    const invalid = calculateTakeHome({ ...base, annualIncome: inc, prefecture: "99" });
+    const tokyo = calculateTakeHome({ ...base, annualIncome: inc, prefecture: "13" });
+    expect(invalid.socialInsurance.health).toBe(tokyo.socialInsurance.health);
+  });
+  it("都道府県を変えても内訳合計は額面年収に一致する", () => {
+    for (const p of ["01", "13", "27", "41", "47"]) {
+      const r = calculateTakeHome({ ...base, annualIncome: inc, prefecture: p });
+      const sum =
+        r.takeHomeAnnual +
+        r.socialInsurance.total +
+        r.incomeTax.total +
+        r.residentTax.total;
+      expect(sum).toBe(inc);
+    }
+  });
+});

@@ -6,6 +6,7 @@
 import { useMemo, useState } from "react";
 import { calculateTakeHome } from "@/lib/takehome/calculate";
 import type { TakeHomeInput } from "@/lib/takehome/types";
+import { PREFECTURES, DEFAULT_PREFECTURE_CODE } from "@/lib/takehome/prefectures-2025";
 import { yen, manYen, percent } from "@/lib/format";
 import { DonutChart, type DonutSegment } from "./DonutChart";
 
@@ -20,6 +21,7 @@ export function TakeHomeCalculator() {
   const [annualIncome, setAnnualIncome] = useState(5_000_000);
   const [age, setAge] = useState(30);
   const [dependents, setDependents] = useState(0);
+  const [prefecture, setPrefecture] = useState(DEFAULT_PREFECTURE_CODE);
   const [insuranceType] = useState<TakeHomeInput["insuranceType"]>("kenkohoken");
   // 前年収入は空文字＝「当年と同じ」。数値が入ったときだけ住民税に反映。
   const [priorIncomeStr, setPriorIncomeStr] = useState("");
@@ -33,10 +35,11 @@ export function TakeHomeCalculator() {
         annualIncome,
         age,
         dependents,
+        prefecture,
         insuranceType,
         priorYearIncome,
       }),
-    [annualIncome, age, dependents, insuranceType, priorYearIncome],
+    [annualIncome, age, dependents, prefecture, insuranceType, priorYearIncome],
   );
 
   const usesPriorYear =
@@ -106,6 +109,27 @@ export function TakeHomeCalculator() {
 
         {showDetails && (
           <div className="mt-4 space-y-5 border-t border-slate-100 pt-4">
+            {/* 都道府県（健康保険料率） */}
+            <label className="block">
+              <span className="text-sm font-medium text-slate-700">
+                お住まいの都道府県（健康保険料率）
+              </span>
+              <select
+                value={prefecture}
+                onChange={(e) => setPrefecture(e.target.value)}
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
+              >
+                {PREFECTURES.map((p) => (
+                  <option key={p.code} value={p.code}>
+                    {p.name}（健保 {p.healthRateTotal}%）
+                  </option>
+                ))}
+              </select>
+              <p className="mt-1 text-xs text-slate-400">
+                協会けんぽの健康保険料率は都道府県ごとに異なります（令和7年度）。
+              </p>
+            </label>
+
             {/* 年齢 */}
             <label className="block">
               <span className="text-sm font-medium text-slate-700">年齢</span>
