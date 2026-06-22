@@ -3,3 +3,7 @@
 export const SITE_URL = "https://money-calc-one.vercel.app";
 
 export const SITE_NAME = "お金の計算機";
+
+// Google アナリティクス（GA4）の測定ID。
+// クライアントに公開される値なので秘密情報ではない。
+export const GA_MEASUREMENT_ID = "G-WYDWKD2XPC";
