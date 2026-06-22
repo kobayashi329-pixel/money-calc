@@ -132,3 +132,48 @@ describe("不変条件・境界値", () => {
     expect(r2.takeHomeAnnual).toBeGreaterThan(r0.takeHomeAnnual);
   });
 });
+
+describe("前年収入オプション（住民税は前年所得ベース）", () => {
+  it("前年収入を指定しなければ当年と同じ（既存挙動は不変）", () => {
+    const without = calculateTakeHome({ ...base, annualIncome: 5_000_000 });
+    const sameExplicit = calculateTakeHome({
+      ...base,
+      annualIncome: 5_000_000,
+      priorYearIncome: 5_000_000,
+    });
+    expect(without.residentTax.total).toBe(sameExplicit.residentTax.total);
+    expect(without.residentTaxBasisIncome).toBe(5_000_000);
+  });
+
+  it("前年が高収入なら住民税が上がり手取りが減る（所得税・社保は当年のまま）", () => {
+    const cur = calculateTakeHome({ ...base, annualIncome: 4_000_000, age: 45 });
+    const dropped = calculateTakeHome({
+      ...base,
+      annualIncome: 4_000_000,
+      age: 45,
+      priorYearIncome: 10_000_000, // 昨年は高収入
+    });
+    // 住民税は前年(高収入)ベースなので増える
+    expect(dropped.residentTax.total).toBeGreaterThan(cur.residentTax.total);
+    // 所得税・社会保険料は当年(400万)ベースなので変わらない
+    expect(dropped.incomeTax.total).toBe(cur.incomeTax.total);
+    expect(dropped.socialInsurance.total).toBe(cur.socialInsurance.total);
+    // その結果、手取りは減る
+    expect(dropped.takeHomeAnnual).toBeLessThan(cur.takeHomeAnnual);
+    expect(dropped.residentTaxBasisIncome).toBe(10_000_000);
+  });
+
+  it("前年収入オプションでも内訳合計は額面年収に一致する", () => {
+    const r = calculateTakeHome({
+      ...base,
+      annualIncome: 6_000_000,
+      priorYearIncome: 9_000_000,
+    });
+    const sum =
+      r.takeHomeAnnual +
+      r.socialInsurance.total +
+      r.incomeTax.total +
+      r.residentTax.total;
+    expect(sum).toBe(6_000_000);
+  });
+});

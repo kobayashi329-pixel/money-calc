@@ -213,9 +213,22 @@ export function calculateTakeHome(input: TakeHomeInput): TakeHomeResult {
   const annualIncome = Math.max(0, Math.round(input.annualIncome));
   const empIncome = employmentIncome(annualIncome);
 
+  // 社会保険料・所得税は「当年」の年収ベース
   const socialInsurance = calcSocialInsurance(annualIncome, input.age);
   const incomeTax = calcIncomeTax(empIncome, socialInsurance.total, input.dependents);
-  const residentTax = calcResidentTax(empIncome, socialInsurance.total, input.dependents);
+
+  // 住民税は「前年」の所得ベース（前年収入が指定されればそれを、無ければ当年と同じとみなす）
+  const residentTaxBasisIncome =
+    input.priorYearIncome != null && input.priorYearIncome > 0
+      ? Math.round(input.priorYearIncome)
+      : annualIncome;
+  const priorEmpIncome = employmentIncome(residentTaxBasisIncome);
+  const priorSocialTotal = calcSocialInsurance(residentTaxBasisIncome, input.age).total;
+  const residentTax = calcResidentTax(
+    priorEmpIncome,
+    priorSocialTotal,
+    input.dependents,
+  );
 
   const totalDeductionFromIncome =
     socialInsurance.total + incomeTax.total + residentTax.total;
@@ -228,6 +241,7 @@ export function calculateTakeHome(input: TakeHomeInput): TakeHomeResult {
     socialInsurance,
     incomeTax,
     residentTax,
+    residentTaxBasisIncome,
     totalDeductionFromIncome,
     takeHomeAnnual,
     takeHomeMonthly,

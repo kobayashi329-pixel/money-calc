@@ -16,6 +16,12 @@ export interface TakeHomeInput {
   dependents: number;
   /** 社会保険の種類 */
   insuranceType: InsuranceType;
+  /**
+   * 前年（住民税の課税対象年）の額面年収（円）。任意。
+   * 住民税は前年所得に課税されるため、収入が大きく増減した場合に指定すると正確になる。
+   * 未指定（または0以下）なら当年と同じとみなす。
+   */
+  priorYearIncome?: number;
 }
 
 /** 社会保険料の内訳（被保険者本人負担分、円） */
@@ -70,6 +76,8 @@ export interface TakeHomeResult {
   incomeTax: IncomeTaxBreakdown;
   /** 住民税 */
   residentTax: ResidentTaxBreakdown;
+  /** 住民税の計算ベースとなった年収（前年収入を指定した場合はその額、未指定なら当年の年収） */
+  residentTaxBasisIncome: number;
   /** 控除合計（社会保険料＋所得税＋住民税） */
   totalDeductionFromIncome: number;
   /** 手取り年収（円） */

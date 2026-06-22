@@ -1,7 +1,8 @@
 "use client";
 
 // 年収手取り計算機の本体（クライアントコンポーネント）。
-// 計算はすべてブラウザ側で完結（SSG・サーバー処理なし）。
+// 設計方針: 「年収だけ」で即結果。年齢・扶養・前年収入は任意の詳細設定に折りたたむ。
+// 計算はすべてブラウザ側で完結（SSG・サーバー処理なし・入力は送信されない）。
 import { useMemo, useState } from "react";
 import { calculateTakeHome } from "@/lib/takehome/calculate";
 import type { TakeHomeInput } from "@/lib/takehome/types";
@@ -20,11 +21,28 @@ export function TakeHomeCalculator() {
   const [age, setAge] = useState(30);
   const [dependents, setDependents] = useState(0);
   const [insuranceType] = useState<TakeHomeInput["insuranceType"]>("kenkohoken");
+  // 前年収入は空文字＝「当年と同じ」。数値が入ったときだけ住民税に反映。
+  const [priorIncomeStr, setPriorIncomeStr] = useState("");
+  const [showDetails, setShowDetails] = useState(false);
+
+  const priorYearIncome = priorIncomeStr.trim() === "" ? undefined : Number(priorIncomeStr);
 
   const result = useMemo(
-    () => calculateTakeHome({ annualIncome, age, dependents, insuranceType }),
-    [annualIncome, age, dependents, insuranceType],
+    () =>
+      calculateTakeHome({
+        annualIncome,
+        age,
+        dependents,
+        insuranceType,
+        priorYearIncome,
+      }),
+    [annualIncome, age, dependents, insuranceType, priorYearIncome],
   );
+
+  const usesPriorYear =
+    priorYearIncome != null &&
+    priorYearIncome > 0 &&
+    result.residentTaxBasisIncome !== annualIncome;
 
   const donutSegments: DonutSegment[] = [
     { label: "手取り", value: result.takeHomeAnnual, color: COLORS.takeHome },
@@ -37,9 +55,14 @@ export function TakeHomeCalculator() {
     <div className="grid gap-6 lg:grid-cols-2">
       {/* ===== 入力フォーム ===== */}
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 className="mb-4 text-lg font-bold text-slate-900">入力</h2>
+        <h2 className="mb-1 text-lg font-bold text-slate-900">
+          年収を入れるだけ
+        </h2>
+        <p className="mb-4 text-xs text-slate-400">
+          まずは額面年収だけでOK。右に手取りがすぐ出ます。
+        </p>
 
-        {/* 年収 */}
+        {/* 年収（主役） */}
         <label className="block">
           <span className="text-sm font-medium text-slate-700">
             額面年収（賞与込み）
@@ -52,7 +75,7 @@ export function TakeHomeCalculator() {
               step={100_000}
               value={annualIncome}
               onChange={(e) => setAnnualIncome(Math.max(0, Number(e.target.value)))}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right text-lg tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
+              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right text-xl font-semibold tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
             />
             <span className="shrink-0 text-slate-500">円</span>
           </div>
@@ -70,60 +93,100 @@ export function TakeHomeCalculator() {
           </div>
         </label>
 
-        {/* 年齢 */}
-        <label className="mt-5 block">
-          <span className="text-sm font-medium text-slate-700">年齢</span>
-          <div className="mt-1 flex items-center gap-2">
-            <input
-              type="number"
-              inputMode="numeric"
-              min={18}
-              max={120}
-              value={age}
-              onChange={(e) => setAge(Math.max(0, Number(e.target.value)))}
-              className="w-28 rounded-lg border border-slate-300 px-3 py-2 text-right tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
-            />
-            <span className="text-slate-500">歳</span>
-            {age >= 40 && age <= 64 && (
-              <span className="ml-1 rounded-full bg-blue-50 px-2 py-0.5 text-xs text-blue-700">
-                介護保険料あり（40〜64歳）
+        {/* 詳細設定（任意・折りたたみ） */}
+        <button
+          type="button"
+          onClick={() => setShowDetails((v) => !v)}
+          className="mt-5 flex w-full items-center justify-between rounded-lg bg-slate-50 px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100"
+          aria-expanded={showDetails}
+        >
+          <span>詳細設定（年齢・扶養・前年収入）</span>
+          <span className="text-slate-400">{showDetails ? "閉じる ▲" : "開く ▼"}</span>
+        </button>
+
+        {showDetails && (
+          <div className="mt-4 space-y-5 border-t border-slate-100 pt-4">
+            {/* 年齢 */}
+            <label className="block">
+              <span className="text-sm font-medium text-slate-700">年齢</span>
+              <div className="mt-1 flex items-center gap-2">
+                <input
+                  type="number"
+                  inputMode="numeric"
+                  min={18}
+                  max={120}
+                  value={age}
+                  onChange={(e) => setAge(Math.max(0, Number(e.target.value)))}
+                  className="w-28 rounded-lg border border-slate-300 px-3 py-2 text-right tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
+                />
+                <span className="text-slate-500">歳</span>
+                {age >= 40 && age <= 64 && (
+                  <span className="ml-1 rounded-full bg-blue-50 px-2 py-0.5 text-xs text-blue-700">
+                    介護保険料あり
+                  </span>
+                )}
+              </div>
+            </label>
+
+            {/* 扶養人数 */}
+            <label className="block">
+              <span className="text-sm font-medium text-slate-700">
+                扶養人数（16歳以上の一般扶養）
               </span>
-            )}
+              <select
+                value={dependents}
+                onChange={(e) => setDependents(Number(e.target.value))}
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
+              >
+                {Array.from({ length: 11 }, (_, i) => (
+                  <option key={i} value={i}>
+                    {i}人
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            {/* 前年の年収（住民税の精度向上） */}
+            <label className="block">
+              <span className="text-sm font-medium text-slate-700">
+                前年の年収（住民税を正確にする・任意）
+              </span>
+              <div className="mt-1 flex items-center gap-2">
+                <input
+                  type="number"
+                  inputMode="numeric"
+                  min={0}
+                  step={100_000}
+                  placeholder="未入力＝今年と同じ"
+                  value={priorIncomeStr}
+                  onChange={(e) => setPriorIncomeStr(e.target.value)}
+                  className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
+                />
+                <span className="shrink-0 text-slate-500">円</span>
+              </div>
+              <p className="mt-1 text-xs text-slate-400">
+                住民税は前年の所得に課税されます。昨年と収入が大きく違う方はこちらを入力すると正確になります。
+              </p>
+            </label>
+
+            {/* 社会保険の種類 */}
+            <label className="block">
+              <span className="text-sm font-medium text-slate-700">社会保険の種類</span>
+              <select
+                value={insuranceType}
+                disabled
+                className="mt-1 w-full rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-slate-700"
+              >
+                <option value="kenkohoken">
+                  会社員（協会けんぽ＋厚生年金＋雇用保険）
+                </option>
+              </select>
+              <p className="mt-1 text-xs text-slate-400">
+                ※ 国民健康保険・国民年金（自営業）版は今後追加予定です。
+              </p>
+            </label>
           </div>
-        </label>
-
-        {/* 扶養人数 */}
-        <label className="mt-5 block">
-          <span className="text-sm font-medium text-slate-700">
-            扶養人数（16歳以上の一般扶養）
-          </span>
-          <select
-            value={dependents}
-            onChange={(e) => setDependents(Number(e.target.value))}
-            className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
-          >
-            {Array.from({ length: 11 }, (_, i) => (
-              <option key={i} value={i}>
-                {i}人
-              </option>
-            ))}
-          </select>
-        </label>
-
-        {/* 社会保険の種類 */}
-        <label className="mt-5 block">
-          <span className="text-sm font-medium text-slate-700">社会保険の種類</span>
-          <select
-            value={insuranceType}
-            disabled
-            className="mt-1 w-full rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-slate-700"
-          >
-            <option value="kenkohoken">会社員（協会けんぽ＋厚生年金＋雇用保険）</option>
-          </select>
-          <p className="mt-1 text-xs text-slate-400">
-            ※ 国民健康保険・国民年金（自営業）版は今後追加予定です。
-          </p>
-        </label>
+        )}
       </section>
 
       {/* ===== 結果 ===== */}
@@ -188,7 +251,14 @@ export function TakeHomeCalculator() {
           </tbody>
         </table>
 
-        <p className="mt-4 rounded-lg bg-amber-50 p-3 text-xs leading-5 text-amber-800">
+        {usesPriorYear && (
+          <p className="mt-4 rounded-lg bg-blue-50 p-3 text-xs leading-5 text-blue-800">
+            🧮 住民税は<strong>前年の年収 {manYen(result.residentTaxBasisIncome)}</strong>
+            をもとに計算しています（住民税は前年所得への課税のため）。
+          </p>
+        )}
+
+        <p className="mt-3 rounded-lg bg-amber-50 p-3 text-xs leading-5 text-amber-800">
           ⚠️ 本ツールの計算結果は<strong>概算</strong>です。実際の額は、お住まいの自治体の料率、
           標準報酬月額の等級、各種控除（配偶者・特定扶養・生命保険料控除など）により変動します。
           正確な額は専門家や公的機関でご確認ください。

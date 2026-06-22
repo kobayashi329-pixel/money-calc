@@ -4,6 +4,12 @@ import createMDX from "@next/mdx";
 const nextConfig: NextConfig = {
   // .md / .mdx もページ・コンポーネントとして扱う
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+  // 旧URL（英語スラッグ）からローマ字スラッグへ恒久リダイレクト（SEO評価を引き継ぐ）
+  async redirects() {
+    return [
+      { source: "/take-home", destination: "/tedori", permanent: true },
+    ];
+  },
 };
 
 const withMDX = createMDX({
