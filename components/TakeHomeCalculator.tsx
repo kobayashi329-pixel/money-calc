@@ -220,16 +220,30 @@ export function TakeHomeCalculator() {
           {result.taxYear}年（令和{result.taxYear - 2018}年）分の制度に基づく概算
         </p>
 
-        {/* 大きな手取り表示 */}
+        {/* 大きな手取り表示（年収・月収） */}
         <div className="mb-5 rounded-xl bg-emerald-50 p-4 text-center">
           <div className="text-sm text-emerald-800">手取り年収（概算）</div>
           <div className="text-3xl font-extrabold text-emerald-700 tabular-nums">
             {yen(result.takeHomeAnnual)}
           </div>
-          <div className="mt-1 text-sm text-emerald-800">
-            月あたり約 <strong>{yen(result.takeHomeMonthly)}</strong> ／ 手取り率{" "}
-            <strong>{percent(result.takeHomeRate)}</strong>
+          <div className="mt-3 flex items-stretch justify-center gap-4 border-t border-emerald-200 pt-3">
+            <div className="flex-1">
+              <div className="text-xs text-emerald-800">手取り月収（目安）</div>
+              <div className="text-xl font-bold text-emerald-700 tabular-nums">
+                {yen(result.takeHomeMonthly)}
+              </div>
+            </div>
+            <div className="w-px self-stretch bg-emerald-200" />
+            <div className="flex-1">
+              <div className="text-xs text-emerald-800">手取り率</div>
+              <div className="text-xl font-bold text-emerald-700 tabular-nums">
+                {percent(result.takeHomeRate)}
+              </div>
+            </div>
           </div>
+          <p className="mt-2 text-xs text-emerald-700/70">
+            ※ 手取り月収は手取り年収を12で割った目安（賞与込み）です。
+          </p>
         </div>
 
         {/* ドーナツグラフ */}
