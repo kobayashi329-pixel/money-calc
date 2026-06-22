@@ -66,9 +66,9 @@ export const CALCULATORS: Calculator[] = [
     title: "住宅ローンシミュレータ",
     shortTitle: "住宅ローン",
     description:
-      "毎月の返済額・総返済額・繰上返済の効果・借換え比較を計算。",
+      "借入額・金利・返済期間から、毎月の返済額・総返済額・利息総額を計算。元利均等／元金均等に対応。",
     category: "loan",
-    status: "planned",
+    status: "live",
     related: ["tedori", "furusato-nozei"],
     priority: 2,
     emoji: "🏠",
