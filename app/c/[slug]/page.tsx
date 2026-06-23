@@ -45,7 +45,7 @@ export default async function CategoryPage({
         <h1 className="text-2xl font-extrabold text-slate-900 sm:text-3xl">
           {cat.emoji} {cat.name}の計算機
         </h1>
-        <p className="mt-2 text-sm leading-6 text-slate-600">{cat.description}</p>
+        <p className="mt-3 text-sm leading-7 text-slate-600">{cat.intro ?? cat.description}</p>
       </header>
 
       <div className="grid gap-4 sm:grid-cols-2">
@@ -81,6 +81,22 @@ export default async function CategoryPage({
           );
         })}
       </div>
+
+      {/* 他のカテゴリ（クロスリンク） */}
+      <section className="mt-10">
+        <h2 className="mb-3 text-base font-bold text-slate-900">他のカテゴリ</h2>
+        <div className="flex flex-wrap gap-2">
+          {CATEGORIES.filter((c) => c.slug !== cat.slug).map((c) => (
+            <Link
+              key={c.slug}
+              href={`/c/${c.slug}`}
+              className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:border-emerald-300 hover:text-emerald-700"
+            >
+              {c.emoji} {c.name}
+            </Link>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
