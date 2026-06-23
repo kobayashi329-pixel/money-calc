@@ -157,6 +157,18 @@ export const CALCULATORS: Calculator[] = [
     emoji: "🗓️",
   },
   {
+    slug: "nenkin-mikomi",
+    title: "公的年金 受給見込み額シミュレーション",
+    shortTitle: "年金見込み",
+    description:
+      "加入年数と平均年収から、老齢基礎年金＋厚生年金の受給見込み額を概算。繰上げ・繰下げ受給にも対応。",
+    category: "nenkin",
+    status: "live",
+    related: ["rougo-shikin", "taishokukin", "tedori"],
+    priority: 8.5,
+    emoji: "👵",
+  },
+  {
     slug: "taishokukin",
     title: "退職金の手取り・税金計算",
     shortTitle: "退職金",
