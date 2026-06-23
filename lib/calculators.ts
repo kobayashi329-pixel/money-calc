@@ -132,14 +132,26 @@ export const CALCULATORS: Calculator[] = [
     emoji: "🏛️",
   },
   {
+    slug: "karikae",
+    title: "住宅ローン借り換え比較シミュレータ",
+    shortTitle: "借り換え",
+    description:
+      "今のローンと借り換え後を比較。金利差による毎月返済額・総返済額の軽減から、諸費用を引いた正味メリットを試算。",
+    category: "loan",
+    status: "live",
+    related: ["jutaku-loan", "kuriage-hensai", "tedori"],
+    priority: 8,
+    emoji: "🔁",
+  },
+  {
     slug: "taishokukin",
     title: "退職金の手取り・税金計算",
     shortTitle: "退職金",
-    description: "勤続年数と退職金額から、退職所得控除・税金・手取りを計算。",
+    description: "勤続年数と退職金額から、退職所得控除・1/2課税・税金・手取りを計算。",
     category: "nenkin",
-    status: "planned",
-    related: ["tedori", "nisa"],
-    priority: 8,
+    status: "live",
+    related: ["tedori", "ideco", "nisa"],
+    priority: 9,
     emoji: "🧾",
   },
   {
@@ -150,7 +162,7 @@ export const CALCULATORS: Calculator[] = [
     category: "zei",
     status: "planned",
     related: ["tedori"],
-    priority: 9,
+    priority: 10,
     emoji: "🧮",
   },
   {
@@ -161,7 +173,7 @@ export const CALCULATORS: Calculator[] = [
     category: "kyuyo",
     status: "planned",
     related: ["tedori"],
-    priority: 10,
+    priority: 11,
     emoji: "⏱️",
   },
 ];
