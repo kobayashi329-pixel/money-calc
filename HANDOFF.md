@@ -90,7 +90,11 @@
 
 **金額入力のカンマ表示（2026-06-23）**: `components/MoneyInput.tsx`＝金額欄の共通部品（`type="text"`＋3桁カンマ自動整形・スライダー同期・`max`クランプ）。`type="number"`はカンマ表示不可のため全計算機の金額欄をこれに置換。ヘルパー型(Rougo `NumField`/LifePlan `Num`)は `suffix==="円"` のとき自動でMoneyInputを使う。年齢・年数・％・件数は従来の数値入力のまま。手取りの前年収入は数値state(0=未入力)に整理。**新計算機の金額欄もMoneyInputを使うこと**（value:number, onChange:(n)=>void）。
 
-**AdSense（未申請）**: サイトは申請可能な状態（独自ドメイン・大量のオリジナルコンテンツ・プライバシー/運営者/編集方針/出典ページ完備）。申請後、パブリッシャーID発行→`public/ads.txt`設置＋`app/layout.tsx`にAdSenseスクリプト（next/script）を追加して審査。氏名・住所はGoogleに登録するだけでサイトには非公開。
+**OGP/ファビコン（2026-06-23）**: `app/opengraph-image.tsx`（1200×630・動的・`assets/`のNoto Sans JP woff[日本語+ラテン]をfsで読みImageResponse生成）。`app/icon.svg`（¥/emeraldファビコン）・`app/apple-icon.tsx`（180×180）・`app/manifest.ts`。デフォルト`favicon.ico`は削除。`twitter:summary_large_image`。**フォントはリポジトリ同梱**（ビルド時ネットワーク非依存）。
+
+**SEO残タスク・AdSense広告配置**は `money-calc/SEO-CHECKLIST.md` 末尾の「最新ステータス」「AdSense 広告の表示形式・配置」を参照。
+
+**AdSense（審査中）**: サイトは申請可能な状態（独自ドメイン・大量のオリジナルコンテンツ・プライバシー/運営者/編集方針/出典ページ完備）。申請後、パブリッシャーID発行→`public/ads.txt`設置＋`app/layout.tsx`にAdSenseスクリプト（next/script）を追加して審査。氏名・住所はGoogleに登録するだけでサイトには非公開。
 
 ## 4. アーキテクチャ（重要）
 

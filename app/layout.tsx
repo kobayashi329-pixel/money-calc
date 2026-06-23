@@ -40,6 +40,12 @@ export const metadata: Metadata = {
       "年収手取り・住宅ローン・ふるさと納税・NISA・iDeCo・相続税・退職金など、お金の計算を無料でまとめて。令和7年（2025年）対応・登録不要。",
     url: SITE_URL,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "お金の計算機｜年収手取り・住宅ローン・税金を無料でシミュレーション",
+    description:
+      "年収手取り・住宅ローン・ふるさと納税・NISA・iDeCo・相続税・退職金など、お金の計算を無料でまとめて。令和7年（2025年）対応・登録不要。",
+  },
 };
 
 export default function RootLayout({

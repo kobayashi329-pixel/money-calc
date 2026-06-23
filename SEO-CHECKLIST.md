@@ -131,3 +131,54 @@
 7. 🟡 HTMLサイトマップ（計算機一覧ページ）／更新日の可視化
 8. 🟡 Search Console インデックス登録・パフォーマンス運用
 9. 🟢 結果のURL共有、用語集、Bing登録、被リンク施策 ほか
+
+---
+
+# 最新ステータス（2026-06-23 更新）
+
+## ✅ 実装・反映済み
+- 内部リンク基盤：ヘッダー全6カテゴリ＋ガイド、フッターにカテゴリ別の全計算機リンク
+- カテゴリページに独自解説（`Category.intro`）＋他カテゴリのクロスリンク
+- コラム/ガイド：**22記事**（`lib/guides.ts`＋`/guide`＋`content/guides/*.mdx`）。`Article`＋`Breadcrumb`構造化データ、`RelatedGuides`で計算機と相互リンク。クラスター=年収別手取り/節税、ふるさと納税やり方、NISA vs iDeCo 等
+- E-E-A-T：`/editorial-policy`（編集方針）・`/sources`（出典＋適用年度）・全計算機に`TrustNote`（更新日＋検証＋出典リンク）。屋号運営
+- トップ：キーワードH1・FAQ＋FAQPage・信頼バッジ
+- meta：title/description/keywords/canonical、**OGP画像（動的`app/opengraph-image.tsx`・1200×630・Noto Sans JP同梱）**、`twitter:summary_large_image`
+- **ファビコン**：`app/icon.svg`（¥/emerald）・`app/apple-icon.tsx`（180×180）・`app/manifest.ts`。デフォルトfavicon.ico削除
+- sitemap（lastmod・全23+URL）・robots
+- **AdSense**：審査用スニペット＋`public/ads.txt`設置（pub-7264853366083194・所有権確認済み・審査中）
+- 金額入力の3桁カンマ（`components/MoneyInput.tsx`）
+
+## ⬜ 次にやること（優先度順）
+1. 🔴 Search Console：新規ページ（計算機15＋ガイド22）のインデックス登録・検索パフォーマンス監視（**管理画面操作＝ご本人**）
+2. 🔴 Core Web Vitals 実測（PageSpeed Insights）→ AdSense導入前にCLS等を確認
+3. 🔴 ガイド継続追加（確定申告のやり方・年収300万/共働きの節税・住宅ローン変動vs固定・贈与税 等）
+4. 🟡 構造化データ拡充：`Organization`／`ItemList`（計算機一覧）／`HowTo`／`SearchAction`
+5. 🟡 結果のURL共有（入力値をクエリ化）＝被リンク・再訪
+6. 🟡 HTMLサイトマップ `/calculators`、監修（税理士/FP・法人名可）
+7. 🟢 被リンク・SNS・Bing登録・用語集・内部検索
+
+---
+
+# AdSense 広告の表示形式・配置（承認後）
+
+## 広告タイプ
+| タイプ | 用途 |
+| --- | --- |
+| ディスプレイ広告 | 記事末尾・計算結果の下 |
+| 記事内広告（インアーティクル） | ガイド記事のH2の合間に1〜2個 |
+| インフィード広告 | /guide一覧・トップのカード間 |
+| 関連コンテンツ（Multiplex） | 記事末尾の関連リンク前 |
+| アンカー広告 | モバイル画面下に固定 |
+| 全画面（Vignette） | **非推奨**（UX/審査リスク） |
+
+## 配置方針（収益×UX）
+- 計算機ページ：**「入力〜計算結果の間」には置かない**。広告は計算結果の下／解説MDX内・下。
+- ガイド記事：記事内1〜2＋末尾＋Multiplex。コンテンツが厚く相性良。
+- モバイル：アンカー広告は可。ポップアップ系は避ける。
+- 最初は**手動配置（位置を制御）**、慣れたら自動広告を限定ON。
+
+## 実装メモ
+- 広告コードを共通`<AdSlot>`コンポーネント化し記事/計算機ページへ差し込む（pub-ID＝`ADSENSE_CLIENT`設置済み）。
+- **CLS対策**：各枠に`min-height`予約。
+- ポリシー：広告とコンテンツを明確に区別／計算機操作を妨げない／1ページの広告過多回避。
+- 同意メッセージ（CMP）：EEA向けにGoogle CMPを設定（自動表示・追加実装不要）。
