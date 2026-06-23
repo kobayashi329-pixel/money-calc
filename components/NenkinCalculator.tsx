@@ -6,8 +6,8 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { calculateNenkin } from "@/lib/nenkin/calculate";
 import { yen, manYen, percent } from "@/lib/format";
-import { MoneyInput } from "./MoneyInput";
 import { DonutChart, type DonutSegment } from "./DonutChart";
+import { MoneyInput } from "./MoneyInput";
 
 const COLORS = {
   basic: "#3b82f6", // blue-500 … 老齢基礎年金
@@ -42,6 +42,54 @@ export function NenkinCalculator() {
         <label className="block">
           <span className="text-sm font-medium text-slate-700">
             国民年金（基礎年金）の納付年数
+          </span>
+          <div className="mt-1 flex items-center gap-2">
+            <input
+              type="number"
+              inputMode="numeric"
+              min={0}
+              max={40}
+              value={kisoYears}
+              onChange={(e) => setKisoYears(Math.min(40, Math.max(0, Number(e.target.value))))}
+              className="w-24 rounded-lg border border-slate-300 px-3 py-2 text-right tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
+            />
+            <span className="text-slate-500">年</span>
+            <span className="text-xs text-slate-400">（20〜60歳・最大40年で満額）</span>
+          </div>
+          <input
+            type="range"
+            min={0}
+            max={40}
+            value={kisoYears}
+            onChange={(e) => setKisoYears(Number(e.target.value))}
+            className="mt-3 w-full accent-emerald-500"
+          />
+        </label>
+
+        {/* 厚生年金の加入年数 */}
+        <label className="mt-5 block">
+          <span className="text-sm font-medium text-slate-700">厚生年金の加入年数</span>
+          <div className="mt-1 flex items-center gap-2">
+            <input
+              type="number"
+              inputMode="numeric"
+              min={0}
+              max={50}
+              value={kouseiYears}
+              onChange={(e) => setKouseiYears(Math.min(50, Math.max(0, Number(e.target.value))))}
+              className="w-24 rounded-lg border border-slate-300 px-3 py-2 text-right tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
+            />
+            <span className="text-slate-500">年</span>
+          </div>
+          <p className="mt-1 text-xs text-slate-400">
+            会社員・公務員だった年数。自営業・専業主婦（第3号）の方は<strong>0年</strong>にしてください。
+          </p>
+        </label>
+
+        {/* 平均年収 */}
+        <label className="mt-5 block">
+          <span className="text-sm font-medium text-slate-700">
+            厚生年金加入中の平均年収（賞与込み）
           </span>
           <div className="mt-1 flex items-center gap-2">
             <MoneyInput value={avgAnnualIncome} onChange={setAvgAnnualIncome} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none" />
