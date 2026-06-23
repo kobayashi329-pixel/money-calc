@@ -44,6 +44,7 @@ export const CATEGORIES: Category[] = [
   { slug: "zei", name: "税金", description: "ふるさと納税・消費税・贈与税などを計算", emoji: "📑" },
   { slug: "toshi", name: "投資・資産形成", description: "NISA・iDeCoの積立をシミュレーション", emoji: "📈" },
   { slug: "nenkin", name: "年金・退職金", description: "退職金や年金の手取り・税金を計算", emoji: "🧾" },
+  { slug: "life", name: "ライフプラン", description: "老後資金・教育資金・生涯のお金の計画をシミュレーション", emoji: "🗓️" },
 ];
 
 // ---- 計算機 ----
@@ -142,6 +143,18 @@ export const CALCULATORS: Calculator[] = [
     related: ["jutaku-loan", "kuriage-hensai", "tedori"],
     priority: 8,
     emoji: "🔁",
+  },
+  {
+    slug: "rougo-shikin",
+    title: "老後資金シミュレーション",
+    shortTitle: "老後資金",
+    description:
+      "退職時に必要な老後資金と、不足を埋めるために今から毎月いくら積み立てればよいかを試算。",
+    category: "life",
+    status: "live",
+    related: ["nisa", "ideco", "taishokukin"],
+    priority: 7.5,
+    emoji: "🗓️",
   },
   {
     slug: "taishokukin",
