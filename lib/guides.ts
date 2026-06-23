@@ -250,6 +250,71 @@ export const GUIDES: Guide[] = [
     updated: "2026年6月23日",
     emoji: "⏱️",
   },
+  {
+    slug: "setsuzei-nenshu-betsu",
+    title: "年収別の節税対策まとめ｜会社員ができる節税を一覧で解説",
+    shortTitle: "年収別の節税対策まとめ",
+    description:
+      "会社員ができる節税は年収（税率）で最適解が変わります。ふるさと納税・iDeCo・NISAを中心に、年収別のおすすめ節税対策を一覧で解説します。",
+    category: "zei",
+    targets: ["furusato-nozei", "ideco", "nisa", "tedori"],
+    related: ["setsuzei-500man", "setsuzei-700man", "setsuzei-1000man"],
+    status: "live",
+    updated: "2026年6月23日",
+    emoji: "🧮",
+  },
+  {
+    slug: "setsuzei-500man",
+    title: "年収500万円の節税対策｜ふるさと納税・iDeCo・NISAの使い分け",
+    shortTitle: "年収500万の節税対策",
+    description:
+      "年収500万円の会社員が使える節税対策を優先順位つきで解説。ふるさと納税の上限約6万円、iDeCoの節税、NISAの非課税を実数値で紹介します。",
+    category: "zei",
+    targets: ["furusato-nozei", "ideco", "nisa"],
+    related: ["setsuzei-nenshu-betsu", "setsuzei-700man"],
+    status: "live",
+    updated: "2026年6月23日",
+    emoji: "💴",
+  },
+  {
+    slug: "setsuzei-700man",
+    title: "年収700万円の節税対策｜税率20%帯で効く節税を解説",
+    shortTitle: "年収700万の節税対策",
+    description:
+      "年収700万円は所得税率が上がり、節税の効果が大きくなる年収帯。ふるさと納税約11万円、iDeCo・NISAを使った具体的な節税策を解説します。",
+    category: "zei",
+    targets: ["ideco", "furusato-nozei", "nisa"],
+    related: ["setsuzei-nenshu-betsu", "setsuzei-1000man"],
+    status: "live",
+    updated: "2026年6月23日",
+    emoji: "💴",
+  },
+  {
+    slug: "setsuzei-1000man",
+    title: "年収1000万円の節税対策｜高所得者が使える控除を総動員",
+    shortTitle: "年収1000万の節税対策",
+    description:
+      "年収1000万円は税負担が重く、節税の効果も最大級。ふるさと納税約18万円、iDeCo、各種控除、年収の壁まで、高所得者向けの節税策を解説します。",
+    category: "zei",
+    targets: ["ideco", "furusato-nozei", "nisa"],
+    related: ["setsuzei-nenshu-betsu", "setsuzei-700man"],
+    status: "live",
+    updated: "2026年6月23日",
+    emoji: "💴",
+  },
+  {
+    slug: "setsuzei-freelance",
+    title: "個人事業主・フリーランスの節税対策｜青色申告・小規模企業共済・iDeCo",
+    shortTitle: "フリーランスの節税対策",
+    description:
+      "個人事業主・フリーランスが使える節税を解説。青色申告特別控除65万円、経費、小規模企業共済、iDeCo（月6.8万円まで）など会社員より幅広い節税策を紹介します。",
+    category: "zei",
+    targets: ["ideco", "tedori"],
+    related: ["setsuzei-nenshu-betsu"],
+    status: "live",
+    updated: "2026年6月23日",
+    emoji: "🧑‍💻",
+  },
 ];
 
 // ---- ヘルパー ----
