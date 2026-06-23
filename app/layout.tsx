@@ -50,9 +50,10 @@ export default function RootLayout({
               <Link href="/" className="text-lg font-bold text-slate-900">
                 <span className="text-emerald-600">¥</span> お金の計算機
               </Link>
-              <Link href="/tedori" className="text-sm text-slate-500 hover:text-emerald-700">
-                年収手取り
-              </Link>
+              <div className="flex gap-3 text-sm text-slate-500">
+                <Link href="/tedori" className="hover:text-emerald-700">年収手取り</Link>
+                <Link href="/guide" className="hover:text-emerald-700">ガイド</Link>
+              </div>
             </div>
             {/* カテゴリのグローバルナビ（全ページから全カテゴリへ） */}
             <nav aria-label="カテゴリ" className="-mb-px flex gap-1 overflow-x-auto pb-2 text-sm">
@@ -65,6 +66,12 @@ export default function RootLayout({
                   <span aria-hidden>{cat.emoji}</span> {cat.name}
                 </Link>
               ))}
+              <Link
+                href="/guide"
+                className="shrink-0 rounded-full px-3 py-1 text-slate-600 hover:bg-emerald-50 hover:text-emerald-700"
+              >
+                📝 ガイド
+              </Link>
             </nav>
           </div>
         </header>
@@ -104,6 +111,7 @@ export default function RootLayout({
           <div className="border-t border-slate-100">
             <div className="mx-auto max-w-4xl px-4 py-6 text-xs leading-6 text-slate-500">
             <nav className="mb-3 flex flex-wrap gap-x-4 gap-y-1">
+              <Link href="/guide" className="hover:text-emerald-700">ガイド・解説</Link>
               <Link href="/about" className="hover:text-emerald-700">運営者情報</Link>
               <Link href="/editorial-policy" className="hover:text-emerald-700">編集・運営方針</Link>
               <Link href="/sources" className="hover:text-emerald-700">計算の根拠・出典</Link>

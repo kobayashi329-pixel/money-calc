@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { liveCalculators, CATEGORIES } from "@/lib/calculators";
+import { liveGuides } from "@/lib/guides";
 
 // 検索エンジンにページ一覧を伝えるサイトマップ（/sitemap.xml）。
 // レジストリ駆動: 公開済み計算機・カテゴリを自動収録。新計算機を足すと自動で載る。
@@ -19,6 +20,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly",
       priority: 0.9,
+    });
+  }
+
+  // ガイド（コラム）一覧＋各記事
+  entries.push({
+    url: `${SITE_URL}/guide`,
+    lastModified,
+    changeFrequency: "weekly",
+    priority: 0.7,
+  });
+  for (const g of liveGuides()) {
+    entries.push({
+      url: `${SITE_URL}/guide/${g.slug}`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
     });
   }
 

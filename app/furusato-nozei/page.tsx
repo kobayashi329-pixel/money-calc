@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { FurusatoCalculator } from "@/components/FurusatoCalculator";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalculators } from "@/components/RelatedCalculators";
+import { RelatedGuides } from "@/components/RelatedGuides";
 import { JsonLd } from "@/components/JsonLd";
 import { TrustNote } from "@/components/TrustNote";
 import { getCalculator, getCategory } from "@/lib/calculators";
@@ -57,6 +58,8 @@ export default function FurusatoPage() {
 
       {/* 関連する計算機（内部リンク） */}
       <RelatedCalculators slug="furusato-nozei" />
+
+      <RelatedGuides slug="furusato-nozei" />
 
       {/* ===== 解説記事（MDX・SEO/審査用） ===== */}
       <section className="mt-12 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { NenkinCalculator } from "@/components/NenkinCalculator";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalculators } from "@/components/RelatedCalculators";
+import { RelatedGuides } from "@/components/RelatedGuides";
 import { JsonLd } from "@/components/JsonLd";
 import { TrustNote } from "@/components/TrustNote";
 import { getCalculator, getCategory } from "@/lib/calculators";
@@ -55,6 +56,8 @@ export default function NenkinPage() {
       <NenkinCalculator />
 
       <RelatedCalculators slug="nenkin-mikomi" />
+
+      <RelatedGuides slug="nenkin-mikomi" />
 
       <section className="mt-12 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
         <Article />

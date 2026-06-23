@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { KarikaeCalculator } from "@/components/KarikaeCalculator";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalculators } from "@/components/RelatedCalculators";
+import { RelatedGuides } from "@/components/RelatedGuides";
 import { JsonLd } from "@/components/JsonLd";
 import { TrustNote } from "@/components/TrustNote";
 import { getCalculator, getCategory } from "@/lib/calculators";
@@ -54,6 +55,8 @@ export default function KarikaePage() {
       <KarikaeCalculator />
 
       <RelatedCalculators slug="karikae" />
+
+      <RelatedGuides slug="karikae" />
 
       <section className="mt-12 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
         <Article />

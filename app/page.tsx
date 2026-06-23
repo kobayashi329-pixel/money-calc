@@ -8,6 +8,7 @@ import {
   liveCalculators,
   type Calculator,
 } from "@/lib/calculators";
+import { liveGuides } from "@/lib/guides";
 
 // ハブページ（計算機の一覧）。スポーク（各計算機）への入口。
 // レジストリ(lib/calculators.ts)から自動生成。新計算機を足すと自動で反映される。
@@ -158,6 +159,36 @@ export default function Home() {
           </section>
         );
       })}
+
+      {/* お金のガイド・解説記事 */}
+      {liveGuides().length > 0 && (
+        <section className="mb-10">
+          <div className="mb-3 flex items-baseline justify-between">
+            <h2 className="text-lg font-bold text-slate-900">📝 お金のガイド・解説</h2>
+            <Link href="/guide" className="text-sm text-emerald-700 hover:underline">
+              一覧 →
+            </Link>
+          </div>
+          <p className="mb-3 text-sm text-slate-500">
+            年収別の手取り、ふるさと納税のやり方、NISAとiDeCoの違いなど、計算とあわせて読みたい解説記事。
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {liveGuides()
+              .slice(0, 6)
+              .map((g) => (
+                <Link
+                  key={g.slug}
+                  href={`/guide/${g.slug}`}
+                  className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-md"
+                >
+                  <span className="font-semibold text-slate-900">{g.shortTitle}</span>
+                  <span className="mt-1 flex-1 text-xs leading-5 text-slate-500">{g.description}</span>
+                  <span className="mt-2 text-xs font-semibold text-emerald-700">読む →</span>
+                </Link>
+              ))}
+          </div>
+        </section>
+      )}
 
       {/* よくある質問（FAQ） */}
       <section className="mb-10">
