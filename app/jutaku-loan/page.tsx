@@ -3,6 +3,7 @@ import { LoanCalculator } from "@/components/LoanCalculator";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalculators } from "@/components/RelatedCalculators";
 import { JsonLd } from "@/components/JsonLd";
+import { TrustNote } from "@/components/TrustNote";
 import { getCalculator, getCategory } from "@/lib/calculators";
 import { SITE_URL } from "@/lib/site";
 import Article from "@/content/jutaku-loan.mdx";
@@ -47,6 +48,8 @@ export default function JutakuLoanPage() {
           を即計算します。元利均等・元金均等の両方式に対応。
         </p>
       </header>
+
+      <TrustNote />
 
       <LoanCalculator />
 

@@ -3,6 +3,7 @@ import { RougoCalculator } from "@/components/RougoCalculator";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalculators } from "@/components/RelatedCalculators";
 import { JsonLd } from "@/components/JsonLd";
+import { TrustNote } from "@/components/TrustNote";
 import { getCalculator, getCategory } from "@/lib/calculators";
 import { SITE_URL } from "@/lib/site";
 import Article from "@/content/rougo-shikin.mdx";
@@ -47,6 +48,8 @@ export default function RougoPage() {
           不足を埋めるために<strong>今から毎月いくら積み立てればよいか</strong>まで試算します。
         </p>
       </header>
+
+      <TrustNote />
 
       <RougoCalculator />
 

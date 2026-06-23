@@ -3,6 +3,7 @@ import { IdecoCalculator } from "@/components/IdecoCalculator";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalculators } from "@/components/RelatedCalculators";
 import { JsonLd } from "@/components/JsonLd";
+import { TrustNote } from "@/components/TrustNote";
 import { getCalculator, getCategory } from "@/lib/calculators";
 import { SITE_URL } from "@/lib/site";
 import Article from "@/content/ideco.mdx";
@@ -48,6 +49,8 @@ export default function IdecoPage() {
           <strong>積立評価額</strong>を試算します。令和7年（2025年）の制度に基づく概算です。
         </p>
       </header>
+
+      <TrustNote />
 
       <IdecoCalculator />
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalLayout } from "@/components/LegalLayout";
-import { SITE_NAME } from "@/lib/site";
+import { SITE_NAME, SITE_LAST_UPDATED } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "プライバシーポリシー",
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <LegalLayout title="プライバシーポリシー" updated="2026年6月22日">
+    <LegalLayout title="プライバシーポリシー" updated={SITE_LAST_UPDATED}>
       <p>
         「{SITE_NAME}」（以下「当サイト」）における、利用者の情報の取り扱いについて、以下のとおり定めます。
       </p>

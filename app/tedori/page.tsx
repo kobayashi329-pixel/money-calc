@@ -3,6 +3,7 @@ import { TakeHomeCalculator } from "@/components/TakeHomeCalculator";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalculators } from "@/components/RelatedCalculators";
 import { JsonLd } from "@/components/JsonLd";
+import { TrustNote } from "@/components/TrustNote";
 import { getCalculator, getCategory } from "@/lib/calculators";
 import { SITE_URL } from "@/lib/site";
 import Article from "@/content/tedori.mdx";
@@ -48,6 +49,8 @@ export default function TedoriPage() {
           令和7年（2025年）の制度に基づく概算です。
         </p>
       </header>
+
+      <TrustNote />
 
       <TakeHomeCalculator />
 

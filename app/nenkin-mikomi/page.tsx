@@ -3,6 +3,7 @@ import { NenkinCalculator } from "@/components/NenkinCalculator";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalculators } from "@/components/RelatedCalculators";
 import { JsonLd } from "@/components/JsonLd";
+import { TrustNote } from "@/components/TrustNote";
 import { getCalculator, getCategory } from "@/lib/calculators";
 import { SITE_URL } from "@/lib/site";
 import Article from "@/content/nenkin-mikomi.mdx";
@@ -48,6 +49,8 @@ export default function NenkinPage() {
           <strong>繰上げ・繰下げ受給</strong>による増減も確認できます。令和7年度の年金額に基づく概算です。
         </p>
       </header>
+
+      <TrustNote />
 
       <NenkinCalculator />
 

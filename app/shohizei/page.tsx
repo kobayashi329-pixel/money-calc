@@ -3,6 +3,7 @@ import { ShohizeiCalculator } from "@/components/ShohizeiCalculator";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalculators } from "@/components/RelatedCalculators";
 import { JsonLd } from "@/components/JsonLd";
+import { TrustNote } from "@/components/TrustNote";
 import { getCalculator, getCategory } from "@/lib/calculators";
 import { SITE_URL } from "@/lib/site";
 import Article from "@/content/shohizei.mdx";
@@ -48,6 +49,8 @@ export default function ShohizeiPage() {
           端数処理（切り捨て・四捨五入・切り上げ）に対応しています。
         </p>
       </header>
+
+      <TrustNote />
 
       <ShohizeiCalculator />
 

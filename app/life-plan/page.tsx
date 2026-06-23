@@ -3,6 +3,7 @@ import { LifePlanCalculator } from "@/components/LifePlanCalculator";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalculators } from "@/components/RelatedCalculators";
 import { JsonLd } from "@/components/JsonLd";
+import { TrustNote } from "@/components/TrustNote";
 import { getCalculator, getCategory } from "@/lib/calculators";
 import { SITE_URL } from "@/lib/site";
 import Article from "@/content/life-plan.mdx";
@@ -47,6 +48,8 @@ export default function LifePlanPage() {
           <strong>貯蓄が尽きる年齢</strong>が一目でわかる、生涯のお金の設計表です。
         </p>
       </header>
+
+      <TrustNote />
 
       <LifePlanCalculator />
 

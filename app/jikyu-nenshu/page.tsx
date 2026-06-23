@@ -3,6 +3,7 @@ import { JikyuCalculator } from "@/components/JikyuCalculator";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalculators } from "@/components/RelatedCalculators";
 import { JsonLd } from "@/components/JsonLd";
+import { TrustNote } from "@/components/TrustNote";
 import { getCalculator, getCategory } from "@/lib/calculators";
 import { SITE_URL } from "@/lib/site";
 import Article from "@/content/jikyu-nenshu.mdx";
@@ -47,6 +48,8 @@ export default function JikyuPage() {
           「この時給だと年収はいくら？」を、労働時間・日数を指定して即計算できます。
         </p>
       </header>
+
+      <TrustNote />
 
       <JikyuCalculator />
 

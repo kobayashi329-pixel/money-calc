@@ -3,6 +3,7 @@ import { SozokuCalculator } from "@/components/SozokuCalculator";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalculators } from "@/components/RelatedCalculators";
 import { JsonLd } from "@/components/JsonLd";
+import { TrustNote } from "@/components/TrustNote";
 import { getCalculator, getCategory } from "@/lib/calculators";
 import { SITE_URL } from "@/lib/site";
 import Article from "@/content/sozokuzei.mdx";
@@ -48,6 +49,8 @@ export default function SozokuPage() {
           納税額の目安を計算します。
         </p>
       </header>
+
+      <TrustNote />
 
       <SozokuCalculator />
 

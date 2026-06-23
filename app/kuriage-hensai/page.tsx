@@ -3,6 +3,7 @@ import { KuriageCalculator } from "@/components/KuriageCalculator";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalculators } from "@/components/RelatedCalculators";
 import { JsonLd } from "@/components/JsonLd";
+import { TrustNote } from "@/components/TrustNote";
 import { getCalculator, getCategory } from "@/lib/calculators";
 import { SITE_URL } from "@/lib/site";
 import Article from "@/content/kuriage-hensai.mdx";
@@ -48,6 +49,8 @@ export default function KuriagePage() {
           元利均等返済を前提とした概算です。
         </p>
       </header>
+
+      <TrustNote />
 
       <KuriageCalculator />
 

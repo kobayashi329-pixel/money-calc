@@ -3,6 +3,7 @@ import { NisaCalculator } from "@/components/NisaCalculator";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalculators } from "@/components/RelatedCalculators";
 import { JsonLd } from "@/components/JsonLd";
+import { TrustNote } from "@/components/TrustNote";
 import { getCalculator, getCategory } from "@/lib/calculators";
 import { SITE_URL } from "@/lib/site";
 import Article from "@/content/nisa.mdx";
@@ -48,6 +49,8 @@ export default function NisaPage() {
           <strong>非課税</strong>。そのメリット額も表示します。
         </p>
       </header>
+
+      <TrustNote />
 
       <NisaCalculator />
 

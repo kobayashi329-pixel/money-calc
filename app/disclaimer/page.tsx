@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalLayout } from "@/components/LegalLayout";
-import { SITE_NAME } from "@/lib/site";
+import { SITE_NAME, SITE_LAST_UPDATED } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "免責事項",
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function DisclaimerPage() {
   return (
-    <LegalLayout title="免責事項" updated="2026年6月22日">
+    <LegalLayout title="免責事項" updated={SITE_LAST_UPDATED}>
       <h2>計算結果について</h2>
       <p>
         当サイト「{SITE_NAME}」の各計算ツールが算出する金額は、わかりやすさを優先した

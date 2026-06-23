@@ -3,6 +3,7 @@ import { KyoikuCalculator } from "@/components/KyoikuCalculator";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalculators } from "@/components/RelatedCalculators";
 import { JsonLd } from "@/components/JsonLd";
+import { TrustNote } from "@/components/TrustNote";
 import { getCalculator, getCategory } from "@/lib/calculators";
 import { SITE_URL } from "@/lib/site";
 import Article from "@/content/kyoiku-shikin.mdx";
@@ -48,6 +49,8 @@ export default function KyoikuPage() {
           <strong>大学費用を貯める毎月の積立額</strong>も計算できます。
         </p>
       </header>
+
+      <TrustNote />
 
       <KyoikuCalculator />
 

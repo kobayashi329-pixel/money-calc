@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { LegalLayout } from "@/components/LegalLayout";
-import { SITE_NAME, CONTACT_EMAIL } from "@/lib/site";
+import { SITE_NAME, CONTACT_EMAIL, SITE_LAST_UPDATED } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "お問い合わせ",
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <LegalLayout title="お問い合わせ" updated="2026年6月22日">
+    <LegalLayout title="お問い合わせ" updated={SITE_LAST_UPDATED}>
       <p>
         「{SITE_NAME}」をご利用いただきありがとうございます。計算結果の誤りのご指摘、
         新しい計算機のご要望、その他ご意見・ご質問は、以下よりお気軽にお寄せください。

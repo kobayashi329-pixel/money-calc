@@ -3,6 +3,7 @@ import { TaishokuCalculator } from "@/components/TaishokuCalculator";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalculators } from "@/components/RelatedCalculators";
 import { JsonLd } from "@/components/JsonLd";
+import { TrustNote } from "@/components/TrustNote";
 import { getCalculator, getCategory } from "@/lib/calculators";
 import { SITE_URL } from "@/lib/site";
 import Article from "@/content/taishokukin.mdx";
@@ -48,6 +49,8 @@ export default function TaishokuPage() {
           令和7年（2025年）の制度に基づく概算です。
         </p>
       </header>
+
+      <TrustNote />
 
       <TaishokuCalculator />
 
