@@ -1,11 +1,10 @@
 "use client";
 
 // ふるさと納税 上限額シミュレータの本体（クライアントコンポーネント）。
-// 設計方針: 「年収だけ」で即結果。配偶者・扶養・都道府県・年齢は任意の詳細設定に折りたたむ。
+// 設計方針: 「年収だけ」で即結果。配偶者・扶養・年齢は任意の詳細設定に折りたたむ。
 // 計算はすべてブラウザ側で完結（SSG・サーバー処理なし・入力は送信されない）。
 import { useMemo, useState } from "react";
 import { calculateFurusato } from "@/lib/furusato/calculate";
-import { PREFECTURES, DEFAULT_PREFECTURE_CODE } from "@/lib/takehome/prefectures-2025";
 import { yen, manYen, percent } from "@/lib/format";
 import { DonutChart, type DonutSegment } from "./DonutChart";
 
@@ -20,7 +19,6 @@ export function FurusatoCalculator() {
   const [annualIncome, setAnnualIncome] = useState(5_000_000);
   const [hasSpouse, setHasSpouse] = useState(false);
   const [dependents, setDependents] = useState(0);
-  const [prefecture, setPrefecture] = useState(DEFAULT_PREFECTURE_CODE);
   const [age, setAge] = useState(30);
   const [showDetails, setShowDetails] = useState(false);
 
@@ -31,9 +29,8 @@ export function FurusatoCalculator() {
         age,
         hasSpouse,
         dependents,
-        prefecture,
       }),
-    [annualIncome, age, hasSpouse, dependents, prefecture],
+    [annualIncome, age, hasSpouse, dependents],
   );
 
   const b = result.breakdown;
@@ -109,7 +106,7 @@ export function FurusatoCalculator() {
           className="mt-5 flex w-full items-center justify-between rounded-lg bg-slate-50 px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100"
           aria-expanded={showDetails}
         >
-          <span>詳細設定（扶養・都道府県・年齢）</span>
+          <span>詳細設定（扶養・年齢）</span>
           <span className="text-slate-400">{showDetails ? "閉じる ▲" : "開く ▼"}</span>
         </button>
 
@@ -133,27 +130,6 @@ export function FurusatoCalculator() {
               </select>
               <p className="mt-1 text-xs text-slate-400">
                 16歳未満の子どもは控除対象外のため、ここには含めません。
-              </p>
-            </label>
-
-            {/* 都道府県（健康保険料率→課税所得に僅かに影響） */}
-            <label className="block">
-              <span className="text-sm font-medium text-slate-700">
-                お住まいの都道府県（健康保険料率）
-              </span>
-              <select
-                value={prefecture}
-                onChange={(e) => setPrefecture(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 focus:border-rose-500 focus:ring-2 focus:ring-rose-200 focus:outline-none"
-              >
-                {PREFECTURES.map((p) => (
-                  <option key={p.code} value={p.code}>
-                    {p.name}（健保 {p.healthRateTotal}%）
-                  </option>
-                ))}
-              </select>
-              <p className="mt-1 text-xs text-slate-400">
-                社会保険料は課税所得に影響するため、上限額にもわずかに効きます。
               </p>
             </label>
 

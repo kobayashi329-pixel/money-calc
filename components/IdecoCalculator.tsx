@@ -5,7 +5,6 @@
 import { useMemo, useState } from "react";
 import { calculateIdeco } from "@/lib/ideco/calculate";
 import { IDECO_CATEGORIES, getIdecoCategory } from "@/lib/invest/constants";
-import { PREFECTURES, DEFAULT_PREFECTURE_CODE } from "@/lib/takehome/prefectures-2025";
 import { yen, manYen, percent } from "@/lib/format";
 import { DonutChart, type DonutSegment } from "./DonutChart";
 import { AssetGrowthChart } from "./AssetGrowthChart";
@@ -24,7 +23,6 @@ export function IdecoCalculator() {
   const [rateStr, setRateStr] = useState("3");
   const [dependents, setDependents] = useState(0);
   const [hasSpouse, setHasSpouse] = useState(false);
-  const [prefecture, setPrefecture] = useState(DEFAULT_PREFECTURE_CODE);
   const [showDetails, setShowDetails] = useState(false);
 
   const annualRatePercent = Number(rateStr) || 0;
@@ -40,9 +38,8 @@ export function IdecoCalculator() {
         annualRatePercent,
         dependents,
         hasSpouse,
-        prefecture,
       }),
-    [annualIncome, age, categoryKey, monthly, annualRatePercent, dependents, hasSpouse, prefecture],
+    [annualIncome, age, categoryKey, monthly, annualRatePercent, dependents, hasSpouse],
   );
 
   const donutSegments: DonutSegment[] = [
@@ -188,7 +185,7 @@ export function IdecoCalculator() {
           className="mt-5 flex w-full items-center justify-between rounded-lg bg-slate-50 px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100"
           aria-expanded={showDetails}
         >
-          <span>詳細設定（扶養・都道府県）</span>
+          <span>詳細設定（配偶者・扶養）</span>
           <span className="text-slate-400">{showDetails ? "閉じる ▲" : "開く ▼"}</span>
         </button>
 
@@ -215,20 +212,6 @@ export function IdecoCalculator() {
                 {Array.from({ length: 11 }, (_, i) => (
                   <option key={i} value={i}>
                     {i}人
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label className="block">
-              <span className="text-sm font-medium text-slate-700">お住まいの都道府県（健康保険料率）</span>
-              <select
-                value={prefecture}
-                onChange={(e) => setPrefecture(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
-              >
-                {PREFECTURES.map((p) => (
-                  <option key={p.code} value={p.code}>
-                    {p.name}（健保 {p.healthRateTotal}%）
                   </option>
                 ))}
               </select>
