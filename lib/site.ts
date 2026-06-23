@@ -8,6 +8,10 @@ export const SITE_NAME = "お金の計算機";
 // クライアントに公開される値なので秘密情報ではない。
 export const GA_MEASUREMENT_ID = "G-WYDWKD2XPC";
 
+// Google AdSense のパブリッシャーID（ca-pub-...）。公開される値。
+// 審査用スニペット・広告配信・ads.txt で使用。
+export const ADSENSE_CLIENT = "ca-pub-7264853366083194";
+
 // 運営者情報（運営者情報ページ・フッターで使用）。
 // ハンドルネームでOK。自由に書き換えてください。
 export const OPERATOR_NAME = "おかね計算ラボ";

@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { SITE_URL, GA_MEASUREMENT_ID, SITE_NAME, SITE_LAUNCH_YEAR } from "@/lib/site";
+import {
+  SITE_URL,
+  GA_MEASUREMENT_ID,
+  ADSENSE_CLIENT,
+  SITE_NAME,
+  SITE_LAUNCH_YEAR,
+} from "@/lib/site";
 import { CATEGORIES, calculatorsInCategory } from "@/lib/calculators";
 import "./globals.css";
 
@@ -43,6 +50,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" className="h-full antialiased">
+      <head>
+        {/* Google AdSense（審査用スニペット／広告配信） */}
+        <Script
+          id="adsbygoogle-init"
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </head>
       <body className="flex min-h-full flex-col">
         <header className="border-b border-slate-200 bg-white">
           <div className="mx-auto max-w-4xl px-4">
