@@ -94,6 +94,8 @@
 
 **SEO残タスク・AdSense広告配置**は `money-calc/SEO-CHECKLIST.md` 末尾の「最新ステータス」「AdSense 広告の表示形式・配置」を参照。
 
+**結果のURL共有＋サイト内検索（2026-06-23）**: `components/ShareButton.tsx`＝シェアボタン（Web Share API/クリップボード）＋`useSharedParams`/`applyNumber`（URLクエリから入力値を復元・SSG安全のためマウント後useEffectで読む）。手取り/ふるさと納税/住宅ローン/NISA/iDeCoに設置済（他10計算機も同パターンで拡張可）。各計算機の`shareParams`のキー＝URLクエリ名。サイト内検索: `/search`（`components/SearchClient.tsx`＝計算機＋ガイドをクライアントAND絞り込み・noindex）＋ヘッダー検索リンク＋トップに`SearchAction`構造化データ。**※カンマ一括変換の教訓から、全calc一括の危険な置換はせず個別配線＋検証で実施**。
+
 **AdSense（審査中）**: サイトは申請可能な状態（独自ドメイン・大量のオリジナルコンテンツ・プライバシー/運営者/編集方針/出典ページ完備）。申請後、パブリッシャーID発行→`public/ads.txt`設置＋`app/layout.tsx`にAdSenseスクリプト（next/script）を追加して審査。氏名・住所はGoogleに登録するだけでサイトには非公開。
 
 ## 4. アーキテクチャ（重要）
