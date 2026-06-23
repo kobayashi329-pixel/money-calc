@@ -84,6 +84,8 @@
 
 **E-E-A-T（信頼性・2026-06-23 ABCDE実装）**: YMYL（お金）向けに、**個人名を出さずブランド（屋号）＋透明性**で信頼性を担保。A=`/about`を屋号運営に。B=`/editorial-policy`（編集・運営方針：作成→テスト検証→更新/訂正・広告の中立性）。C=`/sources`（計算の根拠・出典一覧：9公的機関＋**適用年度/参照時点**付き）。D=虚偽の監修表記はせず「公的資料に基づき作成・テスト検証」の事実で代替。E=`components/TrustNote.tsx`を**全15計算機ページ**に設置（最終更新日＋検証文言＋出典/編集方針への相互リンク）＋信頼性ページの更新日を`SITE_LAST_UPDATED`(lib/site.ts)で一元化。フッター法務ナビ・sitemapに editorial-policy/sources 追加。**※将来 実在の監修（税理士/FP・法人名可）を付けるなら更に強化可。虚偽の資格表記は厳禁。**
 
+**コラム/ガイド（SEO第1弾・2026-06-23）**: トピッククラスター戦略で計算機（マネーページ）の順位を底上げ。`lib/guides.ts` レジストリ（計算機と同設計・`targets`=送客先計算機slug）＋ `/guide` 一覧 ＋ `/guide/<slug>` 記事（`content/guides/*.mdx`＋`components/GuideLayout`、Article構造化データ）。`components/RelatedGuides` を全15計算機ページに設置（`guidesForCalculator` で自動配線・相互リンク）。第1弾5本: 年収400/500/600万の手取り→/tedori（数値は実ロジック算出: 手取り317万/390万/463万）、ふるさと納税のやり方→/furusato-nozei、NISA vs iDeCo→/nisa,/ideco。ヘッダー/フッター/トップ/sitemapにガイド導線。**新記事追加手順**: `lib/guides.ts`に1エントリ＋`content/guides/<slug>.mdx`＋`app/guide/<slug>/page.tsx`（既存をコピー）。第2弾候補=年収の壁・相続税はいくらから・住宅ローン頭金の目安など（SEO-CHECKLIST.md参照）。
+
 **トップページSEO（2026-06-23 刷新）**: H1＝「お金の計算機｜年収手取り・住宅ローン・税金を無料で計算」。導入文に主要計算機キーワードを網羅、信頼バッジ（無料・登録不要・入力非送信・令和7年対応・計算機数）、カテゴリ別見出しは「〜の計算機」、**FAQセクション＋FAQPage構造化データ**を追加。`app/layout.tsx` の title/description/keywords/OGP も強化。
 
 ## 4. アーキテクチャ（重要）
