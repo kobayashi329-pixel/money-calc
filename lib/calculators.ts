@@ -152,9 +152,21 @@ export const CALCULATORS: Calculator[] = [
       "退職時に必要な老後資金と、不足を埋めるために今から毎月いくら積み立てればよいかを試算。",
     category: "life",
     status: "live",
-    related: ["nisa", "ideco", "taishokukin"],
+    related: ["nenkin-mikomi", "nisa", "ideco"],
     priority: 7.5,
     emoji: "🗓️",
+  },
+  {
+    slug: "kyoiku-shikin",
+    title: "教育資金シミュレーション",
+    shortTitle: "教育資金",
+    description:
+      "幼稚園〜大学の進路（公立／私立）別に教育費の総額を試算。大学費用を貯める毎月の積立額も計算。",
+    category: "life",
+    status: "live",
+    related: ["rougo-shikin", "nisa", "tedori"],
+    priority: 7.6,
+    emoji: "🎓",
   },
   {
     slug: "nenkin-mikomi",
