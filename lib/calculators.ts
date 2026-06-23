@@ -169,6 +169,18 @@ export const CALCULATORS: Calculator[] = [
     emoji: "🎓",
   },
   {
+    slug: "life-plan",
+    title: "ライフプラン表（生涯キャッシュフロー）",
+    shortTitle: "ライフプラン表",
+    description:
+      "現在から想定寿命まで、毎年の収入・支出・貯蓄残高を試算。貯蓄が尽きる年齢が一目でわかる生涯のお金の設計表。",
+    category: "life",
+    status: "live",
+    related: ["rougo-shikin", "nenkin-mikomi", "kyoiku-shikin"],
+    priority: 7.7,
+    emoji: "📊",
+  },
+  {
     slug: "nenkin-mikomi",
     title: "公的年金 受給見込み額シミュレーション",
     shortTitle: "年金見込み",
