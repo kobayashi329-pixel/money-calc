@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import { calculateLifePlan } from "@/lib/lifeplan/calculate";
 import type { LifeEvent } from "@/lib/lifeplan/types";
 import { yen, manYen } from "@/lib/format";
+import { MoneyInput } from "./MoneyInput";
 
 function Num({
   label,
@@ -26,16 +27,25 @@ function Num({
     <label className="block">
       <span className="text-sm font-medium text-slate-700">{label}</span>
       <div className="mt-1 flex items-center gap-2">
-        <input
-          type="number"
-          inputMode="numeric"
-          min={0}
-          max={max}
-          step={step}
-          value={value}
-          onChange={(e) => onChange(Math.max(0, Number(e.target.value)))}
-          className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
-        />
+        {suffix === "円" ? (
+          <MoneyInput
+            value={value}
+            onChange={onChange}
+            max={max}
+            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
+          />
+        ) : (
+          <input
+            type="number"
+            inputMode="numeric"
+            min={0}
+            max={max}
+            step={step}
+            value={value}
+            onChange={(e) => onChange(Math.max(0, Number(e.target.value)))}
+            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
+          />
+        )}
         <span className="shrink-0 text-slate-500">{suffix}</span>
       </div>
     </label>
@@ -168,9 +178,11 @@ export function LifePlanCalculator() {
                     onChange={(e) => updateEvent(i, { age: Number(e.target.value) })}
                     className="w-16 rounded-lg border border-slate-300 px-2 py-1.5 text-right text-sm tabular-nums focus:border-emerald-500 focus:outline-none" />
                   <span className="text-xs text-slate-500">歳</span>
-                  <input type="number" min={0} step={100_000} value={ev.amount}
-                    onChange={(e) => updateEvent(i, { amount: Number(e.target.value) })}
-                    className="w-full rounded-lg border border-slate-300 px-2 py-1.5 text-right text-sm tabular-nums focus:border-emerald-500 focus:outline-none" />
+                  <MoneyInput
+                    value={ev.amount}
+                    onChange={(v) => updateEvent(i, { amount: v })}
+                    className="w-full rounded-lg border border-slate-300 px-2 py-1.5 text-right text-sm tabular-nums focus:border-emerald-500 focus:outline-none"
+                  />
                   <span className="text-xs text-slate-500">円</span>
                   <button type="button" onClick={() => removeEvent(i)} className="text-slate-400 hover:text-red-500" aria-label="削除">✕</button>
                 </div>

@@ -5,6 +5,7 @@
 import { useMemo, useState } from "react";
 import { calculateNisa } from "@/lib/nisa/calculate";
 import { yen, manYen, percent } from "@/lib/format";
+import { MoneyInput } from "./MoneyInput";
 import { DonutChart, type DonutSegment } from "./DonutChart";
 import { AssetGrowthChart } from "./AssetGrowthChart";
 
@@ -40,15 +41,7 @@ export function NisaCalculator() {
         <label className="block">
           <span className="text-sm font-medium text-slate-700">毎月の積立額</span>
           <div className="mt-1 flex items-center gap-2">
-            <input
-              type="number"
-              inputMode="numeric"
-              min={0}
-              step={1_000}
-              value={monthly}
-              onChange={(e) => setMonthly(Math.max(0, Number(e.target.value)))}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right text-lg font-semibold tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
-            />
+            <MoneyInput value={monthly} onChange={setMonthly} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right text-lg font-semibold tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none" />
             <span className="shrink-0 text-slate-500">円</span>
           </div>
           <input

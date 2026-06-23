@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import { calculateIdeco } from "@/lib/ideco/calculate";
 import { IDECO_CATEGORIES, getIdecoCategory } from "@/lib/invest/constants";
 import { yen, manYen, percent } from "@/lib/format";
+import { MoneyInput } from "./MoneyInput";
 import { DonutChart, type DonutSegment } from "./DonutChart";
 import { AssetGrowthChart } from "./AssetGrowthChart";
 
@@ -79,15 +80,7 @@ export function IdecoCalculator() {
         <label className="mt-5 block">
           <span className="text-sm font-medium text-slate-700">額面年収（節税額の計算に使用）</span>
           <div className="mt-1 flex items-center gap-2">
-            <input
-              type="number"
-              inputMode="numeric"
-              min={0}
-              step={100_000}
-              value={annualIncome}
-              onChange={(e) => setAnnualIncome(Math.max(0, Number(e.target.value)))}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right text-lg font-semibold tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
-            />
+            <MoneyInput value={annualIncome} onChange={setAnnualIncome} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right text-lg font-semibold tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none" />
             <span className="shrink-0 text-slate-500">円</span>
           </div>
           <input
@@ -108,14 +101,10 @@ export function IdecoCalculator() {
         <label className="mt-5 block">
           <span className="text-sm font-medium text-slate-700">毎月の掛金</span>
           <div className="mt-1 flex items-center gap-2">
-            <input
-              type="number"
-              inputMode="numeric"
-              min={5_000}
-              max={category.monthlyLimit}
-              step={1_000}
+            <MoneyInput
               value={monthly}
-              onChange={(e) => setMonthly(Math.max(0, Number(e.target.value)))}
+              onChange={setMonthly}
+              max={category.monthlyLimit}
               className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right text-lg font-semibold tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
             />
             <span className="shrink-0 text-slate-500">円</span>

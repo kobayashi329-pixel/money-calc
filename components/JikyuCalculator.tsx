@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { calculateJikyu, type WageUnit } from "@/lib/jikyu/calculate";
 import { yen, manYen } from "@/lib/format";
+import { MoneyInput } from "./MoneyInput";
 
 const UNITS: { key: WageUnit; label: string }[] = [
   { key: "hourly", label: "時給" },
@@ -61,15 +62,7 @@ export function JikyuCalculator() {
             {UNITS.find((u) => u.key === unit)!.label}の金額
           </span>
           <div className="mt-1 flex items-center gap-2">
-            <input
-              type="number"
-              inputMode="numeric"
-              min={0}
-              step={unit === "hourly" ? 50 : unit === "annual" ? 100_000 : 1_000}
-              value={value}
-              onChange={(e) => setValue(Math.max(0, Number(e.target.value)))}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right text-xl font-semibold tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
-            />
+            <MoneyInput value={value} onChange={setValue} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right text-xl font-semibold tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none" />
             <span className="shrink-0 text-slate-500">円</span>
           </div>
         </label>

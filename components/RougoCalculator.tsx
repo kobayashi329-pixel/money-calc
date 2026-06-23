@@ -7,6 +7,7 @@ import { useMemo, useState } from "react";
 import { calculateRougo } from "@/lib/rougo/calculate";
 import { yen, manYen } from "@/lib/format";
 import { DonutChart, type DonutSegment } from "./DonutChart";
+import { MoneyInput } from "./MoneyInput";
 
 const COLORS = {
   savings: "#3b82f6", // blue-500 … 現在の貯蓄（運用後）
@@ -33,15 +34,23 @@ function NumField({
     <label className="block">
       <span className="text-sm font-medium text-slate-700">{label}</span>
       <div className="mt-1 flex items-center gap-2">
-        <input
-          type="number"
-          inputMode="numeric"
-          min={0}
-          step={step}
-          value={value}
-          onChange={(e) => onChange(Math.max(0, Number(e.target.value)))}
-          className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
-        />
+        {suffix === "円" ? (
+          <MoneyInput
+            value={value}
+            onChange={onChange}
+            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
+          />
+        ) : (
+          <input
+            type="number"
+            inputMode="numeric"
+            min={0}
+            step={step}
+            value={value}
+            onChange={(e) => onChange(Math.max(0, Number(e.target.value)))}
+            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
+          />
+        )}
         <span className="shrink-0 text-slate-500">{suffix}</span>
       </div>
       {hint && <p className="mt-1 text-xs text-slate-400">{hint}</p>}

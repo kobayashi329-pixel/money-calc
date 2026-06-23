@@ -5,6 +5,7 @@
 import { useMemo, useState } from "react";
 import { calculateKarikae } from "@/lib/karikae/calculate";
 import { yen, manYen } from "@/lib/format";
+import { MoneyInput } from "./MoneyInput";
 
 export function KarikaeCalculator() {
   const [balance, setBalance] = useState(20_000_000);
@@ -38,15 +39,7 @@ export function KarikaeCalculator() {
         <label className="block">
           <span className="text-sm font-medium text-slate-700">現在のローン残高</span>
           <div className="mt-1 flex items-center gap-2">
-            <input
-              type="number"
-              inputMode="numeric"
-              min={0}
-              step={1_000_000}
-              value={balance}
-              onChange={(e) => setBalance(Math.max(0, Number(e.target.value)))}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right text-lg font-semibold tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
-            />
+            <MoneyInput value={balance} onChange={setBalance} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right text-lg font-semibold tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none" />
             <span className="shrink-0 text-slate-500">円</span>
           </div>
           <input
@@ -67,68 +60,7 @@ export function KarikaeCalculator() {
         <label className="mt-5 block">
           <span className="text-sm font-medium text-slate-700">残りの返済期間</span>
           <div className="mt-1 flex items-center gap-2">
-            <input
-              type="number"
-              inputMode="numeric"
-              min={1}
-              max={50}
-              value={remainingYears}
-              onChange={(e) => setRemainingYears(Math.min(50, Math.max(1, Number(e.target.value))))}
-              className="w-24 rounded-lg border border-slate-300 px-3 py-2 text-right tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
-            />
-            <span className="text-slate-500">年</span>
-          </div>
-        </label>
-
-        {/* 金利 2つ */}
-        <div className="mt-5 grid grid-cols-2 gap-3">
-          <label className="block">
-            <span className="text-sm font-medium text-slate-700">現在の金利</span>
-            <div className="mt-1 flex items-center gap-1">
-              <input
-                type="number"
-                inputMode="decimal"
-                min={0}
-                max={20}
-                step={0.05}
-                value={curRateStr}
-                onChange={(e) => setCurRateStr(e.target.value)}
-                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
-              />
-              <span className="text-slate-500">％</span>
-            </div>
-          </label>
-          <label className="block">
-            <span className="text-sm font-medium text-slate-700">借換後の金利</span>
-            <div className="mt-1 flex items-center gap-1">
-              <input
-                type="number"
-                inputMode="decimal"
-                min={0}
-                max={20}
-                step={0.05}
-                value={newRateStr}
-                onChange={(e) => setNewRateStr(e.target.value)}
-                className="w-full rounded-lg border border-emerald-300 px-3 py-2 text-right tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
-              />
-              <span className="text-slate-500">％</span>
-            </div>
-          </label>
-        </div>
-
-        {/* 諸費用 */}
-        <label className="mt-5 block">
-          <span className="text-sm font-medium text-slate-700">借り換えの諸費用</span>
-          <div className="mt-1 flex items-center gap-2">
-            <input
-              type="number"
-              inputMode="numeric"
-              min={0}
-              step={50_000}
-              value={fee}
-              onChange={(e) => setFee(Math.max(0, Number(e.target.value)))}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
-            />
+            <MoneyInput value={fee} onChange={setFee} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none" />
             <span className="shrink-0 text-slate-500">円</span>
           </div>
           <p className="mt-1 text-xs text-slate-400">

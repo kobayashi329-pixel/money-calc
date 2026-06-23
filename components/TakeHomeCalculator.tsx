@@ -9,6 +9,7 @@ import type { TakeHomeInput } from "@/lib/takehome/types";
 import { PREFECTURES, DEFAULT_PREFECTURE_CODE } from "@/lib/takehome/prefectures-2025";
 import { yen, manYen, percent } from "@/lib/format";
 import { DonutChart, type DonutSegment } from "./DonutChart";
+import { MoneyInput } from "./MoneyInput";
 
 const COLORS = {
   takeHome: "#10b981", // emerald-500
@@ -23,11 +24,11 @@ export function TakeHomeCalculator() {
   const [dependents, setDependents] = useState(0);
   const [prefecture, setPrefecture] = useState(DEFAULT_PREFECTURE_CODE);
   const [insuranceType] = useState<TakeHomeInput["insuranceType"]>("kenkohoken");
-  // 前年収入は空文字＝「当年と同じ」。数値が入ったときだけ住民税に反映。
-  const [priorIncomeStr, setPriorIncomeStr] = useState("");
+  // 前年収入は0＝「当年と同じ（未入力）」。0より大きいときだけ住民税に反映。
+  const [priorIncome, setPriorIncome] = useState(0);
   const [showDetails, setShowDetails] = useState(false);
 
-  const priorYearIncome = priorIncomeStr.trim() === "" ? undefined : Number(priorIncomeStr);
+  const priorYearIncome = priorIncome > 0 ? priorIncome : undefined;
 
   const result = useMemo(
     () =>
@@ -71,13 +72,9 @@ export function TakeHomeCalculator() {
             額面年収（賞与込み）
           </span>
           <div className="mt-1 flex items-center gap-2">
-            <input
-              type="number"
-              inputMode="numeric"
-              min={0}
-              step={100_000}
+            <MoneyInput
               value={annualIncome}
-              onChange={(e) => setAnnualIncome(Math.max(0, Number(e.target.value)))}
+              onChange={setAnnualIncome}
               className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right text-xl font-semibold tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
             />
             <span className="shrink-0 text-slate-500">円</span>
@@ -176,14 +173,10 @@ export function TakeHomeCalculator() {
                 前年の年収（住民税を正確にする・任意）
               </span>
               <div className="mt-1 flex items-center gap-2">
-                <input
-                  type="number"
-                  inputMode="numeric"
-                  min={0}
-                  step={100_000}
+                <MoneyInput
+                  value={priorIncome}
+                  onChange={setPriorIncome}
                   placeholder="未入力＝今年と同じ"
-                  value={priorIncomeStr}
-                  onChange={(e) => setPriorIncomeStr(e.target.value)}
                   className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
                 />
                 <span className="shrink-0 text-slate-500">円</span>

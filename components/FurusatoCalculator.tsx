@@ -6,6 +6,7 @@
 import { useMemo, useState } from "react";
 import { calculateFurusato } from "@/lib/furusato/calculate";
 import { yen, manYen, percent } from "@/lib/format";
+import { MoneyInput } from "./MoneyInput";
 import { DonutChart, type DonutSegment } from "./DonutChart";
 
 const COLORS = {
@@ -58,15 +59,7 @@ export function FurusatoCalculator() {
             額面年収（賞与込み）
           </span>
           <div className="mt-1 flex items-center gap-2">
-            <input
-              type="number"
-              inputMode="numeric"
-              min={0}
-              step={100_000}
-              value={annualIncome}
-              onChange={(e) => setAnnualIncome(Math.max(0, Number(e.target.value)))}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right text-xl font-semibold tabular-nums focus:border-rose-500 focus:ring-2 focus:ring-rose-200 focus:outline-none"
-            />
+            <MoneyInput value={annualIncome} onChange={setAnnualIncome} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right text-xl font-semibold tabular-nums focus:border-rose-500 focus:ring-2 focus:ring-rose-200 focus:outline-none" />
             <span className="shrink-0 text-slate-500">円</span>
           </div>
           <input

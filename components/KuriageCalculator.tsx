@@ -5,6 +5,7 @@
 import { useMemo, useState } from "react";
 import { calculateKuriage } from "@/lib/kuriage/calculate";
 import { yen, manYen } from "@/lib/format";
+import { MoneyInput } from "./MoneyInput";
 
 /** 月数を「○年○ヶ月」に */
 function monthsToText(months: number): string {
@@ -48,15 +49,7 @@ export function KuriageCalculator() {
         <label className="block">
           <span className="text-sm font-medium text-slate-700">借入額</span>
           <div className="mt-1 flex items-center gap-2">
-            <input
-              type="number"
-              inputMode="numeric"
-              min={0}
-              step={1_000_000}
-              value={principal}
-              onChange={(e) => setPrincipal(Math.max(0, Number(e.target.value)))}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right text-lg font-semibold tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
-            />
+            <MoneyInput value={principal} onChange={setPrincipal} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right text-lg font-semibold tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none" />
             <span className="shrink-0 text-slate-500">円</span>
           </div>
           <input
@@ -77,52 +70,7 @@ export function KuriageCalculator() {
         <label className="mt-5 block">
           <span className="text-sm font-medium text-slate-700">金利（年率）</span>
           <div className="mt-1 flex items-center gap-2">
-            <input
-              type="number"
-              inputMode="decimal"
-              min={0}
-              max={20}
-              step={0.05}
-              value={rateStr}
-              onChange={(e) => setRateStr(e.target.value)}
-              className="w-32 rounded-lg border border-slate-300 px-3 py-2 text-right tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
-            />
-            <span className="text-slate-500">％</span>
-          </div>
-        </label>
-
-        {/* 返済期間 */}
-        <label className="mt-5 block">
-          <span className="text-sm font-medium text-slate-700">返済期間</span>
-          <div className="mt-1 flex items-center gap-2">
-            <input
-              type="number"
-              inputMode="numeric"
-              min={1}
-              max={50}
-              value={years}
-              onChange={(e) => setYears(Math.min(50, Math.max(1, Number(e.target.value))))}
-              className="w-24 rounded-lg border border-slate-300 px-3 py-2 text-right tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
-            />
-            <span className="text-slate-500">年</span>
-          </div>
-        </label>
-
-        <div className="my-5 border-t border-dashed border-slate-200" />
-
-        {/* 繰上返済額 */}
-        <label className="block">
-          <span className="text-sm font-medium text-slate-700">繰上返済額（1回）</span>
-          <div className="mt-1 flex items-center gap-2">
-            <input
-              type="number"
-              inputMode="numeric"
-              min={0}
-              step={100_000}
-              value={prepay}
-              onChange={(e) => setPrepay(Math.max(0, Number(e.target.value)))}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right text-lg font-semibold tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none"
-            />
+            <MoneyInput value={prepay} onChange={setPrepay} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right text-lg font-semibold tabular-nums focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 focus:outline-none" />
             <span className="shrink-0 text-slate-500">円</span>
           </div>
           <input

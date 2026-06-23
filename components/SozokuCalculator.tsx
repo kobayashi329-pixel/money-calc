@@ -5,6 +5,7 @@
 import { useMemo, useState } from "react";
 import { calculateSozoku } from "@/lib/sozoku/calculate";
 import { yen, manYen } from "@/lib/format";
+import { MoneyInput } from "./MoneyInput";
 
 export function SozokuCalculator() {
   const [estate, setEstate] = useState(100_000_000);
@@ -26,15 +27,7 @@ export function SozokuCalculator() {
         <label className="block">
           <span className="text-sm font-medium text-slate-700">遺産の総額（正味の遺産額）</span>
           <div className="mt-1 flex items-center gap-2">
-            <input
-              type="number"
-              inputMode="numeric"
-              min={0}
-              step={1_000_000}
-              value={estate}
-              onChange={(e) => setEstate(Math.max(0, Number(e.target.value)))}
-              className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right text-lg font-semibold tabular-nums focus:border-violet-500 focus:ring-2 focus:ring-violet-200 focus:outline-none"
-            />
+            <MoneyInput value={estate} onChange={setEstate} className="w-full rounded-lg border border-slate-300 px-3 py-2 text-right text-lg font-semibold tabular-nums focus:border-violet-500 focus:ring-2 focus:ring-violet-200 focus:outline-none" />
             <span className="shrink-0 text-slate-500">円</span>
           </div>
           <input
