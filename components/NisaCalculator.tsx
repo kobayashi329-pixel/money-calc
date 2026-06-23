@@ -8,6 +8,7 @@ import { yen, manYen, percent } from "@/lib/format";
 import { MoneyInput } from "./MoneyInput";
 import { DonutChart, type DonutSegment } from "./DonutChart";
 import { AssetGrowthChart } from "./AssetGrowthChart";
+import { ShareButton, useSharedParams, applyNumber } from "./ShareButton";
 
 const COLORS = {
   principal: "#3b82f6", // blue-500 元本
@@ -18,6 +19,15 @@ export function NisaCalculator() {
   const [monthly, setMonthly] = useState(30_000);
   const [rateStr, setRateStr] = useState("5");
   const [years, setYears] = useState(20);
+
+  useSharedParams((get) => {
+    applyNumber(get, "monthly", setMonthly);
+    applyNumber(get, "years", setYears);
+    const rate = get("rate");
+    if (rate != null && Number.isFinite(Number(rate))) setRateStr(rate);
+  });
+
+  const shareParams = { monthly, rate: rateStr, years };
 
   const annualRatePercent = Number(rateStr) || 0;
 
@@ -129,7 +139,10 @@ export function NisaCalculator() {
 
       {/* ===== 結果 ===== */}
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 className="mb-4 text-lg font-bold text-slate-900">計算結果</h2>
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-lg font-bold text-slate-900">計算結果</h2>
+          <ShareButton params={shareParams} />
+        </div>
 
         {/* 将来評価額 */}
         <div className="mb-5 rounded-xl bg-emerald-50 p-4 text-center">

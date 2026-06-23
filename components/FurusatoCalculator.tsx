@@ -8,6 +8,7 @@ import { calculateFurusato } from "@/lib/furusato/calculate";
 import { yen, manYen, percent } from "@/lib/format";
 import { MoneyInput } from "./MoneyInput";
 import { DonutChart, type DonutSegment } from "./DonutChart";
+import { ShareButton, useSharedParams, applyNumber } from "./ShareButton";
 
 const COLORS = {
   incomeTax: "#f59e0b", // amber-500 … 所得税からの控除
@@ -22,6 +23,22 @@ export function FurusatoCalculator() {
   const [dependents, setDependents] = useState(0);
   const [age, setAge] = useState(30);
   const [showDetails, setShowDetails] = useState(false);
+
+  useSharedParams((get) => {
+    applyNumber(get, "income", setAnnualIncome);
+    applyNumber(get, "dep", setDependents);
+    applyNumber(get, "age", setAge);
+    const sp = get("spouse");
+    if (sp != null) setHasSpouse(sp === "1");
+    if (get("dep") || get("age") || sp != null) setShowDetails(true);
+  });
+
+  const shareParams = {
+    income: annualIncome,
+    spouse: hasSpouse ? 1 : 0,
+    dep: dependents,
+    age,
+  };
 
   const result = useMemo(
     () =>
@@ -156,7 +173,10 @@ export function FurusatoCalculator() {
 
       {/* ===== 結果 ===== */}
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 className="mb-1 text-lg font-bold text-slate-900">計算結果</h2>
+        <div className="mb-1 flex items-center justify-between">
+          <h2 className="text-lg font-bold text-slate-900">計算結果</h2>
+          <ShareButton params={shareParams} />
+        </div>
         <p className="mb-4 text-xs text-slate-400">
           {result.taxYear}年（令和{result.taxYear - 2018}年）分の制度に基づく概算
         </p>

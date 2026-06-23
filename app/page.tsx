@@ -79,6 +79,14 @@ export default function Home() {
     description:
       "年収手取り・住宅ローン・ふるさと納税・NISA・iDeCo・相続税・退職金など、お金の計算を無料でまとめて行えるシミュレーションサイト。",
     publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/search?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
   };
 
   const organizationJsonLd = {

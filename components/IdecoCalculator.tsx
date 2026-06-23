@@ -9,6 +9,7 @@ import { yen, manYen, percent } from "@/lib/format";
 import { MoneyInput } from "./MoneyInput";
 import { DonutChart, type DonutSegment } from "./DonutChart";
 import { AssetGrowthChart } from "./AssetGrowthChart";
+import { ShareButton, useSharedParams, applyNumber } from "./ShareButton";
 
 const COLORS = {
   principal: "#3b82f6", // blue-500 元本
@@ -25,6 +26,30 @@ export function IdecoCalculator() {
   const [dependents, setDependents] = useState(0);
   const [hasSpouse, setHasSpouse] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
+
+  useSharedParams((get) => {
+    applyNumber(get, "income", setAnnualIncome);
+    applyNumber(get, "monthly", setMonthly);
+    applyNumber(get, "age", setAge);
+    applyNumber(get, "dep", setDependents);
+    const cat = get("cat");
+    if (cat != null && IDECO_CATEGORIES.some((c) => c.key === cat)) setCategoryKey(cat);
+    const rate = get("rate");
+    if (rate != null && Number.isFinite(Number(rate))) setRateStr(rate);
+    const sp = get("spouse");
+    if (sp != null) setHasSpouse(sp === "1");
+    if (get("dep") || sp != null) setShowDetails(true);
+  });
+
+  const shareParams = {
+    income: annualIncome,
+    cat: categoryKey,
+    monthly,
+    age,
+    rate: rateStr,
+    dep: dependents,
+    spouse: hasSpouse ? 1 : 0,
+  };
 
   const annualRatePercent = Number(rateStr) || 0;
   const category = getIdecoCategory(categoryKey);
@@ -211,7 +236,10 @@ export function IdecoCalculator() {
 
       {/* ===== 結果 ===== */}
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 className="mb-1 text-lg font-bold text-slate-900">計算結果</h2>
+        <div className="mb-1 flex items-center justify-between">
+          <h2 className="text-lg font-bold text-slate-900">計算結果</h2>
+          <ShareButton params={shareParams} />
+        </div>
         <p className="mb-4 text-xs text-slate-400">
           {result.taxYear}年（令和{result.taxYear - 2018}年）分の制度に基づく概算
         </p>

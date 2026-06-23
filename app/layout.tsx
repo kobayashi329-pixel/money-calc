@@ -74,6 +74,7 @@ export default function RootLayout({
               <div className="flex gap-3 text-sm text-slate-500">
                 <Link href="/tedori" className="hover:text-emerald-700">年収手取り</Link>
                 <Link href="/guide" className="hover:text-emerald-700">ガイド</Link>
+                <Link href="/search" className="hover:text-emerald-700" aria-label="サイト内検索">🔍 検索</Link>
               </div>
             </div>
             {/* カテゴリのグローバルナビ（全ページから全カテゴリへ） */}

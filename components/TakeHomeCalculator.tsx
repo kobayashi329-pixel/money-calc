@@ -10,6 +10,7 @@ import { PREFECTURES, DEFAULT_PREFECTURE_CODE } from "@/lib/takehome/prefectures
 import { yen, manYen, percent } from "@/lib/format";
 import { DonutChart, type DonutSegment } from "./DonutChart";
 import { MoneyInput } from "./MoneyInput";
+import { ShareButton, useSharedParams, applyNumber } from "./ShareButton";
 
 const COLORS = {
   takeHome: "#10b981", // emerald-500
@@ -29,6 +30,27 @@ export function TakeHomeCalculator() {
   const [showDetails, setShowDetails] = useState(false);
 
   const priorYearIncome = priorIncome > 0 ? priorIncome : undefined;
+
+  // 共有リンクの入力値を復元
+  useSharedParams((get) => {
+    applyNumber(get, "income", setAnnualIncome);
+    applyNumber(get, "age", setAge);
+    applyNumber(get, "dep", setDependents);
+    applyNumber(get, "prior", setPriorIncome);
+    const pref = get("pref");
+    if (pref && PREFECTURES.some((p) => p.code === pref)) {
+      setPrefecture(pref);
+      setShowDetails(true);
+    }
+  });
+
+  const shareParams = {
+    income: annualIncome,
+    age,
+    dep: dependents,
+    pref: prefecture,
+    ...(priorIncome > 0 ? { prior: priorIncome } : {}),
+  };
 
   const result = useMemo(
     () =>
@@ -208,7 +230,10 @@ export function TakeHomeCalculator() {
 
       {/* ===== 結果 ===== */}
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 className="mb-1 text-lg font-bold text-slate-900">計算結果</h2>
+        <div className="mb-1 flex items-center justify-between">
+          <h2 className="text-lg font-bold text-slate-900">計算結果</h2>
+          <ShareButton params={shareParams} />
+        </div>
         <p className="mb-4 text-xs text-slate-400">
           {result.taxYear}年（令和{result.taxYear - 2018}年）分の制度に基づく概算
         </p>

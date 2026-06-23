@@ -7,6 +7,7 @@ import { calculateLoan, type RepaymentMethod } from "@/lib/loan/calculate";
 import { yen, manYen } from "@/lib/format";
 import { MoneyInput } from "./MoneyInput";
 import { DonutChart, type DonutSegment } from "./DonutChart";
+import { ShareButton, useSharedParams, applyNumber } from "./ShareButton";
 
 const COLORS = {
   principal: "#10b981", // emerald-500 元本
@@ -18,6 +19,22 @@ export function LoanCalculator() {
   const [rateStr, setRateStr] = useState("1.0");
   const [years, setYears] = useState(35);
   const [method, setMethod] = useState<RepaymentMethod>("equal-payment");
+
+  useSharedParams((get) => {
+    applyNumber(get, "amount", setPrincipal);
+    applyNumber(get, "years", setYears);
+    const rate = get("rate");
+    if (rate != null && Number.isFinite(Number(rate))) setRateStr(rate);
+    const m = get("method");
+    if (m === "equal-payment" || m === "equal-principal") setMethod(m);
+  });
+
+  const shareParams = {
+    amount: principal,
+    rate: rateStr,
+    years,
+    method,
+  };
 
   const annualRatePercent = Number(rateStr) || 0;
 
@@ -134,7 +151,10 @@ export function LoanCalculator() {
 
       {/* ===== 結果 ===== */}
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 className="mb-4 text-lg font-bold text-slate-900">計算結果</h2>
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-lg font-bold text-slate-900">計算結果</h2>
+          <ShareButton params={shareParams} />
+        </div>
 
         {/* 毎月返済額 */}
         <div className="mb-5 rounded-xl bg-emerald-50 p-4 text-center">
