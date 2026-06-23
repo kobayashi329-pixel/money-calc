@@ -16,3 +16,5 @@ export const OPERATOR_NAME = "おかね計算ラボ";
 export const CONTACT_EMAIL = "info@okane-keisan.net";
 // サイト公開年（フッターのコピーライト用）
 export const SITE_LAUNCH_YEAR = 2026;
+// サイト全体の最終更新（信頼性ページ等の鮮度表示用）。大きな更新時に変更。
+export const SITE_LAST_UPDATED = "2026年6月23日";

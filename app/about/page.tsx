@@ -11,10 +11,12 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <LegalLayout title="運営者情報" updated="2026年6月22日">
+    <LegalLayout title="運営者情報" updated="2026年6月23日">
       <h2>運営者</h2>
       <p>
-        <strong>{OPERATOR_NAME}</strong>（個人運営）
+        本サイトは <strong>{OPERATOR_NAME}</strong>（屋号）として運営しています。
+        計算ロジックと解説は、特定の個人の見解ではなく、
+        <Link href="/editorial-policy">編集・運営方針</Link>に基づき、公的資料を根拠として作成・検証しています。
       </p>
 
       <h2>サイトの目的</h2>
@@ -37,6 +39,8 @@ export default function AboutPage() {
         <li>各ツールに計算の前提・注意点・出典を明記する。</li>
       </ul>
       <p>
+        各計算機が根拠とする公的資料は<Link href="/sources">計算の根拠・出典一覧</Link>に、
+        作成・検証・更新の手順は<Link href="/editorial-policy">編集・運営方針</Link>にまとめています。
         それでも本サイトの計算結果は<strong>概算</strong>です。詳しくは
         <Link href="/disclaimer">免責事項</Link>をご確認ください。
       </p>
