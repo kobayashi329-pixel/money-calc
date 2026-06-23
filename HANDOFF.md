@@ -70,6 +70,10 @@
 
 **sitemap**: `app/sitemap.ts` はレジストリ駆動で live 計算機を自動収録。`lastModified`（ビルド時刻）付き。全21URL（計算機11＋カテゴリ5＋信頼性4＋トップ）。`app/robots.ts` がsitemap場所を明示。新規ページ公開後は Search Console で URL検査→インデックス登録リクエスト（sitemap再送信は任意・自動再クロールされる。Googleのpingエンドポイントは2023年廃止済みなので手動不要）。
 
+**都道府県セレクタの方針（2026-06-23 整理）**: 都道府県は協会けんぽの健保料率にのみ使う。**主目的が健保の手取り計算機(`/tedori`)だけが都道府県選択を持つ**。ふるさと納税・iDeCoは「健保→課税所得」の極小な間接影響しかなく表示が紛らわしいため**都道府県セレクタを削除**（内部は東京都既定で計算継続・結果不変）。今後の税系計算機でも、都道府県が結果を実質的に動かさないなら選択UIは付けない。
+
+**トップページSEO（2026-06-23 刷新）**: H1＝「お金の計算機｜年収手取り・住宅ローン・税金を無料で計算」。導入文に主要計算機キーワードを網羅、信頼バッジ（無料・登録不要・入力非送信・令和7年対応・計算機数）、カテゴリ別見出しは「〜の計算機」、**FAQセクション＋FAQPage構造化データ**を追加。`app/layout.tsx` の title/description/keywords/OGP も強化。
+
 ## 4. アーキテクチャ（重要）
 
 - **`lib/calculators.ts`＝計算機レジストリ（単一の真実）**。ここに1エントリ追加し `status:"live"` にするだけで、
@@ -104,6 +108,7 @@
 - **Vercel Hobby ＋ Privateリポジトリ**: コミット作者がVercelアカウント本人(GitHub)でないとデプロイがBlockされる。
   当初 git作者を `gmotech.jp` にしていて全デプロイがBlock→本番が初回コミットで固着。**Public化で解消**。
   Privateに戻す場合は git作者メールをGitHubアカウント紐付けのものにする必要あり。
+- **Vercelがpushを稀に取りこぼす**: 2026-06-23、あるpushでVercelがデプロイを生成せず本番が固着（GitHub commit statusが`pending`のまま・Vercelコンテキスト無し）。**次のpushを重ねれば履歴ごと再デプロイされて解消**。確認方法: `curl -s https://api.github.com/repos/kobayashi329-pixel/money-calc/commits/<sha>/status`（Public repoは認証不要）で `state` と Vercelコンテキストの有無を見る。デプロイ後は本番URLを実際にcurlして200か確認すること。
 - **MDXのCJK太字**: `）**が` のように全角括弧の直後に閉じ`**`があると太字が効かない。閉じ`**`を括弧の前に置く。
   GFMテーブルは `remark-gfm`（Turbopackでは文字列指定 `[["remark-gfm"]]`）。
 - **お名前.com**: ドメインプロテクション(有料)を誤購入済み（返金問い合わせ中・サイト動作には無関係）。
