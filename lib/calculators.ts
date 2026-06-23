@@ -69,7 +69,7 @@ export const CALCULATORS: Calculator[] = [
       "借入額・金利・返済期間から、毎月の返済額・総返済額・利息総額を計算。元利均等／元金均等に対応。",
     category: "loan",
     status: "live",
-    related: ["tedori", "furusato-nozei"],
+    related: ["kuriage-hensai", "tedori", "furusato-nozei"],
     priority: 2,
     emoji: "🏠",
   },
@@ -108,6 +108,30 @@ export const CALCULATORS: Calculator[] = [
     emoji: "🐷",
   },
   {
+    slug: "kuriage-hensai",
+    title: "住宅ローン繰り上げ返済シミュレータ",
+    shortTitle: "繰上返済",
+    description:
+      "繰上返済の効果を試算。期間短縮型と返済額軽減型で、利息の軽減額・短縮期間・毎月の返済額の差を比較。",
+    category: "loan",
+    status: "live",
+    related: ["jutaku-loan", "tedori"],
+    priority: 6,
+    emoji: "📉",
+  },
+  {
+    slug: "sozokuzei",
+    title: "相続税計算機",
+    shortTitle: "相続税",
+    description:
+      "遺産総額と家族構成から、基礎控除・相続税の総額・配偶者の税額軽減を反映した納税額の目安を計算。",
+    category: "zei",
+    status: "live",
+    related: ["tedori", "furusato-nozei"],
+    priority: 7,
+    emoji: "🏛️",
+  },
+  {
     slug: "taishokukin",
     title: "退職金の手取り・税金計算",
     shortTitle: "退職金",
@@ -115,7 +139,7 @@ export const CALCULATORS: Calculator[] = [
     category: "nenkin",
     status: "planned",
     related: ["tedori", "nisa"],
-    priority: 6,
+    priority: 8,
     emoji: "🧾",
   },
   {
@@ -126,7 +150,7 @@ export const CALCULATORS: Calculator[] = [
     category: "zei",
     status: "planned",
     related: ["tedori"],
-    priority: 7,
+    priority: 9,
     emoji: "🧮",
   },
   {
@@ -137,7 +161,7 @@ export const CALCULATORS: Calculator[] = [
     category: "kyuyo",
     status: "planned",
     related: ["tedori"],
-    priority: 8,
+    priority: 10,
     emoji: "⏱️",
   },
 ];
