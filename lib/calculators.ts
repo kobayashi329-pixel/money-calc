@@ -80,8 +80,8 @@ export const CALCULATORS: Calculator[] = [
     description:
       "年収・家族構成から、自己負担2,000円で済む寄付上限の目安を計算。",
     category: "zei",
-    status: "planned",
-    related: ["tedori", "ideco"],
+    status: "live",
+    related: ["tedori", "jutaku-loan", "ideco"],
     priority: 3,
     emoji: "🎁",
   },
