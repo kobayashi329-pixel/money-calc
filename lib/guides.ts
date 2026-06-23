@@ -315,6 +315,58 @@ export const GUIDES: Guide[] = [
     updated: "2026年6月23日",
     emoji: "🧑‍💻",
   },
+  {
+    slug: "kakutei-shinkoku-yarikata",
+    title: "確定申告のやり方｜会社員でも必要なケースと手順をやさしく解説",
+    shortTitle: "確定申告のやり方",
+    description:
+      "確定申告が必要なのはどんな人？医療費控除・ふるさと納税・副業などのケースと、e-Taxでの手順・期限をわかりやすく解説します。",
+    category: "zei",
+    targets: ["furusato-nozei", "ideco"],
+    related: ["furusato-nozei-yarikata"],
+    status: "live",
+    updated: "2026年6月23日",
+    emoji: "📝",
+  },
+  {
+    slug: "jutaku-hendou-kotei",
+    title: "住宅ローンは変動金利と固定金利どっち？違いと選び方を解説",
+    shortTitle: "住宅ローン 変動と固定どっち",
+    description:
+      "住宅ローンの変動金利と固定金利の違い、メリット・デメリット、どちらが向いているかを解説。返済額の試算もあわせてどうぞ。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: ["jutaku-loan-atamakin", "kuriage-karikae-dochira"],
+    status: "live",
+    updated: "2026年6月23日",
+    emoji: "🏠",
+  },
+  {
+    slug: "setsuzei-300man",
+    title: "年収300万円の節税対策｜無理なくできるふるさと納税・NISA",
+    shortTitle: "年収300万の節税対策",
+    description:
+      "年収300万円台は税率が低めなので、まずは生活防衛資金とNISA、少額のふるさと納税から。無理のない節税の始め方を解説します。",
+    category: "zei",
+    targets: ["furusato-nozei", "nisa"],
+    related: ["setsuzei-nenshu-betsu", "setsuzei-500man"],
+    status: "live",
+    updated: "2026年6月23日",
+    emoji: "💴",
+  },
+  {
+    slug: "setsuzei-tomobataraki",
+    title: "共働き世帯の節税対策｜2人分の枠・配偶者控除・年収の壁",
+    shortTitle: "共働き世帯の節税",
+    description:
+      "共働きはふるさと納税・iDeCo・NISAの枠を2人分使えるのが強み。配偶者控除や年収の壁もふまえた共働きならではの節税を解説します。",
+    category: "zei",
+    targets: ["tedori", "furusato-nozei"],
+    related: ["setsuzei-nenshu-betsu", "nenshu-no-kabe"],
+    status: "live",
+    updated: "2026年6月23日",
+    emoji: "👫",
+  },
 ];
 
 // ---- ヘルパー ----

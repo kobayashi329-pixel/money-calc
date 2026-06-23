@@ -78,6 +78,29 @@ export default function Home() {
     url: SITE_URL,
     description:
       "年収手取り・住宅ローン・ふるさと納税・NISA・iDeCo・相続税・退職金など、お金の計算を無料でまとめて行えるシミュレーションサイト。",
+    publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+  };
+
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: `${SITE_URL}/icon.svg`,
+    description:
+      "お金にまつわる計算を、公的資料に基づき無料で提供するシミュレーションサイトの運営。",
+  };
+
+  const itemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "お金の計算機 一覧",
+    itemListElement: liveCalculators().map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: c.title,
+      url: `${SITE_URL}/${c.slug}`,
+    })),
   };
 
   const faqJsonLd = {
@@ -93,6 +116,8 @@ export default function Home() {
   return (
     <div>
       <JsonLd data={websiteJsonLd} />
+      <JsonLd data={organizationJsonLd} />
+      <JsonLd data={itemListJsonLd} />
       <JsonLd data={faqJsonLd} />
 
       {/* ヒーロー */}

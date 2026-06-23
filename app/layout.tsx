@@ -132,6 +132,7 @@ export default function RootLayout({
           <div className="border-t border-slate-100">
             <div className="mx-auto max-w-4xl px-4 py-6 text-xs leading-6 text-slate-500">
             <nav className="mb-3 flex flex-wrap gap-x-4 gap-y-1">
+              <Link href="/calculators" className="hover:text-emerald-700">計算機・ガイド一覧</Link>
               <Link href="/guide" className="hover:text-emerald-700">ガイド・解説</Link>
               <Link href="/about" className="hover:text-emerald-700">運営者情報</Link>
               <Link href="/editorial-policy" className="hover:text-emerald-700">編集・運営方針</Link>
