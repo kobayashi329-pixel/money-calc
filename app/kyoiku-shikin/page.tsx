@@ -3,10 +3,11 @@ import { KyoikuCalculator } from "@/components/KyoikuCalculator";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalculators } from "@/components/RelatedCalculators";
 import { RelatedGuides } from "@/components/RelatedGuides";
+import { AdSlot } from "@/components/AdSlot";
 import { JsonLd } from "@/components/JsonLd";
 import { TrustNote } from "@/components/TrustNote";
 import { getCalculator, getCategory } from "@/lib/calculators";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, AD_SLOTS } from "@/lib/site";
 import Article from "@/content/kyoiku-shikin.mdx";
 
 const CALC = getCalculator("kyoiku-shikin")!;
@@ -58,6 +59,8 @@ export default function KyoikuPage() {
       <RelatedCalculators slug="kyoiku-shikin" />
 
       <RelatedGuides slug="kyoiku-shikin" />
+
+      <AdSlot slot={AD_SLOTS.calcBottom} />
 
       <section className="mt-12 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
         <Article />

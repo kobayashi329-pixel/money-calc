@@ -3,7 +3,8 @@ import { Breadcrumbs } from "./Breadcrumbs";
 import { JsonLd } from "./JsonLd";
 import { getGuide, relatedGuides } from "@/lib/guides";
 import { getCalculator } from "@/lib/calculators";
-import { SITE_URL, SITE_NAME } from "@/lib/site";
+import { SITE_URL, SITE_NAME, AD_SLOTS } from "@/lib/site";
+import { AdSlot } from "./AdSlot";
 
 // ガイド記事ページの共通レイアウト。
 // パンくず・更新日・本文(MDX)・送客先の計算機・関連ガイド・構造化データを描画。
@@ -69,6 +70,9 @@ export function GuideLayout({
           {children}
         </div>
       </section>
+
+      {/* 広告（記事末尾・承認後に表示） */}
+      <AdSlot slot={AD_SLOTS.guideEnd} />
 
       {/* 関連ガイド */}
       {related.length > 0 && (

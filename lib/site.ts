@@ -12,6 +12,21 @@ export const GA_MEASUREMENT_ID = "G-WYDWKD2XPC";
 // 審査用スニペット・広告配信・ads.txt で使用。
 export const ADSENSE_CLIENT = "ca-pub-7264853366083194";
 
+// 広告表示のON/OFF。審査に通り、広告ユニットのslot IDを設定したら true にする。
+// false の間は <AdSlot> は何も描画しない（審査・UXに影響なし）。
+export const ADS_ENABLED = false;
+
+// 広告ユニットのslot ID（承認後にAdSense管理画面で「広告ユニット」を作成して取得し、ここに貼る）。
+// 例: "1234567890"。空のままだと該当位置の広告は表示されない。
+export const AD_SLOTS = {
+  /** ガイド記事の最初のセクション後（記事内・ネイティブ想定） */
+  guideInArticle: "",
+  /** ガイド記事の末尾（ディスプレイ／関連コンテンツ） */
+  guideEnd: "",
+  /** 計算機ページの結果・解説の下（ディスプレイ） */
+  calcBottom: "",
+};
+
 // 運営者情報（運営者情報ページ・フッターで使用）。
 // ハンドルネームでOK。自由に書き換えてください。
 export const OPERATOR_NAME = "おかね計算ラボ";

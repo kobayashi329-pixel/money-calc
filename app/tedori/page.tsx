@@ -3,10 +3,11 @@ import { TakeHomeCalculator } from "@/components/TakeHomeCalculator";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalculators } from "@/components/RelatedCalculators";
 import { RelatedGuides } from "@/components/RelatedGuides";
+import { AdSlot } from "@/components/AdSlot";
 import { JsonLd } from "@/components/JsonLd";
 import { TrustNote } from "@/components/TrustNote";
 import { getCalculator, getCategory } from "@/lib/calculators";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, AD_SLOTS } from "@/lib/site";
 import Article from "@/content/tedori.mdx";
 
 const CALC = getCalculator("tedori")!;
@@ -59,6 +60,8 @@ export default function TedoriPage() {
       <RelatedCalculators slug="tedori" />
 
       <RelatedGuides slug="tedori" />
+
+      <AdSlot slot={AD_SLOTS.calcBottom} />
 
       {/* ===== 解説記事（MDX・SEO/審査用） ===== */}
       <section className="mt-12 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">

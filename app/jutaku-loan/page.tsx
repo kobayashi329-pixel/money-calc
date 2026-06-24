@@ -3,10 +3,11 @@ import { LoanCalculator } from "@/components/LoanCalculator";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalculators } from "@/components/RelatedCalculators";
 import { RelatedGuides } from "@/components/RelatedGuides";
+import { AdSlot } from "@/components/AdSlot";
 import { JsonLd } from "@/components/JsonLd";
 import { TrustNote } from "@/components/TrustNote";
 import { getCalculator, getCategory } from "@/lib/calculators";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, AD_SLOTS } from "@/lib/site";
 import Article from "@/content/jutaku-loan.mdx";
 
 const CALC = getCalculator("jutaku-loan")!;
@@ -57,6 +58,8 @@ export default function JutakuLoanPage() {
       <RelatedCalculators slug="jutaku-loan" />
 
       <RelatedGuides slug="jutaku-loan" />
+
+      <AdSlot slot={AD_SLOTS.calcBottom} />
 
       <section className="mt-12 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
         <Article />
