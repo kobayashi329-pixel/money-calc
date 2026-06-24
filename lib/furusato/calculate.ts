@@ -63,11 +63,20 @@ export function calculateFurusato(input: FurusatoInput): FurusatoResult {
 
   const empIncome = employmentIncome(annualIncome);
   const healthRate = getPrefectureHealthRateEmployee(input.prefecture);
-  const social = calcSocialInsurance(annualIncome, input.age, healthRate);
+  const autoSocial = calcSocialInsurance(annualIncome, input.age, healthRate);
+
+  // 社会保険料は手入力があればそれを優先（詳細モード）。無ければ自動計算。
+  const socialTotal =
+    input.socialInsuranceOverride != null && input.socialInsuranceOverride >= 0
+      ? Math.round(input.socialInsuranceOverride)
+      : autoSocial.total;
+  // その他の所得控除（医療費・iDeCo等）も課税所得を下げる所得控除として合算する。
+  const otherDeductions = Math.max(0, Math.round(input.otherDeductions ?? 0));
+  const deductionForTax = socialTotal + otherDeductions;
 
   // 所得税の課税所得（限界税率の判定基礎）と住民税の所得割（特例分上限の基礎）
-  const incomeTax = calcIncomeTax(empIncome, social.total, effectiveDependents);
-  const residentTax = calcResidentTax(empIncome, social.total, effectiveDependents);
+  const incomeTax = calcIncomeTax(empIncome, deductionForTax, effectiveDependents);
+  const residentTax = calcResidentTax(empIncome, deductionForTax, effectiveDependents);
 
   const residentTaxIncomeLevy = residentTax.incomeLevy;
   const marginalRate = marginalIncomeTaxRate(incomeTax.taxableIncome);
@@ -114,6 +123,7 @@ export function calculateFurusato(input: FurusatoInput): FurusatoResult {
     residentTaxIncomeLevy,
     marginalIncomeTaxRate: marginalRate,
     incomeTaxTaxableIncome: incomeTax.taxableIncome,
+    socialInsuranceAuto: autoSocial.total,
     breakdown: {
       donation,
       selfPay: donation - totalDeduction,

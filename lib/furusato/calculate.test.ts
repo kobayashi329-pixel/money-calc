@@ -67,6 +67,48 @@ describe("配偶者控除がある場合は上限額が下がる", () => {
   });
 });
 
+describe("詳細モード（社会保険料の手入力・その他の所得控除）", () => {
+  it("その他の所得控除（iDeCo等）を入れると課税所得が下がり上限額も下がる", () => {
+    const base500 = calculateFurusato({ ...base, annualIncome: 5_000_000 });
+    const withDeduction = calculateFurusato({
+      ...base,
+      annualIncome: 5_000_000,
+      otherDeductions: 276_000, // iDeCo 月2.3万×12
+    });
+    expect(withDeduction.limit).toBeLessThan(base500.limit);
+  });
+
+  it("その他の所得控除が0なら自動計算と同じ結果", () => {
+    const auto = calculateFurusato({ ...base, annualIncome: 6_000_000 });
+    const explicit = calculateFurusato({
+      ...base,
+      annualIncome: 6_000_000,
+      otherDeductions: 0,
+    });
+    expect(explicit.limit).toBe(auto.limit);
+  });
+
+  it("社会保険料を手入力で大きくすると上限額が下がる", () => {
+    const auto = calculateFurusato({ ...base, annualIncome: 5_000_000 });
+    const highSocial = calculateFurusato({
+      ...base,
+      annualIncome: 5_000_000,
+      socialInsuranceOverride: 1_200_000, // 自動推計より大きめ
+    });
+    expect(highSocial.limit).toBeLessThan(auto.limit);
+  });
+
+  it("手入力でも『上限まで寄付すれば自己負担は2,000円』は保たれる", () => {
+    const r = calculateFurusato({
+      ...base,
+      annualIncome: 7_000_000,
+      otherDeductions: 200_000,
+      socialInsuranceOverride: 1_000_000,
+    });
+    expect(r.breakdown.selfPay).toBe(SELF_PAY);
+  });
+});
+
 describe("不変条件", () => {
   it("上限額まで寄付すれば自己負担はちょうど2,000円", () => {
     for (const income of [3_000_000, 5_000_000, 7_000_000, 12_000_000, 20_000_000]) {

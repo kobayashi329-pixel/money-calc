@@ -20,6 +20,18 @@ export interface FurusatoInput {
    * 社会保険料は課税所得に影響するため上限額にも僅かに効く。未指定なら東京都。
    */
   prefecture?: string;
+  /**
+   * 社会保険料（本人負担・年額）の手入力。詳細モード用・任意。
+   * 指定すると年収・年齢からの自動計算を上書きする（源泉徴収票の値を入れると精度が上がる）。
+   */
+  socialInsuranceOverride?: number;
+  /**
+   * その他の所得控除の合計（円）。詳細モード用・任意。
+   * 医療費控除・iDeCo（小規模企業共済等掛金控除）・生命保険料控除の上乗せ分など、
+   * 基礎控除・扶養控除・社会保険料控除以外の所得控除をまとめて指定する。
+   * 課税所得を下げるため、上限額もその分下がる。
+   */
+  otherDeductions?: number;
 }
 
 /** 上限額まで寄付した場合の控除内訳（円） */
@@ -50,6 +62,8 @@ export interface FurusatoResult {
   marginalIncomeTaxRate: number;
   /** 所得税の課税所得金額（限界税率の判定基礎・1,000円未満切捨て） */
   incomeTaxTaxableIncome: number;
+  /** 自動計算した社会保険料（本人負担・年額）。詳細モードのプレフィル/表示用。 */
+  socialInsuranceAuto: number;
   /** 上限額まで寄付した場合の控除内訳 */
   breakdown: FurusatoBreakdown;
   /** 適用年度（西暦） */
