@@ -96,6 +96,8 @@
 
 **結果のURL共有＋サイト内検索（2026-06-23）**: `components/ShareButton.tsx`＝シェアボタン（Web Share API/クリップボード）＋`useSharedParams`/`applyNumber`（URLクエリから入力値を復元・SSG安全のためマウント後useEffectで読む）。手取り/ふるさと納税/住宅ローン/NISA/iDeCoに設置済（他10計算機も同パターンで拡張可）。各計算機の`shareParams`のキー＝URLクエリ名。サイト内検索: `/search`（`components/SearchClient.tsx`＝計算機＋ガイドをクライアントAND絞り込み・noindex）＋ヘッダー検索リンク＋トップに`SearchAction`構造化データ。**※カンマ一括変換の教訓から、全calc一括の危険な置換はせず個別配線＋検証で実施**。
 
+**AdSense広告枠（準備済・2026-06-23）**: `components/AdSlot.tsx`＝広告枠（`ADS_ENABLED=false`またはslot未設定なら無描画＝審査/UX/CLSに影響なし。表示時は最小高さ予約＋「スポンサーリンク」表記）。`lib/site.ts`に `ADS_ENABLED`(=false)・`AD_SLOTS`{guideInArticle,guideEnd,calcBottom}(空)。**配置済**: ガイド記事末尾(GuideLayout)＋全15計算機の結果下(各page.tsx、RelatedGuidesの後)。**配置方針**: 計算機は入力〜結果の間に置かない/結果・解説の下のみ。**承認後の有効化手順**: ①AdSense管理画面で広告ユニット作成→各slot ID取得 ②`AD_SLOTS`にIDを貼る ③`ADS_ENABLED=true` ④デプロイ。スマホのアンカー広告は管理画面の自動広告でON可。
+
 **AdSense（審査中）**: サイトは申請可能な状態（独自ドメイン・大量のオリジナルコンテンツ・プライバシー/運営者/編集方針/出典ページ完備）。申請後、パブリッシャーID発行→`public/ads.txt`設置＋`app/layout.tsx`にAdSenseスクリプト（next/script）を追加して審査。氏名・住所はGoogleに登録するだけでサイトには非公開。
 
 ## 4. アーキテクチャ（重要）
