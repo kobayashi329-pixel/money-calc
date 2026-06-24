@@ -733,6 +733,96 @@ export const GUIDES: Guide[] = [
     updated: "2026年6月24日",
     emoji: "👨‍👩‍👧",
   },
+  {
+    slug: "furusato-nozei-itsumade",
+    title:
+      "ふるさと納税はいつまで？2026年の期限とワンストップ特例の締め切り",
+    shortTitle: "ふるさと納税はいつまで",
+    description:
+      "ふるさと納税の寄付は毎年12月31日まで、ワンストップ特例の申請は翌年1月10日必着。年末の駆け込みで間に合わせる注意点とスケジュールを解説します。",
+    category: "zei",
+    targets: ["furusato-nozei"],
+    related: [
+      "furusato-nozei-onestop",
+      "furusato-nozei-yarikata",
+      "furusato-nozei-nenshu-betsu",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📅",
+  },
+  {
+    slug: "furusato-nozei-onestop",
+    title:
+      "ふるさと納税ワンストップ特例とは？申請方法・期限・5自治体ルール",
+    shortTitle: "ワンストップ特例とは",
+    description:
+      "ワンストップ特例は確定申告なしで控除を受けられる仕組み。使える条件（寄付先5自治体以内など）、申請書と本人確認書類、1月10日必着の期限を解説します。",
+    category: "zei",
+    targets: ["furusato-nozei"],
+    related: [
+      "furusato-nozei-kakutei-shinkoku",
+      "furusato-nozei-itsumade",
+      "furusato-nozei-yarikata",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📮",
+  },
+  {
+    slug: "furusato-nozei-demerit",
+    title:
+      "ふるさと納税のデメリットは？やめたほうがいい人・損する人を解説",
+    shortTitle: "デメリット・注意点",
+    description:
+      "ふるさと納税は誰でも得とは限りません。上限超過・自己負担2,000円・控除は翌年など、デメリットと「やめたほうがいい人（収入が低い・住宅ローン控除が大きい等）」を解説します。",
+    category: "zei",
+    targets: ["furusato-nozei"],
+    related: [
+      "furusato-nozei-nenshu-betsu",
+      "furusato-nozei-onestop",
+      "furusato-nozei-kojo-kakunin",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "⚠️",
+  },
+  {
+    slug: "furusato-nozei-kakutei-shinkoku",
+    title:
+      "ふるさと納税の確定申告のやり方｜必要書類・書き方・期限を解説",
+    shortTitle: "確定申告のやり方",
+    description:
+      "ワンストップ特例を使わない場合の確定申告の手順を解説。寄附金受領証明書（または寄附金控除に関する証明書）、書き方、e-Tax、期限（原則3月15日）までをまとめます。",
+    category: "zei",
+    targets: ["furusato-nozei"],
+    related: [
+      "furusato-nozei-onestop",
+      "furusato-nozei-kojo-kakunin",
+      "furusato-nozei-itsumade",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📝",
+  },
+  {
+    slug: "furusato-nozei-kojo-kakunin",
+    title:
+      "ふるさと納税の控除はいつから？住民税決定通知書での確認方法",
+    shortTitle: "控除の確認方法",
+    description:
+      "ふるさと納税の控除は翌年の住民税から。6月ごろの住民税決定通知書で「寄附金税額控除」を確認する方法と、正しく控除されているかのチェック方法を解説します。",
+    category: "zei",
+    targets: ["furusato-nozei"],
+    related: [
+      "furusato-nozei-kakutei-shinkoku",
+      "furusato-nozei-demerit",
+      "furusato-nozei-nenshu-betsu",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🔍",
+  },
 ];
 
 // ---- ヘルパー ----
@@ -745,14 +835,55 @@ export function liveGuides(): Guide[] {
   return GUIDES.filter((g) => g.status === "live");
 }
 
-/** カテゴリ内の公開済みガイド */
-export function guidesInCategory(categorySlug: string): Guide[] {
-  return liveGuides().filter((g) => g.category === categorySlug);
+// ---- 並び替え（一覧・関連リンクのUX用） ----
+// 登録順だと年収などが不規則に並んでしまうため、表示時に整列する。
+const GUIDE_INDEX = new Map(GUIDES.map((g, i) => [g.slug, i]));
+
+/** 同じシリーズ（テーマ）でまとめるためのキー。
+ *  ふるさと納税は1グループ、それ以外はスラッグ先頭の英字トピックでまとめる。 */
+function guideSeriesKey(g: Guide): string {
+  if (g.slug.startsWith("furusato-nozei")) return "furusato-nozei";
+  const m = g.slug.match(/^[a-z]+/);
+  return m ? m[0] : g.slug;
 }
 
-/** ある計算機に紐づく公開済みガイド（計算機ページの「関連ガイド」用） */
+/** スラッグ内の「◯◯man」から年収・金額を取り出す（無ければ -1）。 */
+function guideIncome(g: Guide): number {
+  const m = g.slug.match(/(\d+)man/);
+  return m ? Number(m[1]) : -1;
+}
+
+// シリーズが最初に登場した登録位置（シリーズ同士の並び順の基準）。
+const SERIES_FIRST_INDEX = new Map<string, number>();
+GUIDES.forEach((g, i) => {
+  const k = guideSeriesKey(g);
+  if (!SERIES_FIRST_INDEX.has(k)) SERIES_FIRST_INDEX.set(k, i);
+});
+
+/** 一覧・関連リンク表示用の並び替え。
+ *  ①シリーズ（最初に登場した順）→ ②年収・金額の昇順（金額なしを先）→ ③登録順。 */
+export function compareGuides(a: Guide, b: Guide): number {
+  const sa = SERIES_FIRST_INDEX.get(guideSeriesKey(a)) ?? 0;
+  const sb = SERIES_FIRST_INDEX.get(guideSeriesKey(b)) ?? 0;
+  if (sa !== sb) return sa - sb;
+  const ia = guideIncome(a);
+  const ib = guideIncome(b);
+  if (ia !== ib) return ia - ib;
+  return (GUIDE_INDEX.get(a.slug) ?? 0) - (GUIDE_INDEX.get(b.slug) ?? 0);
+}
+
+/** カテゴリ内の公開済みガイド（表示順に整列済み） */
+export function guidesInCategory(categorySlug: string): Guide[] {
+  return liveGuides()
+    .filter((g) => g.category === categorySlug)
+    .sort(compareGuides);
+}
+
+/** ある計算機に紐づく公開済みガイド（計算機ページの「関連ガイド」用・整列済み） */
 export function guidesForCalculator(calcSlug: string): Guide[] {
-  return liveGuides().filter((g) => g.targets.includes(calcSlug));
+  return liveGuides()
+    .filter((g) => g.targets.includes(calcSlug))
+    .sort(compareGuides);
 }
 
 /** 関連ガイドを解決（存在する公開済みのみ） */
