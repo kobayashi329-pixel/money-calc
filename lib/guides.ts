@@ -823,6 +823,168 @@ export const GUIDES: Guide[] = [
     updated: "2026年6月24日",
     emoji: "🔍",
   },
+  {
+    slug: "jutaku-loan-nenshu-betsu",
+    title:
+      "住宅ローンはいくら借りられる？年収別の借入可能額 早見表【2026年】",
+    shortTitle: "借入可能額の年収別早見表",
+    description:
+      "住宅ローンの借入可能額は年収の約5〜7倍が目安。年収300万〜1000万の「無理のない額」と「審査上限の目安」を返済負担率から早見表で解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: [
+      "jutaku-loan-500man",
+      "jutaku-loan-700man",
+      "jutaku-loan-atamakin",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📊",
+  },
+  {
+    slug: "jutaku-loan-300man",
+    title:
+      "年収300万円で住宅ローンはいくら借りられる？借入可能額と月返済額の目安",
+    shortTitle: "年収300万の借入可能額",
+    description:
+      "年収300万円の住宅ローン借入可能額は、無理のない目安で約2,040万円、審査上限の目安で約2,270万円。月々の返済額や無理のない物件価格の考え方を解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: [
+      "jutaku-loan-400man",
+      "jutaku-loan-nenshu-betsu",
+      "jutaku-loan-atamakin",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏠",
+  },
+  {
+    slug: "jutaku-loan-400man",
+    title:
+      "年収400万円で住宅ローンはいくら借りられる？借入可能額と月返済額の目安",
+    shortTitle: "年収400万の借入可能額",
+    description:
+      "年収400万円の住宅ローン借入可能額は、無理のない目安で約2,720万円、審査上限の目安で約3,030万円。月々の返済額や無理のない物件価格の考え方を解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: [
+      "jutaku-loan-300man",
+      "jutaku-loan-500man",
+      "jutaku-loan-nenshu-betsu",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏠",
+  },
+  {
+    slug: "jutaku-loan-500man",
+    title:
+      "年収500万円で住宅ローンはいくら借りられる？借入可能額と月返済額の目安",
+    shortTitle: "年収500万の借入可能額",
+    description:
+      "年収500万円の住宅ローン借入可能額は、無理のない目安で約3,400万円、審査上限の目安で約3,790万円。月々の返済額や無理のない物件価格の考え方を解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: [
+      "jutaku-loan-400man",
+      "jutaku-loan-600man",
+      "jutaku-loan-nenshu-betsu",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏠",
+  },
+  {
+    slug: "jutaku-loan-600man",
+    title:
+      "年収600万円で住宅ローンはいくら借りられる？借入可能額と月返済額の目安",
+    shortTitle: "年収600万の借入可能額",
+    description:
+      "年収600万円の住宅ローン借入可能額は、無理のない目安で約4,080万円、審査上限の目安で約4,550万円。月々の返済額や無理のない物件価格の考え方を解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: [
+      "jutaku-loan-500man",
+      "jutaku-loan-700man",
+      "jutaku-loan-nenshu-betsu",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏠",
+  },
+  {
+    slug: "jutaku-loan-700man",
+    title:
+      "年収700万円で住宅ローンはいくら借りられる？借入可能額と月返済額の目安",
+    shortTitle: "年収700万の借入可能額",
+    description:
+      "年収700万円の住宅ローン借入可能額は、無理のない目安で約4,760万円、審査上限の目安で約5,310万円。月々の返済額や無理のない物件価格の考え方を解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: [
+      "jutaku-loan-600man",
+      "jutaku-loan-800man",
+      "jutaku-loan-pair",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏠",
+  },
+  {
+    slug: "jutaku-loan-800man",
+    title:
+      "年収800万円で住宅ローンはいくら借りられる？借入可能額と月返済額の目安",
+    shortTitle: "年収800万の借入可能額",
+    description:
+      "年収800万円の住宅ローン借入可能額は、無理のない目安で約5,440万円、審査上限の目安で約6,060万円。月々の返済額や借りすぎないための考え方を解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: [
+      "jutaku-loan-700man",
+      "jutaku-loan-1000man",
+      "jutaku-loan-nenshu-betsu",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏠",
+  },
+  {
+    slug: "jutaku-loan-1000man",
+    title:
+      "年収1000万円で住宅ローンはいくら借りられる？借入可能額と月返済額の目安",
+    shortTitle: "年収1000万の借入可能額",
+    description:
+      "年収1000万円の住宅ローン借入可能額は、無理のない目安で約6,800万円、審査上限の目安で約7,580万円。高年収でも借りすぎないための考え方を解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: [
+      "jutaku-loan-800man",
+      "jutaku-loan-nenshu-betsu",
+      "jutaku-loan-pair",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏠",
+  },
+  {
+    slug: "jutaku-loan-pair",
+    title:
+      "共働き夫婦の住宅ローン｜ペアローン・収入合算でいくら借りられる？",
+    shortTitle: "共働き・ペアローン",
+    description:
+      "共働きなら収入合算やペアローンで借入可能額を増やせます。合算の方法（連帯保証・連帯債務・ペアローン）の違いと、住宅ローン控除・団信の注意点を解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: [
+      "jutaku-loan-nenshu-betsu",
+      "jutaku-loan-600man",
+      "jutaku-loan-atamakin",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "👫",
+  },
 ];
 
 // ---- ヘルパー ----
