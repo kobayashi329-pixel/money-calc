@@ -7,6 +7,7 @@ import { useMemo, useState } from "react";
 import { calculateJikyu, type WageUnit } from "@/lib/jikyu/calculate";
 import { yen, manYen } from "@/lib/format";
 import { MoneyInput } from "./MoneyInput";
+import { ShareButton, useSharedParams, applyNumber } from "./ShareButton";
 
 const UNITS: { key: WageUnit; label: string }[] = [
   { key: "hourly", label: "時給" },
@@ -20,6 +21,16 @@ export function JikyuCalculator() {
   const [unit, setUnit] = useState<WageUnit>("hourly");
   const [hoursPerDay, setHoursPerDay] = useState(8);
   const [daysPerMonth, setDaysPerMonth] = useState(20);
+
+  useSharedParams((get) => {
+    applyNumber(get, "value", setValue);
+    applyNumber(get, "h", setHoursPerDay);
+    applyNumber(get, "d", setDaysPerMonth);
+    const u = get("unit");
+    if (u === "hourly" || u === "daily" || u === "monthly" || u === "annual") setUnit(u);
+  });
+
+  const shareParams = { value, unit, h: hoursPerDay, d: daysPerMonth };
 
   const result = useMemo(
     () => calculateJikyu({ value, unit, hoursPerDay, daysPerMonth }),
@@ -110,7 +121,10 @@ export function JikyuCalculator() {
 
       {/* ===== 結果 ===== */}
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 className="mb-4 text-lg font-bold text-slate-900">換算結果</h2>
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-lg font-bold text-slate-900">換算結果</h2>
+          <ShareButton params={shareParams} />
+        </div>
 
         <div className="grid grid-cols-2 gap-3">
           {cards.map((c) => (

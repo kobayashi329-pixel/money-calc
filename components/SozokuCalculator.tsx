@@ -6,11 +6,21 @@ import { useMemo, useState } from "react";
 import { calculateSozoku } from "@/lib/sozoku/calculate";
 import { yen, manYen } from "@/lib/format";
 import { MoneyInput } from "./MoneyInput";
+import { ShareButton, useSharedParams, applyNumber } from "./ShareButton";
 
 export function SozokuCalculator() {
   const [estate, setEstate] = useState(100_000_000);
   const [hasSpouse, setHasSpouse] = useState(true);
   const [children, setChildren] = useState(2);
+
+  useSharedParams((get) => {
+    applyNumber(get, "estate", setEstate);
+    applyNumber(get, "children", setChildren);
+    const sp = get("spouse");
+    if (sp != null) setHasSpouse(sp === "1");
+  });
+
+  const shareParams = { estate, spouse: hasSpouse ? 1 : 0, children };
 
   const result = useMemo(
     () => calculateSozoku({ taxableEstate: estate, hasSpouse, children }),
@@ -89,7 +99,10 @@ export function SozokuCalculator() {
 
       {/* ===== 結果 ===== */}
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 className="mb-4 text-lg font-bold text-slate-900">計算結果</h2>
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-lg font-bold text-slate-900">計算結果</h2>
+          <ShareButton params={shareParams} />
+        </div>
 
         {/* 納税額 */}
         <div className="mb-5 rounded-xl bg-violet-50 p-4 text-center">

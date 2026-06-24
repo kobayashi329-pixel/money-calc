@@ -8,6 +8,7 @@ import { calculateRougo } from "@/lib/rougo/calculate";
 import { yen, manYen } from "@/lib/format";
 import { DonutChart, type DonutSegment } from "./DonutChart";
 import { MoneyInput } from "./MoneyInput";
+import { ShareButton, useSharedParams, applyNumber } from "./ShareButton";
 
 const COLORS = {
   savings: "#3b82f6", // blue-500 … 現在の貯蓄（運用後）
@@ -68,6 +69,31 @@ export function RougoCalculator() {
   const [retirementAllowance, setRetirementAllowance] = useState(10_000_000);
   const [specialReserve, setSpecialReserve] = useState(5_000_000);
   const [rateStr, setRateStr] = useState("3");
+
+  useSharedParams((get) => {
+    applyNumber(get, "ca", setCurrentAge);
+    applyNumber(get, "ra", setRetireAge);
+    applyNumber(get, "ua", setUntilAge);
+    applyNumber(get, "exp", setMonthlyExpense);
+    applyNumber(get, "pen", setMonthlyPension);
+    applyNumber(get, "sav", setCurrentSavings);
+    applyNumber(get, "allow", setRetirementAllowance);
+    applyNumber(get, "reserve", setSpecialReserve);
+    const r = get("rate");
+    if (r != null && Number.isFinite(Number(r))) setRateStr(r);
+  });
+
+  const shareParams = {
+    ca: currentAge,
+    ra: retireAge,
+    ua: untilAge,
+    exp: monthlyExpense,
+    pen: monthlyPension,
+    sav: currentSavings,
+    allow: retirementAllowance,
+    reserve: specialReserve,
+    rate: rateStr,
+  };
 
   const savingRatePercent = Number(rateStr) || 0;
 
@@ -159,7 +185,10 @@ export function RougoCalculator() {
 
       {/* ===== 結果 ===== */}
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 className="mb-4 text-lg font-bold text-slate-900">計算結果</h2>
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-lg font-bold text-slate-900">計算結果</h2>
+          <ShareButton params={shareParams} />
+        </div>
 
         {/* 退職時に必要な額 */}
         <div className="mb-5 rounded-xl bg-violet-50 p-4 text-center">

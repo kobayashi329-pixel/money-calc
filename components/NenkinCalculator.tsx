@@ -8,6 +8,7 @@ import { calculateNenkin } from "@/lib/nenkin/calculate";
 import { yen, manYen, percent } from "@/lib/format";
 import { DonutChart, type DonutSegment } from "./DonutChart";
 import { MoneyInput } from "./MoneyInput";
+import { ShareButton, useSharedParams, applyNumber } from "./ShareButton";
 
 const COLORS = {
   basic: "#3b82f6", // blue-500 … 老齢基礎年金
@@ -19,6 +20,20 @@ export function NenkinCalculator() {
   const [kouseiYears, setKouseiYears] = useState(40);
   const [avgAnnualIncome, setAvgAnnualIncome] = useState(5_000_000);
   const [startAge, setStartAge] = useState(65);
+
+  useSharedParams((get) => {
+    applyNumber(get, "kiso", setKisoYears);
+    applyNumber(get, "kosei", setKouseiYears);
+    applyNumber(get, "income", setAvgAnnualIncome);
+    applyNumber(get, "start", setStartAge);
+  });
+
+  const shareParams = {
+    kiso: kisoYears,
+    kosei: kouseiYears,
+    income: avgAnnualIncome,
+    start: startAge,
+  };
 
   const result = useMemo(
     () => calculateNenkin({ kisoYears, kouseiYears, avgAnnualIncome, startAge }),
@@ -148,7 +163,10 @@ export function NenkinCalculator() {
 
       {/* ===== 結果 ===== */}
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 className="mb-1 text-lg font-bold text-slate-900">受給見込み額（概算）</h2>
+        <div className="mb-1 flex items-center justify-between">
+          <h2 className="text-lg font-bold text-slate-900">受給見込み額（概算）</h2>
+          <ShareButton params={shareParams} />
+        </div>
         <p className="mb-4 text-xs text-slate-400">令和7年度（2025年度）の年金額・乗率に基づく概算</p>
 
         {/* 月額 */}

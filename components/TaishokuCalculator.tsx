@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import { calculateTaishoku } from "@/lib/taishoku/calculate";
 import { yen, manYen, percent } from "@/lib/format";
 import { MoneyInput } from "./MoneyInput";
+import { ShareButton, useSharedParams, applyNumber } from "./ShareButton";
 import { DonutChart, type DonutSegment } from "./DonutChart";
 
 const COLORS = {
@@ -19,6 +20,18 @@ export function TaishokuCalculator() {
   const [years, setYears] = useState(30);
   const [isOfficer, setIsOfficer] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
+
+  useSharedParams((get) => {
+    applyNumber(get, "sev", setSeverance);
+    applyNumber(get, "years", setYears);
+    const o = get("officer");
+    if (o != null) {
+      setIsOfficer(o === "1");
+      if (o === "1") setShowDetails(true);
+    }
+  });
+
+  const shareParams = { sev: severance, years, officer: isOfficer ? 1 : 0 };
 
   const result = useMemo(
     () => calculateTaishoku({ severance, years, isOfficer }),
@@ -123,7 +136,10 @@ export function TaishokuCalculator() {
 
       {/* ===== 結果 ===== */}
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 className="mb-1 text-lg font-bold text-slate-900">計算結果</h2>
+        <div className="mb-1 flex items-center justify-between">
+          <h2 className="text-lg font-bold text-slate-900">計算結果</h2>
+          <ShareButton params={shareParams} />
+        </div>
         <p className="mb-4 text-xs text-slate-400">
           {result.taxYear}年（令和{result.taxYear - 2018}年）分の制度に基づく概算
         </p>

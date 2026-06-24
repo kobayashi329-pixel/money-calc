@@ -6,12 +6,25 @@ import { useMemo, useState } from "react";
 import { calculateShohizei, type Direction, type RoundMode } from "@/lib/shohizei/calculate";
 import { yen } from "@/lib/format";
 import { MoneyInput } from "./MoneyInput";
+import { ShareButton, useSharedParams, applyNumber } from "./ShareButton";
 
 export function ShohizeiCalculator() {
   const [amount, setAmount] = useState(10_000);
   const [direction, setDirection] = useState<Direction>("addTax");
   const [ratePercent, setRatePercent] = useState(10);
   const [rounding, setRounding] = useState<RoundMode>("floor");
+
+  useSharedParams((get) => {
+    applyNumber(get, "amount", setAmount);
+    const dir = get("dir");
+    if (dir === "addTax" || dir === "removeTax") setDirection(dir);
+    const r = get("rate");
+    if (r === "8" || r === "10") setRatePercent(Number(r));
+    const rd = get("round");
+    if (rd === "floor" || rd === "round" || rd === "ceil") setRounding(rd);
+  });
+
+  const shareParams = { amount, dir: direction, rate: ratePercent, round: rounding };
 
   const result = useMemo(
     () => calculateShohizei({ amount, ratePercent, direction, rounding }),
@@ -106,7 +119,10 @@ export function ShohizeiCalculator() {
 
       {/* ===== 結果 ===== */}
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 className="mb-4 text-lg font-bold text-slate-900">計算結果</h2>
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-lg font-bold text-slate-900">計算結果</h2>
+          <ShareButton params={shareParams} />
+        </div>
 
         <div className="mb-5 rounded-xl bg-emerald-50 p-4 text-center">
           <div className="text-sm text-emerald-800">

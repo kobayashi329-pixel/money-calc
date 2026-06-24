@@ -11,6 +11,7 @@ import type {
   UniversityChoice,
 } from "@/lib/kyoiku/types";
 import { yen, manYen } from "@/lib/format";
+import { ShareButton, useSharedParams, applyNumber } from "./ShareButton";
 
 const BAR_COLOR = "#10b981"; // emerald-500
 
@@ -51,6 +52,33 @@ export function KyoikuCalculator() {
   const [university, setUniversity] = useState<UniversityChoice>("national");
   const [childAge, setChildAge] = useState(0);
   const [rateStr, setRateStr] = useState("2");
+
+  useSharedParams((get) => {
+    const k = get("k");
+    if (k === "none" || k === "public" || k === "private") setKindergarten(k);
+    const e = get("e");
+    if (e === "public" || e === "private") setElementary(e);
+    const j = get("j");
+    if (j === "public" || j === "private") setJuniorHigh(j);
+    const h = get("h");
+    if (h === "public" || h === "private") setHighSchool(h);
+    const u = get("u");
+    if (u === "none" || u === "national" || u === "privateLiberal" || u === "privateScience")
+      setUniversity(u);
+    applyNumber(get, "age", setChildAge);
+    const r = get("rate");
+    if (r != null && Number.isFinite(Number(r))) setRateStr(r);
+  });
+
+  const shareParams = {
+    k: kindergarten,
+    e: elementary,
+    j: juniorHigh,
+    h: highSchool,
+    u: university,
+    age: childAge,
+    rate: rateStr,
+  };
 
   const savingRatePercent = Number(rateStr) || 0;
 
@@ -169,7 +197,10 @@ export function KyoikuCalculator() {
 
       {/* ===== 結果 ===== */}
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 className="mb-4 text-lg font-bold text-slate-900">計算結果</h2>
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-lg font-bold text-slate-900">計算結果</h2>
+          <ShareButton params={shareParams} />
+        </div>
 
         {/* 総額 */}
         <div className="mb-5 rounded-xl bg-emerald-50 p-4 text-center">

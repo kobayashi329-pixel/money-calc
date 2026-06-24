@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import { calculateKarikae } from "@/lib/karikae/calculate";
 import { yen, manYen } from "@/lib/format";
 import { MoneyInput } from "./MoneyInput";
+import { ShareButton, useSharedParams, applyNumber } from "./ShareButton";
 
 export function KarikaeCalculator() {
   const [balance, setBalance] = useState(20_000_000);
@@ -13,6 +14,24 @@ export function KarikaeCalculator() {
   const [curRateStr, setCurRateStr] = useState("1.5");
   const [newRateStr, setNewRateStr] = useState("0.7");
   const [fee, setFee] = useState(600_000);
+
+  useSharedParams((get) => {
+    applyNumber(get, "balance", setBalance);
+    applyNumber(get, "years", setRemainingYears);
+    applyNumber(get, "fee", setFee);
+    const cr = get("crate");
+    if (cr != null && Number.isFinite(Number(cr))) setCurRateStr(cr);
+    const nr = get("nrate");
+    if (nr != null && Number.isFinite(Number(nr))) setNewRateStr(nr);
+  });
+
+  const shareParams = {
+    balance,
+    years: remainingYears,
+    crate: curRateStr,
+    nrate: newRateStr,
+    fee,
+  };
 
   const currentRatePercent = Number(curRateStr) || 0;
   const newRatePercent = Number(newRateStr) || 0;
@@ -124,7 +143,10 @@ export function KarikaeCalculator() {
 
       {/* ===== 結果 ===== */}
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 className="mb-4 text-lg font-bold text-slate-900">借り換えの効果</h2>
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-lg font-bold text-slate-900">借り換えの効果</h2>
+          <ShareButton params={shareParams} />
+        </div>
 
         {/* 正味メリット */}
         <div className={`mb-5 rounded-xl p-4 text-center ${result.worthIt ? "bg-emerald-50" : "bg-slate-100"}`}>

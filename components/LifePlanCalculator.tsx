@@ -7,6 +7,7 @@ import { calculateLifePlan } from "@/lib/lifeplan/calculate";
 import type { LifeEvent } from "@/lib/lifeplan/types";
 import { yen, manYen } from "@/lib/format";
 import { MoneyInput } from "./MoneyInput";
+import { ShareButton, useSharedParams, applyNumber } from "./ShareButton";
 
 function Num({
   label,
@@ -68,6 +69,37 @@ export function LifePlanCalculator() {
   // 西暦はマウント後に取得（SSRとのハイドレーション不一致を避ける）。既定は当年。
   const [baseYear, setBaseYear] = useState(2026);
   useEffect(() => setBaseYear(new Date().getFullYear()), []);
+
+  useSharedParams((get) => {
+    applyNumber(get, "ca", setCurrentAge);
+    applyNumber(get, "ra", setRetireAge);
+    applyNumber(get, "ua", setUntilAge);
+    applyNumber(get, "inc", setAnnualIncome);
+    applyNumber(get, "pen", setPensionAnnual);
+    applyNumber(get, "exp", setAnnualExpense);
+    applyNumber(get, "rexp", setRetireExpense);
+    applyNumber(get, "sav", setCurrentSavings);
+    const g = get("growth");
+    if (g != null && Number.isFinite(Number(g))) setIncomeGrowth(g);
+    const inf = get("infl");
+    if (inf != null && Number.isFinite(Number(inf))) setInflation(inf);
+    const rt = get("rate");
+    if (rt != null && Number.isFinite(Number(rt))) setSavingRate(rt);
+  });
+
+  const shareParams = {
+    ca: currentAge,
+    ra: retireAge,
+    ua: untilAge,
+    inc: annualIncome,
+    growth: incomeGrowth,
+    pen: pensionAnnual,
+    exp: annualExpense,
+    rexp: retireExpense,
+    infl: inflation,
+    sav: currentSavings,
+    rate: savingRate,
+  };
 
   const result = useMemo(
     () =>
@@ -194,7 +226,10 @@ export function LifePlanCalculator() {
 
       {/* ===== 結果 ===== */}
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 className="mb-4 text-lg font-bold text-slate-900">生涯のお金の流れ</h2>
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-lg font-bold text-slate-900">生涯のお金の流れ</h2>
+          <ShareButton params={shareParams} />
+        </div>
 
         {/* 結論 */}
         {result.depletionAge !== null ? (

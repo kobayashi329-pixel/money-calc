@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import { calculateKuriage } from "@/lib/kuriage/calculate";
 import { yen, manYen } from "@/lib/format";
 import { MoneyInput } from "./MoneyInput";
+import { ShareButton, useSharedParams, applyNumber } from "./ShareButton";
 
 /** 月数を「○年○ヶ月」に */
 function monthsToText(months: number): string {
@@ -22,6 +23,23 @@ export function KuriageCalculator() {
   const [years, setYears] = useState(35);
   const [prepay, setPrepay] = useState(1_000_000);
   const [prepayAfter, setPrepayAfter] = useState(5);
+
+  useSharedParams((get) => {
+    applyNumber(get, "amount", setPrincipal);
+    applyNumber(get, "years", setYears);
+    applyNumber(get, "prepay", setPrepay);
+    applyNumber(get, "after", setPrepayAfter);
+    const r = get("rate");
+    if (r != null && Number.isFinite(Number(r))) setRateStr(r);
+  });
+
+  const shareParams = {
+    amount: principal,
+    rate: rateStr,
+    years,
+    prepay,
+    after: prepayAfter,
+  };
 
   const annualRatePercent = Number(rateStr) || 0;
 
@@ -154,7 +172,10 @@ export function KuriageCalculator() {
 
       {/* ===== 結果 ===== */}
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h2 className="mb-4 text-lg font-bold text-slate-900">繰上返済の効果</h2>
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-lg font-bold text-slate-900">繰上返済の効果</h2>
+          <ShareButton params={shareParams} />
+        </div>
 
         {!hasPrepay ? (
           <div className="rounded-xl bg-slate-50 p-5 text-center text-sm leading-6 text-slate-600">
