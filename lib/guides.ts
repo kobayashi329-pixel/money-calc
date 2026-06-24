@@ -625,6 +625,114 @@ export const GUIDES: Guide[] = [
     updated: "2026年6月24日",
     emoji: "🧑‍💼",
   },
+  {
+    slug: "furusato-nozei-350man",
+    title:
+      "年収350万円のふるさと納税 上限額はいくら？独身・夫婦・子ありで比較",
+    shortTitle: "年収350万の上限額",
+    description:
+      "年収350万円のふるさと納税の上限額の目安は、独身・共働きで約3.5万円。家族構成別の早見表と、少額でも得になる仕組み、ワンストップ特例を解説します。",
+    category: "zei",
+    targets: ["furusato-nozei"],
+    related: [
+      "furusato-nozei-300man",
+      "furusato-nozei-400man",
+      "furusato-nozei-nenshu-betsu",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🎁",
+  },
+  {
+    slug: "furusato-nozei-450man",
+    title:
+      "年収450万円のふるさと納税 上限額はいくら？独身・夫婦・子ありで比較",
+    shortTitle: "年収450万の上限額",
+    description:
+      "年収450万円のふるさと納税の上限額の目安は、独身・共働きで約5.0万円。家族構成別の早見表と、ワンストップ特例の使い方、おすすめの寄付額を解説します。",
+    category: "zei",
+    targets: ["furusato-nozei"],
+    related: [
+      "furusato-nozei-400man",
+      "furusato-nozei-500man",
+      "furusato-nozei-nenshu-betsu",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🎁",
+  },
+  {
+    slug: "furusato-nozei-900man",
+    title:
+      "年収900万円のふるさと納税 上限額はいくら？独身・夫婦・子ありで比較",
+    shortTitle: "年収900万の上限額",
+    description:
+      "年収900万円のふるさと納税の上限額の目安は、独身・共働きで約15.6万円。家族構成別の早見表と、寄付先の分け方、住宅ローン控除との関係を解説します。",
+    category: "zei",
+    targets: ["furusato-nozei"],
+    related: [
+      "furusato-nozei-800man",
+      "furusato-nozei-1000man",
+      "furusato-nozei-nenshu-betsu",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🎁",
+  },
+  {
+    slug: "furusato-nozei-1200man",
+    title:
+      "年収1200万円のふるさと納税 上限額はいくら？独身・夫婦・子ありで比較",
+    shortTitle: "年収1200万の上限額",
+    description:
+      "年収1200万円のふるさと納税の上限額の目安は、独身・共働きで約24.9万円。家族構成別の早見表と、高所得者の注意点（住宅ローン控除・確定申告）を解説します。",
+    category: "zei",
+    targets: ["furusato-nozei"],
+    related: [
+      "furusato-nozei-1000man",
+      "furusato-nozei-nenshu-betsu",
+      "furusato-nozei-jieigyou",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🎁",
+  },
+  {
+    slug: "furusato-nozei-sengyoshufu",
+    title:
+      "専業主婦（夫）世帯のふるさと納税 上限額は？配偶者控除がある場合の早見表",
+    shortTitle: "専業主婦世帯の上限額",
+    description:
+      "配偶者を扶養する専業主婦（主夫）世帯は、共働きより上限額が下がります。年収別の早見表と、配偶者控除・配偶者特別控除・パート収入の壁との関係を解説します。",
+    category: "zei",
+    targets: ["furusato-nozei"],
+    related: [
+      "furusato-nozei-tomobataraki",
+      "furusato-nozei-nenshu-betsu",
+      "furusato-nozei-kosodate",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏠",
+  },
+  {
+    slug: "furusato-nozei-kosodate",
+    title:
+      "子供がいる家庭のふるさと納税 上限額は？扶養と年齢でいくら変わるか",
+    shortTitle: "子育て世帯の上限額",
+    description:
+      "子供がいると扶養控除でふるさと納税の上限額が変わります。16歳未満・高校生・大学生で違う扱いと、年収別の早見表をわかりやすく解説します。",
+    category: "zei",
+    targets: ["furusato-nozei"],
+    related: [
+      "furusato-nozei-sengyoshufu",
+      "furusato-nozei-nenshu-betsu",
+      "furusato-nozei-500man",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "👨‍👩‍👧",
+  },
 ];
 
 // ---- ヘルパー ----
