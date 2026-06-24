@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { GuideLayout } from "@/components/GuideLayout";
+import { FurusatoCTA } from "@/components/FurusatoCTA";
 import { getGuide } from "@/lib/guides";
 import Article from "@/content/guides/furusato-nozei-500man.mdx";
 
@@ -15,6 +16,7 @@ export default function Page() {
   return (
     <GuideLayout slug="furusato-nozei-500man">
       <Article />
+      <FurusatoCTA />
     </GuideLayout>
   );
 }

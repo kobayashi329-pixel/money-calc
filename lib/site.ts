@@ -27,6 +27,18 @@ export const AD_SLOTS = {
   calcBottom: "",
 };
 
+// ふるさと納税ASP（アフィリエイト）の収益動線。
+// 提携が決まったら各 url にアフィリエイトリンクを入れ、FURUSATO_ASP_ENABLED=true にする。
+// false の間、または url が空の間は <FurusatoCTA> は何も描画しない（審査・UX・CLSに影響なし）。
+export const FURUSATO_ASP_ENABLED = false;
+
+// 表示するふるさと納税サイト（ユーザー利益軸で並べる。報酬順ソートはしない方針）。
+export const FURUSATO_ASP: { name: string; feature: string; url: string }[] = [
+  { name: "楽天ふるさと納税", feature: "楽天ポイントが貯まる・使える", url: "" },
+  { name: "さとふる", feature: "品揃え豊富・配送が早い", url: "" },
+  { name: "ふるなび", feature: "家電・金券系の返礼品に強い", url: "" },
+];
+
 // 運営者情報（運営者情報ページ・フッターで使用）。
 // ハンドルネームでOK。自由に書き換えてください。
 export const OPERATOR_NAME = "おかね計算ラボ";

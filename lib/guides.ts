@@ -535,6 +535,96 @@ export const GUIDES: Guide[] = [
     updated: "2026年6月24日",
     emoji: "👫",
   },
+  {
+    slug: "furusato-nozei-300man",
+    title:
+      "年収300万円のふるさと納税 上限額はいくら？独身・夫婦・子ありで比較",
+    shortTitle: "年収300万の上限額",
+    description:
+      "年収300万円のふるさと納税の上限額の目安は、独身・共働きで約2.8万円。家族構成別の早見表と、少額でも得になる仕組み、無理のない寄付額を解説します。",
+    category: "zei",
+    targets: ["furusato-nozei"],
+    related: [
+      "furusato-nozei-400man",
+      "furusato-nozei-nenshu-betsu",
+      "furusato-nozei-yarikata",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🎁",
+  },
+  {
+    slug: "furusato-nozei-400man",
+    title:
+      "年収400万円のふるさと納税 上限額はいくら？独身・夫婦・子ありで比較",
+    shortTitle: "年収400万の上限額",
+    description:
+      "年収400万円のふるさと納税の上限額の目安は、独身・共働きで約4.2万円。家族構成別の早見表と、ワンストップ特例の使い方、おすすめの寄付額を解説します。",
+    category: "zei",
+    targets: ["furusato-nozei"],
+    related: [
+      "furusato-nozei-300man",
+      "furusato-nozei-500man",
+      "furusato-nozei-nenshu-betsu",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🎁",
+  },
+  {
+    slug: "furusato-nozei-800man",
+    title:
+      "年収800万円のふるさと納税 上限額はいくら？独身・夫婦・子ありで比較",
+    shortTitle: "年収800万の上限額",
+    description:
+      "年収800万円のふるさと納税の上限額の目安は、独身・共働きで約13.1万円。家族構成別の早見表と、寄付先の分け方、住宅ローン控除との関係を解説します。",
+    category: "zei",
+    targets: ["furusato-nozei"],
+    related: [
+      "furusato-nozei-700man",
+      "furusato-nozei-1000man",
+      "furusato-nozei-nenshu-betsu",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🎁",
+  },
+  {
+    slug: "furusato-nozei-1000man",
+    title:
+      "年収1000万円のふるさと納税 上限額はいくら？独身・夫婦・子ありで比較",
+    shortTitle: "年収1000万の上限額",
+    description:
+      "年収1000万円のふるさと納税の上限額の目安は、独身・共働きで約18.3万円。家族構成別の早見表と、高所得者ならではの注意点（住宅ローン控除・確定申告）を解説します。",
+    category: "zei",
+    targets: ["furusato-nozei"],
+    related: [
+      "furusato-nozei-800man",
+      "furusato-nozei-nenshu-betsu",
+      "furusato-nozei-jieigyou",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🎁",
+  },
+  {
+    slug: "furusato-nozei-jieigyou",
+    title:
+      "自営業・個人事業主のふるさと納税 上限額は？課税所得別の早見表と計算方法",
+    shortTitle: "自営業の上限額",
+    description:
+      "自営業・個人事業主のふるさと納税の上限額は「課税所得」で決まります。課税所得別の早見表と、会社員との違い（ワンストップ特例が使えない等）、計算方法を解説します。",
+    category: "zei",
+    targets: ["furusato-nozei"],
+    related: [
+      "furusato-nozei-nenshu-betsu",
+      "furusato-nozei-1000man",
+      "furusato-nozei-yarikata",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🧑‍💼",
+  },
 ];
 
 // ---- ヘルパー ----

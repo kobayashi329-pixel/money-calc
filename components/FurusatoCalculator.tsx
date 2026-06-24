@@ -9,6 +9,7 @@ import { yen, manYen, percent } from "@/lib/format";
 import { MoneyInput } from "./MoneyInput";
 import { DonutChart, type DonutSegment } from "./DonutChart";
 import { ShareButton, useSharedParams, applyNumber } from "./ShareButton";
+import { FurusatoCTA } from "./FurusatoCTA";
 
 const COLORS = {
   incomeTax: "#f59e0b", // amber-500 … 所得税からの控除
@@ -62,6 +63,7 @@ export function FurusatoCalculator() {
   ];
 
   return (
+    <>
     <div className="grid gap-6 lg:grid-cols-2">
       {/* ===== 入力フォーム ===== */}
       <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
@@ -257,6 +259,9 @@ export function FurusatoCalculator() {
         </p>
       </section>
     </div>
+    {/* 寄付先サイトへの送客枠（提携後に表示・上限額を動的反映） */}
+    {hasBenefit && <FurusatoCTA amount={result.limit} />}
+    </>
   );
 }
 
