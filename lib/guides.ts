@@ -76,7 +76,7 @@ export const GUIDES: Guide[] = [
       "ふるさと納税の手順を初心者向けに解説。上限額の確認、寄付、ワンストップ特例制度と確定申告の違い、期限までをまとめます。",
     category: "zei",
     targets: ["furusato-nozei"],
-    related: [],
+    related: ["furusato-nozei-nenshu-betsu", "furusato-nozei-500man"],
     status: "live",
     updated: "2026年6月23日",
     emoji: "🎁",
@@ -444,6 +444,96 @@ export const GUIDES: Guide[] = [
     status: "live",
     updated: "2026年6月23日",
     emoji: "🏠",
+  },
+  {
+    slug: "furusato-nozei-nenshu-betsu",
+    title:
+      "ふるさと納税の上限額 年収別早見表【2026年版】独身・夫婦・子どもありで比較",
+    shortTitle: "上限額の年収別早見表",
+    description:
+      "ふるさと納税の控除上限額を年収別・家族構成別の早見表で確認。年収250万〜2000万の独身・共働き・夫婦・子持ちの目安と、自己負担2,000円で寄付できる金額の考え方を解説します。",
+    category: "zei",
+    targets: ["furusato-nozei"],
+    related: [
+      "furusato-nozei-500man",
+      "furusato-nozei-700man",
+      "furusato-nozei-yarikata",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📊",
+  },
+  {
+    slug: "furusato-nozei-500man",
+    title:
+      "年収500万円のふるさと納税 上限額はいくら？独身・共働き・子ありで比較",
+    shortTitle: "年収500万の上限額",
+    description:
+      "年収500万円のふるさと納税の上限額の目安は、独身・共働きで約6.1万円。家族構成別の早見表と、ワンストップ特例で足りるか、無理のない寄付額の決め方を解説します。",
+    category: "zei",
+    targets: ["furusato-nozei"],
+    related: [
+      "furusato-nozei-600man",
+      "furusato-nozei-nenshu-betsu",
+      "furusato-nozei-yarikata",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🎁",
+  },
+  {
+    slug: "furusato-nozei-600man",
+    title:
+      "年収600万円のふるさと納税 上限額はいくら？独身・共働き・子ありで比較",
+    shortTitle: "年収600万の上限額",
+    description:
+      "年収600万円のふるさと納税の上限額の目安は、独身・共働きで約7.7万円。家族構成別の早見表と、ワンストップ特例の使い方、おすすめの寄付額を解説します。",
+    category: "zei",
+    targets: ["furusato-nozei"],
+    related: [
+      "furusato-nozei-500man",
+      "furusato-nozei-700man",
+      "furusato-nozei-nenshu-betsu",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🎁",
+  },
+  {
+    slug: "furusato-nozei-700man",
+    title:
+      "年収700万円のふるさと納税 上限額はいくら？独身・共働き・子ありで比較",
+    shortTitle: "年収700万の上限額",
+    description:
+      "年収700万円のふるさと納税の上限額の目安は、独身・共働きで約10.8万円。家族構成別の早見表と、ワンストップ特例で足りるか、寄付額の決め方を解説します。",
+    category: "zei",
+    targets: ["furusato-nozei"],
+    related: [
+      "furusato-nozei-600man",
+      "furusato-nozei-nenshu-betsu",
+      "furusato-nozei-yarikata",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🎁",
+  },
+  {
+    slug: "furusato-nozei-tomobataraki",
+    title:
+      "共働き夫婦のふるさと納税 上限額は？年収別の早見表とそれぞれ寄付する方法",
+    shortTitle: "共働きの上限額",
+    description:
+      "共働き夫婦は配偶者控除がないぶん上限額が高め。年収別の早見表と、夫婦それぞれが自分の名義で寄付するときの注意点（名義・ワンストップ特例）を解説します。",
+    category: "zei",
+    targets: ["furusato-nozei"],
+    related: [
+      "furusato-nozei-500man",
+      "furusato-nozei-nenshu-betsu",
+      "furusato-nozei-yarikata",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "👫",
   },
 ];
 

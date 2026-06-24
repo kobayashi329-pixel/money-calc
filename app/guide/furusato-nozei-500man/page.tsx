@@ -1,0 +1,20 @@
+import type { Metadata } from "next";
+import { GuideLayout } from "@/components/GuideLayout";
+import { getGuide } from "@/lib/guides";
+import Article from "@/content/guides/furusato-nozei-500man.mdx";
+
+const G = getGuide("furusato-nozei-500man")!;
+
+export const metadata: Metadata = {
+  title: G.title,
+  description: G.description,
+  alternates: { canonical: "/guide/furusato-nozei-500man" },
+};
+
+export default function Page() {
+  return (
+    <GuideLayout slug="furusato-nozei-500man">
+      <Article />
+    </GuideLayout>
+  );
+}
