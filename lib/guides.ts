@@ -2010,6 +2010,99 @@ export const GUIDES: Guide[] = [
     updated: "2026年6月24日",
     emoji: "👨‍👧",
   },
+
+  // ===== NISA・投資 クラスター深掘り（toshi） =====
+  {
+    slug: "nisa-1800man",
+    title: "新NISAの1800万円はいつ埋まる？生涯投資枠の使い方と年数",
+    shortTitle: "NISAの1800万円枠",
+    description:
+      "新NISAの生涯投資枠は1,800万円。毎月いくらで何年で埋まるか（満額5年〜月3万50年）と、枠の再利用・成長投資枠1,200万円の上限をわかりやすく解説します。",
+    category: "toshi",
+    targets: ["nisa"],
+    related: ["nisa-tsukini-ikura", "shin-nisa-waku", "nisa-deguchi"],
+    status: "live",
+    updated: "2026年6月29日",
+    emoji: "🗓️",
+  },
+  {
+    slug: "nisa-deguchi",
+    title: "NISAの出口戦略｜いつ売る？老後の取り崩し方をわかりやすく",
+    shortTitle: "NISAの出口戦略",
+    description:
+      "NISAは「いつ売るか（出口）」も大切です。非課税期間が無期限の新NISAでの取り崩しの考え方（定額・定率）、暴落時に慌てないための方針を解説します。",
+    category: "toshi",
+    targets: ["nisa"],
+    related: ["nisa-genpon-ware", "nisa-1800man", "rougo-2000man"],
+    status: "live",
+    updated: "2026年6月29日",
+    emoji: "🚪",
+  },
+  {
+    slug: "nisa-demerit",
+    title: "NISAのデメリットは？始める前に知っておきたい注意点",
+    shortTitle: "NISAのデメリット",
+    description:
+      "NISAは運用益が非課税の一方、元本割れの可能性・損益通算や繰越控除ができない・対象外商品があるなどの注意点も。デメリットを正しく理解しましょう。",
+    category: "toshi",
+    targets: ["nisa"],
+    related: ["nisa-genpon-ware", "ideco-demerit", "nisa-nani-kau"],
+    status: "live",
+    updated: "2026年6月29日",
+    emoji: "⚠️",
+  },
+  {
+    slug: "nisa-genpon-ware",
+    title: "NISAで元本割れしたらどうする？暴落時の正しい向き合い方",
+    shortTitle: "NISAの元本割れ",
+    description:
+      "NISAは投資なので元本割れの可能性があります。値下がり・暴落時に慌てて売らないための考え方（長期・積立・分散、ドルコスト平均法）をわかりやすく解説します。",
+    category: "toshi",
+    targets: ["nisa"],
+    related: ["nisa-demerit", "nisa-deguchi", "fukuri"],
+    status: "live",
+    updated: "2026年6月29日",
+    emoji: "📉",
+  },
+  {
+    slug: "nisa-nani-kau",
+    title: "NISAで何を買う？初心者向けの投資信託の選び方",
+    shortTitle: "NISAで何を買う",
+    description:
+      "NISAで何を買うか迷う初心者向けに、投資信託の選び方の基本（低コストのインデックス投信・全世界株式や米国株式）を、特定商品の推奨ではなく一般論として解説します。",
+    category: "toshi",
+    targets: ["nisa"],
+    related: ["nisa-tsumitate-toushiwaku", "nisa-demerit", "fukuri"],
+    status: "live",
+    updated: "2026年6月29日",
+    emoji: "🛒",
+  },
+  {
+    slug: "nisa-1000man",
+    title: "NISAで1000万円貯めるには？毎月いくら×何年のシミュレーション",
+    shortTitle: "NISAで1000万円",
+    description:
+      "NISAで1,000万円を目指すには、年5%運用で月3万円なら約18年、月5万円なら約13年、月10万円なら約7年が目安。毎月の積立額別の到達年数を解説します。",
+    category: "toshi",
+    targets: ["nisa"],
+    related: ["nisa-tsukini-ikura", "nisa-1800man", "fukuri"],
+    status: "live",
+    updated: "2026年6月29日",
+    emoji: "🎯",
+  },
+  {
+    slug: "fukuri",
+    title: "複利とは？72の法則と長期投資で資産が増える仕組み",
+    shortTitle: "複利と72の法則",
+    description:
+      "複利は「利息が利息を生む」仕組みで、長期投資の効果の源です。72の法則（72÷利回り＝資産が2倍になる年数）と、積立投資での複利効果をわかりやすく解説します。",
+    category: "toshi",
+    targets: ["nisa", "ideco"],
+    related: ["nisa-tsukini-ikura", "nisa-1000man", "nisa-genpon-ware"],
+    status: "live",
+    updated: "2026年6月29日",
+    emoji: "🔁",
+  },
 ];
 
 // ---- ヘルパー ----
