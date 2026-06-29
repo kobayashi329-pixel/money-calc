@@ -269,6 +269,30 @@ export const CALCULATORS: Calculator[] = [
     priority: 11,
     emoji: "⏱️",
   },
+  {
+    slug: "jidoshazei",
+    title: "自動車税 計算機（種別割）",
+    shortTitle: "自動車税",
+    description:
+      "総排気量と初度登録時期から、自家用乗用車の自動車税（種別割）の年税額を計算。軽自動車・13年超の重課にも対応。",
+    category: "zei",
+    status: "live",
+    related: ["kotei-shisanzei", "shohizei", "tedori"],
+    priority: 12,
+    emoji: "🚗",
+  },
+  {
+    slug: "kotei-shisanzei",
+    title: "固定資産税・都市計画税 計算機",
+    shortTitle: "固定資産税",
+    description:
+      "土地・建物の固定資産税評価額から、固定資産税（1.4%）と都市計画税（0.3%）の年税額を計算。住宅用地の特例に対応。",
+    category: "zei",
+    status: "live",
+    related: ["jutaku-loan", "jidoshazei", "sozokuzei"],
+    priority: 13,
+    emoji: "🏡",
+  },
 ];
 
 // ---- ヘルパー ----
