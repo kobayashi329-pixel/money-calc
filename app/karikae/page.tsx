@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   title: "住宅ローン借り換え比較シミュレータ｜正味メリットを試算",
   description: CALC.description,
   alternates: { canonical: "/karikae" },
+  openGraph: { images: ["/og/karikae"] },
+  twitter: { card: "summary_large_image", images: ["/og/karikae"] },
 };
 
 export default function KarikaePage() {

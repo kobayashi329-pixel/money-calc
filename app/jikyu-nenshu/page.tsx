@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   title: "時給・月給・年収 換算機｜時給からいくら？を一発計算",
   description: CALC.description,
   alternates: { canonical: "/jikyu-nenshu" },
+  openGraph: { images: ["/og/jikyu-nenshu"] },
+  twitter: { card: "summary_large_image", images: ["/og/jikyu-nenshu"] },
 };
 
 export default function JikyuPage() {

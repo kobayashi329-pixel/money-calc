@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   title: "贈与税 計算機（暦年課税）｜贈与額から税額・手取りを試算",
   description: CALC.description,
   alternates: { canonical: "/zouyozei" },
+  openGraph: { images: ["/og/zouyozei"] },
+  twitter: { card: "summary_large_image", images: ["/og/zouyozei"] },
 };
 
 export default function ZouyozeiPage() {

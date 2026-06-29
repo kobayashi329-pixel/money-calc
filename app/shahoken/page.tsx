@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   title: "社会保険料 計算機｜年収から健康保険・厚生年金などの負担を試算",
   description: CALC.description,
   alternates: { canonical: "/shahoken" },
+  openGraph: { images: ["/og/shahoken"] },
+  twitter: { card: "summary_large_image", images: ["/og/shahoken"] },
 };
 
 export default function ShahokenPage() {

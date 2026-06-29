@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   title: "NISA積立シミュレータ｜将来の資産額・運用益を試算",
   description: CALC.description,
   alternates: { canonical: "/nisa" },
+  openGraph: { images: ["/og/nisa"] },
+  twitter: { card: "summary_large_image", images: ["/og/nisa"] },
 };
 
 export default function NisaPage() {

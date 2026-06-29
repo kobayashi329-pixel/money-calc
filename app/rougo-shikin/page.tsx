@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   title: "老後資金シミュレーション｜退職時にいくら必要かを計算",
   description: CALC.description,
   alternates: { canonical: "/rougo-shikin" },
+  openGraph: { images: ["/og/rougo-shikin"] },
+  twitter: { card: "summary_large_image", images: ["/og/rougo-shikin"] },
 };
 
 export default function RougoPage() {

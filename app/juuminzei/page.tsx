@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   title: "住民税 計算機｜年収から所得割・均等割の年額を試算",
   description: CALC.description,
   alternates: { canonical: "/juuminzei" },
+  openGraph: { images: ["/og/juuminzei"] },
+  twitter: { card: "summary_large_image", images: ["/og/juuminzei"] },
 };
 
 export default function JuuminzeiPage() {

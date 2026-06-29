@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   title: "相続税計算機｜基礎控除・配偶者の税額軽減に対応",
   description: CALC.description,
   alternates: { canonical: "/sozokuzei" },
+  openGraph: { images: ["/og/sozokuzei"] },
+  twitter: { card: "summary_large_image", images: ["/og/sozokuzei"] },
 };
 
 export default function SozokuPage() {

@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   title: "住宅ローン返済シミュレータ（毎月の返済額・総返済額）",
   description: CALC.description,
   alternates: { canonical: "/jutaku-loan" },
+  openGraph: { images: ["/og/jutaku-loan"] },
+  twitter: { card: "summary_large_image", images: ["/og/jutaku-loan"] },
 };
 
 export default function JutakuLoanPage() {

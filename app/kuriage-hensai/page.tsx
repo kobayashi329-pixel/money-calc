@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   title: "住宅ローン繰り上げ返済シミュレータ｜期間短縮型・返済額軽減型を比較",
   description: CALC.description,
   alternates: { canonical: "/kuriage-hensai" },
+  openGraph: { images: ["/og/kuriage-hensai"] },
+  twitter: { card: "summary_large_image", images: ["/og/kuriage-hensai"] },
 };
 
 export default function KuriagePage() {

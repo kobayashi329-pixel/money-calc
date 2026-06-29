@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   title: "消費税・インボイス計算機｜税込・税抜の変換、8%/10%対応",
   description: CALC.description,
   alternates: { canonical: "/shohizei" },
+  openGraph: { images: ["/og/shohizei"] },
+  twitter: { card: "summary_large_image", images: ["/og/shohizei"] },
 };
 
 export default function ShohizeiPage() {

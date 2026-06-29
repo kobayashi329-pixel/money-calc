@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   title: "自動車税 計算機（種別割）｜排気量別の年税額・軽自動車対応",
   description: CALC.description,
   alternates: { canonical: "/jidoshazei" },
+  openGraph: { images: ["/og/jidoshazei"] },
+  twitter: { card: "summary_large_image", images: ["/og/jidoshazei"] },
 };
 
 export default function JidoshazeiPage() {

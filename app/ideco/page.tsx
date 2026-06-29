@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   title: "iDeCo節税・積立シミュレータ（2025年・令和7年版）",
   description: CALC.description,
   alternates: { canonical: "/ideco" },
+  openGraph: { images: ["/og/ideco"] },
+  twitter: { card: "summary_large_image", images: ["/og/ideco"] },
 };
 
 export default function IdecoPage() {

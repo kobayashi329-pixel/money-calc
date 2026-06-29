@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   title: "固定資産税・都市計画税 計算機｜評価額から年税額を試算",
   description: CALC.description,
   alternates: { canonical: "/kotei-shisanzei" },
+  openGraph: { images: ["/og/kotei-shisanzei"] },
+  twitter: { card: "summary_large_image", images: ["/og/kotei-shisanzei"] },
 };
 
 export default function KoteiPage() {

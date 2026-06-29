@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   title: "退職金の手取り・税金計算機（2025年・令和7年版）",
   description: CALC.description,
   alternates: { canonical: "/taishokukin" },
+  openGraph: { images: ["/og/taishokukin"] },
+  twitter: { card: "summary_large_image", images: ["/og/taishokukin"] },
 };
 
 export default function TaishokuPage() {

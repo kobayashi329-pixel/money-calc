@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   title: "ライフプラン表（生涯キャッシュフロー）｜貯蓄が尽きる年齢を試算",
   description: CALC.description,
   alternates: { canonical: "/life-plan" },
+  openGraph: { images: ["/og/life-plan"] },
+  twitter: { card: "summary_large_image", images: ["/og/life-plan"] },
 };
 
 export default function LifePlanPage() {

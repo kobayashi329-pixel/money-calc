@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   title: "教育資金シミュレーション｜幼稚園〜大学の教育費はいくら？",
   description: CALC.description,
   alternates: { canonical: "/kyoiku-shikin" },
+  openGraph: { images: ["/og/kyoiku-shikin"] },
+  twitter: { card: "summary_large_image", images: ["/og/kyoiku-shikin"] },
 };
 
 export default function KyoikuPage() {

@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   title: "公的年金 受給見込み額シミュレーション（令和7年度）｜将来もらえる年金を計算",
   description: CALC.description,
   alternates: { canonical: "/nenkin-mikomi" },
+  openGraph: { images: ["/og/nenkin-mikomi"] },
+  twitter: { card: "summary_large_image", images: ["/og/nenkin-mikomi"] },
 };
 
 export default function NenkinPage() {

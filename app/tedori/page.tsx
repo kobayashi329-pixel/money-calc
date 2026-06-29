@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   title: "年収手取り計算機（2025年・令和7年版）",
   description: CALC.description,
   alternates: { canonical: "/tedori" },
+  openGraph: { images: ["/og/tedori"] },
+  twitter: { card: "summary_large_image", images: ["/og/tedori"] },
 };
 
 export default function TedoriPage() {

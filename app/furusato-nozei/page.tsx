@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   title: "ふるさと納税 上限額シミュレータ（2025年・令和7年版）",
   description: CALC.description,
   alternates: { canonical: "/furusato-nozei" },
+  openGraph: { images: ["/og/furusato-nozei"] },
+  twitter: { card: "summary_large_image", images: ["/og/furusato-nozei"] },
 };
 
 export default function FurusatoPage() {
