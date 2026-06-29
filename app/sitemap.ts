@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 import { liveCalculators, CATEGORIES } from "@/lib/calculators";
 import { liveGuides } from "@/lib/guides";
+import { guideFigureUrls, calculatorFigureUrls } from "@/lib/figures";
 
 // 検索エンジンにページ一覧を伝えるサイトマップ（/sitemap.xml）。
 // レジストリ駆動: 公開済み計算機・カテゴリを自動収録。新計算機を足すと自動で載る。
@@ -14,13 +15,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/calculators`, lastModified, changeFrequency: "weekly", priority: 0.6 },
   ];
 
-  // 公開済み計算機
+  // 公開済み計算機（記事別OGP画像＋本文の図解を画像サイトマップに収録）
   for (const c of liveCalculators()) {
     entries.push({
       url: `${SITE_URL}/${c.slug}`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.9,
+      images: [`${SITE_URL}/og/${c.slug}`, ...calculatorFigureUrls(c.slug, SITE_URL)],
     });
   }
 
@@ -37,6 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly",
       priority: 0.7,
+      images: [`${SITE_URL}/og/${g.slug}`, ...guideFigureUrls(g.slug, SITE_URL)],
     });
   }
 

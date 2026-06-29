@@ -392,6 +392,50 @@ const FIGS: Record<string, () => React.ReactElement> = {
       "#3b82f6",
       4800,
     ),
+  "nisa-waku": () =>
+    hbar(
+      "新NISAの2つの投資枠（年間の上限）",
+      "年間360万円・生涯1,800万円まで投資できます（成長投資枠は最大1,200万円・単位：万円）。",
+      [
+        { label: "つみたて投資枠 120万", value: 120, color: "#10b981" },
+        { label: "成長投資枠 240万", value: 240, color: "#3b82f6" },
+      ],
+      60,
+    ),
+  "kyoiku-shinro": () =>
+    vbars(
+      "大学4年間の費用（進路別の目安）",
+      [
+        { label: "国公立", value: 240, display: "約240万円" },
+        { label: "私立文系", value: 410, display: "約410万円" },
+        { label: "私立理系", value: 550, display: "約550万円" },
+      ],
+      "#10b981",
+      550,
+    ),
+  shohizei: () =>
+    hbar(
+      "消費税の計算（税抜→税込）",
+      "税抜10,000円に消費税10%（1,000円）を足すと、税込11,000円になります（単位：円）。",
+      [
+        { label: "税抜金額 10,000円", value: 10000, color: "#10b981" },
+        { label: "消費税（10%）1,000円", value: 1000, color: "#f59e0b" },
+      ],
+      1000,
+    ),
+  "jutaku-shakingaku": () =>
+    vbars(
+      "年収別の住宅ローン借入可能額（無理のない目安）",
+      [
+        { label: "年収400万", value: 2720, display: "約2,720万" },
+        { label: "年収500万", value: 3400, display: "約3,400万" },
+        { label: "年収600万", value: 4080, display: "約4,080万" },
+        { label: "年収700万", value: 4760, display: "約4,760万" },
+        { label: "年収1000万", value: 6800, display: "約6,800万" },
+      ],
+      "#10b981",
+      6800,
+    ),
 };
 
 export async function GET(
