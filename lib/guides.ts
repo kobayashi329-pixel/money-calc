@@ -985,6 +985,164 @@ export const GUIDES: Guide[] = [
     updated: "2026年6月24日",
     emoji: "👫",
   },
+
+  // ===== 住宅ローン 借入額別の返済額クラスター（loan） =====
+  {
+    slug: "jutaku-hensai-betsu",
+    title:
+      "住宅ローンの毎月返済額 早見表｜借入額別（1000万〜5000万）・金利別の目安",
+    shortTitle: "返済額の借入額別早見表",
+    description:
+      "住宅ローンの毎月返済額を借入額別・金利別の早見表で確認。1,000万〜5,000万円を金利0.5〜2%・35年で試算した目安と、総返済額・利息の考え方を解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: [
+      "jutaku-2000man-hensai",
+      "jutaku-3000man-hensai",
+      "jutaku-loan-nenshu-betsu",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📊",
+  },
+  {
+    slug: "jutaku-1000man-hensai",
+    title: "住宅ローン1000万円の毎月返済額はいくら？金利別の目安と総返済額",
+    shortTitle: "1000万ローンの返済額",
+    description:
+      "住宅ローン1,000万円を35年で借りた場合の毎月返済額は、金利1%で約28,229円。金利別の返済額・総返済額の目安と、無理のない年収の目安を解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: [
+      "jutaku-2000man-hensai",
+      "jutaku-hensai-betsu",
+      "jutaku-loan-300man",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏠",
+  },
+  {
+    slug: "jutaku-2000man-hensai",
+    title: "住宅ローン2000万円の毎月返済額はいくら？金利別の目安と総返済額",
+    shortTitle: "2000万ローンの返済額",
+    description:
+      "住宅ローン2,000万円を35年で借りた場合の毎月返済額は、金利1%で約56,457円。金利別の返済額・総返済額の目安と、無理のない年収の目安を解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: [
+      "jutaku-2500man-hensai",
+      "jutaku-3000man-hensai",
+      "jutaku-hensai-betsu",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏠",
+  },
+  {
+    slug: "jutaku-2500man-hensai",
+    title: "住宅ローン2500万円の毎月返済額はいくら？金利別の目安と総返済額",
+    shortTitle: "2500万ローンの返済額",
+    description:
+      "住宅ローン2,500万円を35年で借りた場合の毎月返済額は、金利1%で約70,571円。金利別の返済額・総返済額の目安と、無理のない年収の目安を解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: [
+      "jutaku-2000man-hensai",
+      "jutaku-3000man-hensai",
+      "jutaku-hensai-betsu",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏠",
+  },
+  {
+    slug: "jutaku-4000man-hensai",
+    title: "住宅ローン4000万円の毎月返済額はいくら？金利別の目安と総返済額",
+    shortTitle: "4000万ローンの返済額",
+    description:
+      "住宅ローン4,000万円を35年で借りた場合の毎月返済額は、金利1%で約112,914円。金利別の返済額・総返済額の目安と、無理のない年収の目安を解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: [
+      "jutaku-3000man-hensai",
+      "jutaku-5000man-hensai",
+      "jutaku-hensai-betsu",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏠",
+  },
+  {
+    slug: "jutaku-5000man-hensai",
+    title: "住宅ローン5000万円の毎月返済額はいくら？金利別の目安と総返済額",
+    shortTitle: "5000万ローンの返済額",
+    description:
+      "住宅ローン5,000万円を35年で借りた場合の毎月返済額は、金利1%で約141,143円。金利別の返済額・総返済額の目安と、無理のない年収の目安を解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: [
+      "jutaku-4000man-hensai",
+      "jutaku-hensai-betsu",
+      "jutaku-loan-1000man",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏠",
+  },
+
+  // ===== NISA クラスター強化（toshi）＝サーチコンソールで表示されているクエリ =====
+  {
+    slug: "nisa-seichou-toushiwaku",
+    title: "新NISAの成長投資枠とは？対象商品・年240万円の使い方をわかりやすく",
+    shortTitle: "成長投資枠とは",
+    description:
+      "新NISAの成長投資枠は年間240万円・生涯1,200万円まで。個別株・ETF・投資信託が対象で、つみたて投資枠との違いや使い方をわかりやすく解説します。",
+    category: "toshi",
+    targets: ["nisa"],
+    related: [
+      "nisa-tsumitate-toushiwaku",
+      "shin-nisa-waku",
+      "nisa-tsukini-ikura",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📈",
+  },
+  {
+    slug: "nisa-tsumitate-toushiwaku",
+    title: "新NISAのつみたて投資枠とは？対象商品・年120万円の使い方を解説",
+    shortTitle: "つみたて投資枠とは",
+    description:
+      "新NISAのつみたて投資枠は年間120万円まで。金融庁が選んだ長期・積立向けの投資信託が対象で、成長投資枠との違いや初心者の使い方を解説します。",
+    category: "toshi",
+    targets: ["nisa"],
+    related: [
+      "nisa-seichou-toushiwaku",
+      "shin-nisa-waku",
+      "nisa-tsukini-ikura",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📈",
+  },
+  {
+    slug: "nisa-kojin-jigyounushi",
+    title: "個人事業主・フリーランスのNISA｜経費にできる？節税になる？",
+    shortTitle: "個人事業主のNISA",
+    description:
+      "NISAの掛金は経費にできず所得控除もありません。個人事業主・フリーランスがNISA・iDeCo・小規模企業共済をどう使い分けるか、節税の観点から解説します。",
+    category: "toshi",
+    targets: ["nisa", "ideco"],
+    related: [
+      "nisa-ideco-dochira",
+      "furusato-nozei-jieigyou",
+      "nisa-seichou-toushiwaku",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🧑‍💼",
+  },
 ];
 
 // ---- ヘルパー ----
@@ -1002,9 +1160,12 @@ export function liveGuides(): Guide[] {
 const GUIDE_INDEX = new Map(GUIDES.map((g, i) => [g.slug, i]));
 
 /** 同じシリーズ（テーマ）でまとめるためのキー。
- *  ふるさと納税は1グループ、それ以外はスラッグ先頭の英字トピックでまとめる。 */
+ *  ふるさと納税・住宅ローン（借入可能額／返済額）はそれぞれ1グループにまとめ、
+ *  それ以外はスラッグ先頭の英字トピックでまとめる。 */
 function guideSeriesKey(g: Guide): string {
   if (g.slug.startsWith("furusato-nozei")) return "furusato-nozei";
+  if (g.slug.startsWith("jutaku-loan")) return "jutaku-loan"; // 借入可能額（年収別）
+  if (g.slug.endsWith("-hensai")) return "jutaku-hensai"; // 返済額（借入額別）
   const m = g.slug.match(/^[a-z]+/);
   return m ? m[0] : g.slug;
 }
