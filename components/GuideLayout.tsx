@@ -79,13 +79,17 @@ export function GuideLayout({
           name: guide.title,
           description: guide.description,
           image: [ogImage],
-          step: howto.map((s, i) => ({
-            "@type": "HowToStep",
-            position: i + 1,
-            name: s.name,
-            text: s.text,
-            url: `${SITE_URL}/guide/${guide.slug}#${headings.find((h) => h.text.includes(s.name))?.id ?? ""}`,
-          })),
+          step: howto.map((s, i) => {
+            // ステップ見出し型は対応する見出しのアンカーURLを付ける（番号リスト型は付けない）
+            const h = headings.find((x) => x.text.includes(s.name));
+            return {
+              "@type": "HowToStep",
+              position: i + 1,
+              name: s.name,
+              text: s.text,
+              ...(h ? { url: `${SITE_URL}/guide/${guide.slug}#${h.id}` } : {}),
+            };
+          }),
         }
       : null;
 
