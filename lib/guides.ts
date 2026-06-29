@@ -1872,6 +1872,144 @@ export const GUIDES: Guide[] = [
     updated: "2026年6月24日",
     emoji: "📅",
   },
+
+  // ===== 年収の壁／扶養 深掘り（kyuyo・既存クラスター強化） =====
+  {
+    slug: "kabe-106man",
+    title: "106万円の壁とは？社会保険に加入する条件と手取りへの影響",
+    shortTitle: "106万円の壁",
+    description:
+      "106万円の壁は、一定の勤務先で社会保険（厚生年金・健康保険）に加入する年収ラインです。加入条件・手取りの減り方・将来の年金が増えるメリットを解説します。",
+    category: "kyuyo",
+    targets: ["tedori"],
+    related: ["kabe-130man", "nenshu-no-kabe", "fuyou-ikura"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🧱",
+  },
+  {
+    slug: "kabe-130man",
+    title: "130万円の壁とは？扶養を外れるラインと働き損の考え方",
+    shortTitle: "130万円の壁",
+    description:
+      "130万円の壁は、配偶者などの社会保険の扶養から外れ、自分で社会保険料を払うラインです。手取りが減る「働き損」と、それでも働くメリットを解説します。",
+    category: "kyuyo",
+    targets: ["tedori"],
+    related: ["kabe-106man", "kabe-150man", "fuyou-ikura"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🧱",
+  },
+  {
+    slug: "kabe-150man",
+    title: "150万円・160万円の壁とは？配偶者特別控除と所得税の壁",
+    shortTitle: "150万円の壁",
+    description:
+      "150万円の壁は配偶者特別控除が満額受けられる上限、2025年からの所得税の壁は160万円。配偶者控除・配偶者特別控除の仕組みをわかりやすく解説します。",
+    category: "kyuyo",
+    targets: ["tedori"],
+    related: ["kabe-130man", "nenshu-no-kabe", "fuyou-ikura"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🧱",
+  },
+  {
+    slug: "fuyou-ikura",
+    title: "扶養はいくらまで？税金・社会保険の扶養の年収条件まとめ",
+    shortTitle: "扶養はいくらまで",
+    description:
+      "「扶養の範囲内」には税金の扶養と社会保険の扶養の2種類があります。所得税・住民税・社会保険それぞれの年収ラインを一覧でわかりやすく解説します。",
+    category: "kyuyo",
+    targets: ["tedori"],
+    related: ["kabe-130man", "kabe-106man", "nenshu-no-kabe"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "👪",
+  },
+
+  // ===== 住民税 計算機の関連ガイド（kyuyo） =====
+  {
+    slug: "juuminzei-itsu",
+    title: "住民税はいつから払う？2年目・退職後・徴収方法をわかりやすく",
+    shortTitle: "住民税はいつから",
+    description:
+      "住民税は前年の所得に対して翌年6月から課税されます。新社会人が2年目から引かれる理由、退職・転職時の支払い、特別徴収と普通徴収の違いを解説します。",
+    category: "kyuyo",
+    targets: ["juuminzei"],
+    related: ["juuminzei-ikura", "nenshu-tedori-ichiran"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏛️",
+  },
+
+  // ===== 社会保険料 計算機の関連ガイド（kyuyo） =====
+  {
+    slug: "hyoujun-houshuu",
+    title: "標準報酬月額とは？社会保険料の決まり方をわかりやすく解説",
+    shortTitle: "標準報酬月額とは",
+    description:
+      "社会保険料は「標準報酬月額」をもとに計算されます。標準報酬月額の決まり方（等級表）と、健康保険・厚生年金の保険料への影響をわかりやすく解説します。",
+    category: "kyuyo",
+    targets: ["shahoken"],
+    related: ["shahoken-4-6gatsu", "nenshu-tedori-ichiran"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📐",
+  },
+  {
+    slug: "shahoken-4-6gatsu",
+    title: "社会保険料は4〜6月の給料で決まる？定時決定と残業の関係",
+    shortTitle: "社会保険料と4〜6月",
+    description:
+      "社会保険料は、毎年4〜6月の給与をもとに「定時決定」で1年分が決まります。この時期の残業で保険料が上がる仕組みと、知っておきたい注意点を解説します。",
+    category: "kyuyo",
+    targets: ["shahoken"],
+    related: ["hyoujun-houshuu", "nenshu-tedori-ichiran"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📅",
+  },
+
+  // ===== 贈与税 計算機の関連ガイド（zei） =====
+  {
+    slug: "souzoku-seisan-kazei",
+    title: "相続時精算課税とは？2500万円まで贈与税が非課税になる制度",
+    shortTitle: "相続時精算課税",
+    description:
+      "相続時精算課税は、累計2,500万円までの贈与に贈与税がかからない制度です（相続時に精算）。2024年から年110万円の基礎控除も新設。暦年課税との違いを解説します。",
+    category: "zei",
+    targets: ["zouyozei", "sozokuzei"],
+    related: ["zouyozei-ikura", "zouyozei-rekinen", "sozokuzei-isan-betsu"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🔄",
+  },
+  {
+    slug: "zouyozei-bareru",
+    title: "贈与税は申告しないとばれる？税務署に把握される理由と加算税",
+    shortTitle: "贈与税はばれる？",
+    description:
+      "贈与の申告をしないと、不動産登記・保険金・相続調査などから税務署に把握されることがあります。無申告のペナルティ（加算税・延滞税）と正しい申告を解説します。",
+    category: "zei",
+    targets: ["zouyozei"],
+    related: ["zouyozei-ikura", "zouyozei-oyako", "zouyozei-rekinen"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🔍",
+  },
+  {
+    slug: "zouyozei-oyako",
+    title: "親子間の贈与はいくらまで非課税？生活費・仕送りの扱い",
+    shortTitle: "親子間の贈与",
+    description:
+      "親子間でも年110万円を超える贈与には贈与税がかかります。一方、通常必要な生活費・教育費を都度渡す分は非課税。親子間の贈与の非課税ラインを解説します。",
+    category: "zei",
+    targets: ["zouyozei"],
+    related: ["zouyozei-rekinen", "zouyozei-bareru", "zouyozei-ikura"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "👨‍👧",
+  },
 ];
 
 // ---- ヘルパー ----
