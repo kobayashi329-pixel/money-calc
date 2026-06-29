@@ -1407,6 +1407,153 @@ export const GUIDES: Guide[] = [
     updated: "2026年6月24日",
     emoji: "📈",
   },
+
+  // ===== iDeCo クラスター（toshi） =====
+  {
+    slug: "ideco-kakekin-jougen",
+    title: "iDeCoの掛金はいくらまで？職業・加入区分別の上限額（月額）",
+    shortTitle: "iDeCoの掛金上限",
+    description:
+      "iDeCoの掛金の上限は、会社員（企業年金なし）で月2.3万円、自営業で月6.8万円、公務員で月2万円など職業で異なります。加入区分別の上限額と決め方を解説します。",
+    category: "toshi",
+    targets: ["ideco"],
+    related: ["ideco-setsuzei", "ideco-merit", "nisa-ideco-dochira"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📊",
+  },
+  {
+    slug: "ideco-setsuzei",
+    title: "iDeCoの節税額はいくら？年収別の年間節税シミュレーション",
+    shortTitle: "iDeCoの節税額",
+    description:
+      "iDeCoの掛金は全額所得控除。会社員が月2.3万円拠出すると、年収500万円で年約5.6万円、年収700万円で年約8.4万円の節税になります。年収別の節税額を解説します。",
+    category: "toshi",
+    targets: ["ideco"],
+    related: ["ideco-kakekin-jougen", "ideco-merit", "ideco-demerit"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "💰",
+  },
+  {
+    slug: "ideco-merit",
+    title: "iDeCoのメリットは？3つの税制優遇をわかりやすく解説",
+    shortTitle: "iDeCoのメリット",
+    description:
+      "iDeCoには「掛金が全額所得控除」「運用益が非課税」「受取時も控除」の3つの税制優遇があります。NISAとの違いも含め、メリットをわかりやすく解説します。",
+    category: "toshi",
+    targets: ["ideco"],
+    related: ["ideco-demerit", "ideco-setsuzei", "nisa-ideco-dochira"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "✅",
+  },
+  {
+    slug: "ideco-uketori",
+    title: "iDeCoの受け取り方｜一時金と年金どっちが得？税金の違いを解説",
+    shortTitle: "iDeCoの受け取り方",
+    description:
+      "iDeCoは60歳以降に一時金・年金・併用で受け取れます。一時金は退職所得控除、年金は公的年金等控除の対象。退職金との重複に注意した受け取り方を解説します。",
+    category: "toshi",
+    targets: ["ideco"],
+    related: ["ideco-merit", "taishokukin-kingaku-betsu", "ideco-50dai"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🧾",
+  },
+  {
+    slug: "ideco-40dai",
+    title: "40代からのiDeCoは遅い？20年運用と節税のシミュレーション",
+    shortTitle: "40代のiDeCo",
+    description:
+      "40代からiDeCoを始めても十分間に合います。会社員が月2.3万円・年5%で20年運用すると評価額は約945万円、節税は累計約112万円。40代の始め方を解説します。",
+    category: "toshi",
+    targets: ["ideco"],
+    related: ["ideco-50dai", "ideco-setsuzei", "nisa-40dai"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📈",
+  },
+  {
+    slug: "ideco-50dai",
+    title: "50代からのiDeCoは意味ある？10年運用と節税のシミュレーション",
+    shortTitle: "50代のiDeCo",
+    description:
+      "50代からのiDeCoも節税メリットは十分。会社員が月2.3万円・年5%で10年運用すると評価額は約357万円、節税は累計約56万円。受け取り方の注意点も解説します。",
+    category: "toshi",
+    targets: ["ideco"],
+    related: ["ideco-40dai", "ideco-uketori", "nisa-50dai"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📈",
+  },
+
+  // ===== 年収手取りシリーズ拡充（kyuyo・既存クラスター深掘り） =====
+  {
+    slug: "nenshu-tedori-ichiran",
+    title: "年収別の手取り早見表｜300万〜1000万の手取り・月収一覧",
+    shortTitle: "年収別手取りの早見表",
+    description:
+      "年収別の手取りを早見表で確認。年収300万〜1,000万円の手取り額・月収・手取り率の一覧と、年収が上がるほど手取り率が下がる理由を解説します。",
+    category: "kyuyo",
+    targets: ["tedori"],
+    related: ["nenshu-500man-tedori", "nenshu-450man-tedori", "juuminzei-ikura"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📊",
+  },
+  {
+    slug: "nenshu-350man-tedori",
+    title: "年収350万円の手取りはいくら？税金・社会保険料の内訳と月収",
+    shortTitle: "年収350万の手取り",
+    description:
+      "年収350万円の手取りは約279万円・月約23万円。所得税・住民税・社会保険料の内訳と、手取りを増やす方法をわかりやすく解説します。",
+    category: "kyuyo",
+    targets: ["tedori"],
+    related: ["nenshu-300man-tedori", "nenshu-400man-tedori", "nenshu-tedori-ichiran"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "💴",
+  },
+  {
+    slug: "nenshu-450man-tedori",
+    title: "年収450万円の手取りはいくら？税金・社会保険料の内訳と月収",
+    shortTitle: "年収450万の手取り",
+    description:
+      "年収450万円の手取りは約355万円・月約30万円。所得税・住民税・社会保険料の内訳と、手取りを増やす方法をわかりやすく解説します。",
+    category: "kyuyo",
+    targets: ["tedori"],
+    related: ["nenshu-400man-tedori", "nenshu-500man-tedori", "nenshu-tedori-ichiran"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "💴",
+  },
+  {
+    slug: "nenshu-550man-tedori",
+    title: "年収550万円の手取りはいくら？税金・社会保険料の内訳と月収",
+    shortTitle: "年収550万の手取り",
+    description:
+      "年収550万円の手取りは約427万円・月約36万円。所得税・住民税・社会保険料の内訳と、手取りを増やす方法をわかりやすく解説します。",
+    category: "kyuyo",
+    targets: ["tedori"],
+    related: ["nenshu-500man-tedori", "nenshu-600man-tedori", "nenshu-tedori-ichiran"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "💴",
+  },
+  {
+    slug: "nenshu-650man-tedori",
+    title: "年収650万円の手取りはいくら？税金・社会保険料の内訳と月収",
+    shortTitle: "年収650万の手取り",
+    description:
+      "年収650万円の手取りは約499万円・月約42万円。所得税・住民税・社会保険料の内訳と、手取りを増やす方法をわかりやすく解説します。",
+    category: "kyuyo",
+    targets: ["tedori"],
+    related: ["nenshu-600man-tedori", "nenshu-700man-tedori", "nenshu-tedori-ichiran"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "💴",
+  },
 ];
 
 // ---- ヘルパー ----
