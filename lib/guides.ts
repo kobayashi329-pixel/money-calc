@@ -206,7 +206,7 @@ export const GUIDES: Guide[] = [
       "子ども1人の教育費は、進路（公立・私立）でオール公立約800万〜オール私立約2400万円。段階別の目安と準備方法を解説します。",
     category: "life",
     targets: ["kyoiku-shikin"],
-    related: [],
+    related: ["daigaku-hiyou", "zouyozei-kyoiku"],
     status: "live",
     updated: "2026年6月23日",
     emoji: "🎓",
@@ -1553,6 +1553,147 @@ export const GUIDES: Guide[] = [
     status: "live",
     updated: "2026年6月24日",
     emoji: "💴",
+  },
+
+  // ===== 住宅ローン借入可能額 年収帯gap（loan） =====
+  {
+    slug: "jutaku-loan-450man",
+    title:
+      "年収450万円で住宅ローンはいくら借りられる？借入可能額と月返済額の目安",
+    shortTitle: "年収450万の借入可能額",
+    description:
+      "年収450万円の住宅ローン借入可能額は、無理のない目安で約3,060万円、審査上限の目安で約3,410万円。月々の返済額や無理のない物件価格の考え方を解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: ["jutaku-loan-400man", "jutaku-loan-500man", "jutaku-loan-nenshu-betsu"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏠",
+  },
+  {
+    slug: "jutaku-loan-550man",
+    title:
+      "年収550万円で住宅ローンはいくら借りられる？借入可能額と月返済額の目安",
+    shortTitle: "年収550万の借入可能額",
+    description:
+      "年収550万円の住宅ローン借入可能額は、無理のない目安で約3,740万円、審査上限の目安で約4,170万円。月々の返済額や無理のない物件価格の考え方を解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: ["jutaku-loan-500man", "jutaku-loan-600man", "jutaku-loan-nenshu-betsu"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏠",
+  },
+  {
+    slug: "jutaku-loan-650man",
+    title:
+      "年収650万円で住宅ローンはいくら借りられる？借入可能額と月返済額の目安",
+    shortTitle: "年収650万の借入可能額",
+    description:
+      "年収650万円の住宅ローン借入可能額は、無理のない目安で約4,420万円、審査上限の目安で約4,930万円。月々の返済額や無理のない物件価格の考え方を解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: ["jutaku-loan-600man", "jutaku-loan-700man", "jutaku-loan-nenshu-betsu"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏠",
+  },
+  {
+    slug: "jutaku-loan-900man",
+    title:
+      "年収900万円で住宅ローンはいくら借りられる？借入可能額と月返済額の目安",
+    shortTitle: "年収900万の借入可能額",
+    description:
+      "年収900万円の住宅ローン借入可能額は、無理のない目安で約6,120万円、審査上限の目安で約6,820万円。借りすぎないための考え方とあわせて解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: ["jutaku-loan-800man", "jutaku-loan-1000man", "jutaku-loan-nenshu-betsu"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏠",
+  },
+  {
+    slug: "jutaku-loan-1200man",
+    title:
+      "年収1200万円で住宅ローンはいくら借りられる？借入可能額と月返済額の目安",
+    shortTitle: "年収1200万の借入可能額",
+    description:
+      "年収1200万円の住宅ローン借入可能額は、無理のない目安で約8,170万円、審査上限の目安で約9,090万円。高年収でも借りすぎないための考え方を解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: ["jutaku-loan-1000man", "jutaku-loan-nenshu-betsu", "jutaku-loan-pair"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏠",
+  },
+
+  // ===== 贈与税クラスター（zei） =====
+  {
+    slug: "zouyozei-ikura",
+    title: "贈与税はいくら？金額別の早見表と計算方法（暦年課税）",
+    shortTitle: "贈与税の金額別早見表",
+    description:
+      "贈与税は年間110万円の基礎控除を超えた分にかかります。贈与額別の税額の早見表（特例税率・一般税率）と計算方法、非課税にする方法をわかりやすく解説します。",
+    category: "zei",
+    targets: ["sozokuzei"],
+    related: ["zouyozei-rekinen", "zouyozei-jutaku", "sozokuzei-isan-betsu"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📊",
+  },
+  {
+    slug: "zouyozei-rekinen",
+    title: "年間110万円までの贈与は非課税｜暦年贈与と相続対策のポイント",
+    shortTitle: "暦年贈与（110万円）",
+    description:
+      "贈与税には年間110万円の基礎控除があり、その範囲内なら非課税です。暦年贈与を使った相続対策のポイントと、注意点（生前贈与加算）を解説します。",
+    category: "zei",
+    targets: ["sozokuzei"],
+    related: ["zouyozei-ikura", "sozokuzei-isan-betsu", "sozokuzei-haiguusha-keigen"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🎁",
+  },
+  {
+    slug: "zouyozei-jutaku",
+    title: "住宅取得資金の贈与は非課税に｜親からの援助でいくらまで？",
+    shortTitle: "住宅取得資金の贈与",
+    description:
+      "マイホーム購入のための親・祖父母からの資金援助は、一定額まで贈与税が非課税になります。非課税の上限・条件と、住宅ローンとの組み合わせ方を解説します。",
+    category: "zei",
+    targets: ["sozokuzei"],
+    related: ["zouyozei-ikura", "zouyozei-rekinen", "jutaku-loan-nenshu-betsu"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏠",
+  },
+  {
+    slug: "zouyozei-kyoiku",
+    title: "教育資金の一括贈与は1500万円まで非課税｜制度と注意点",
+    shortTitle: "教育資金の一括贈与",
+    description:
+      "祖父母などからの教育資金は、一括贈与の特例で最大1,500万円まで非課税にできます。制度の条件・使い道・使い残しの扱いと、暦年贈与との違いを解説します。",
+    category: "zei",
+    targets: ["sozokuzei"],
+    related: ["zouyozei-rekinen", "zouyozei-ikura", "daigaku-hiyou"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🎓",
+  },
+
+  // ===== 教育費 深掘り（life） =====
+  {
+    slug: "daigaku-hiyou",
+    title: "大学の費用はいくら？国公立・私立文系・理系の4年間の総額",
+    shortTitle: "大学の費用",
+    description:
+      "大学4年間の費用は、国公立で約240万円、私立文系で約410万円、私立理系で約550万円が目安。入学費用・在学費用の内訳と、準備方法（学資保険・NISA）を解説します。",
+    category: "life",
+    targets: ["kyoiku-shikin"],
+    related: ["kyoikuhi-ikura", "zouyozei-kyoiku", "nisa-tsukini-ikura"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🎓",
   },
 ];
 
