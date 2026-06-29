@@ -1143,6 +1143,145 @@ export const GUIDES: Guide[] = [
     updated: "2026年6月24日",
     emoji: "🧑‍💼",
   },
+
+  // ===== 退職金クラスター（nenkin）＝サーチコンソールで「定年退職金 計算」表示中 =====
+  {
+    slug: "taishokukin-kingaku-betsu",
+    title:
+      "退職金の手取り早見表｜金額別・勤続年数別の税金（1000万〜3000万）",
+    shortTitle: "退職金の手取り早見表",
+    description:
+      "退職金の手取りは金額と勤続年数で決まります。1,000万〜3,000万円を勤続20〜38年で試算した税金・手取りの早見表と、退職所得控除・1/2課税の仕組みを解説します。",
+    category: "nenkin",
+    targets: ["taishokukin"],
+    related: [
+      "taishokukin-2000man",
+      "taishokukin-zeikin",
+      "taishokukin-heikin",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📊",
+  },
+  {
+    slug: "taishokukin-1000man",
+    title: "退職金1000万円の手取りはいくら？勤続年数別の税金の目安",
+    shortTitle: "退職金1000万の手取り",
+    description:
+      "退職金1,000万円の手取りは、勤続25年以上なら税金0で全額手取りになるケースも。勤続年数別の税金・手取りの目安と、退職所得控除の仕組みを解説します。",
+    category: "nenkin",
+    targets: ["taishokukin"],
+    related: [
+      "taishokukin-1500man",
+      "taishokukin-kingaku-betsu",
+      "taishokukin-zeikin",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "💴",
+  },
+  {
+    slug: "taishokukin-1500man",
+    title: "退職金1500万円の手取りはいくら？勤続年数別の税金の目安",
+    shortTitle: "退職金1500万の手取り",
+    description:
+      "退職金1,500万円の手取りは、勤続30年以上なら税金0で全額手取りになるケースも。勤続年数別の税金・手取りの目安と、退職所得控除の仕組みを解説します。",
+    category: "nenkin",
+    targets: ["taishokukin"],
+    related: [
+      "taishokukin-1000man",
+      "taishokukin-2000man",
+      "taishokukin-kingaku-betsu",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "💴",
+  },
+  {
+    slug: "taishokukin-2000man",
+    title: "退職金2000万円の手取りはいくら？勤続年数別の税金の目安",
+    shortTitle: "退職金2000万の手取り",
+    description:
+      "退職金2,000万円の手取りは、勤続38年（定年）なら退職所得控除2,060万円で税金0。勤続20年だと税金約139万円。勤続年数別の税金・手取りを解説します。",
+    category: "nenkin",
+    targets: ["taishokukin"],
+    related: [
+      "taishokukin-1500man",
+      "taishokukin-2500man",
+      "taishokukin-kingaku-betsu",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "💴",
+  },
+  {
+    slug: "taishokukin-2500man",
+    title: "退職金2500万円の手取りはいくら？勤続年数別の税金の目安",
+    shortTitle: "退職金2500万の手取り",
+    description:
+      "退職金2,500万円の手取りは、勤続38年（定年）で税金約35万円・手取り約2,466万円。勤続年数別の税金・手取りの目安と、退職所得控除の仕組みを解説します。",
+    category: "nenkin",
+    targets: ["taishokukin"],
+    related: [
+      "taishokukin-2000man",
+      "taishokukin-3000man",
+      "taishokukin-kingaku-betsu",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "💴",
+  },
+  {
+    slug: "taishokukin-3000man",
+    title: "退職金3000万円の手取りはいくら？勤続年数別の税金の目安",
+    shortTitle: "退職金3000万の手取り",
+    description:
+      "退職金3,000万円の手取りは、勤続38年（定年）で税金約99万円・手取り約2,901万円。勤続年数別の税金・手取りの目安と、退職所得控除の仕組みを解説します。",
+    category: "nenkin",
+    targets: ["taishokukin"],
+    related: [
+      "taishokukin-2500man",
+      "taishokukin-kingaku-betsu",
+      "taishokukin-zeikin",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "💴",
+  },
+  {
+    slug: "taishokukin-heikin",
+    title: "退職金の平均はいくら？大卒・高卒・中小・公務員の相場",
+    shortTitle: "退職金の平均・相場",
+    description:
+      "退職金の平均額は、大卒の定年退職で約1,900万円が目安（厚生労働省調査）。学歴・企業規模・退職理由による相場の違いと、手取りの考え方を解説します。",
+    category: "nenkin",
+    targets: ["taishokukin"],
+    related: [
+      "taishokukin-2000man",
+      "taishokukin-kingaku-betsu",
+      "rougo-2000man",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📈",
+  },
+  {
+    slug: "taishokukin-kakutei-shinkoku",
+    title: "退職金に確定申告は必要？「受給に関する申告書」と還付されるケース",
+    shortTitle: "退職金と確定申告",
+    description:
+      "「退職所得の受給に関する申告書」を勤務先に出せば、原則確定申告は不要です。出さないと一律20.42%が源泉徴収され、確定申告で取り戻すことになります。",
+    category: "nenkin",
+    targets: ["taishokukin"],
+    related: [
+      "taishokukin-zeikin",
+      "taishokukin-kingaku-betsu",
+      "taishokukin-2000man",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📝",
+  },
 ];
 
 // ---- ヘルパー ----
