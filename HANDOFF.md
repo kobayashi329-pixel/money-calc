@@ -29,7 +29,7 @@
 
 ## 3. 公開済みの計算機（17本）
 
-> **税金の新計算機2本を追加(2026-06-24・zeiカテゴリ)**: ✅自動車税 `/jidoshazei`(種別割・総排気量×初度登録の新旧税率・軽自動車・13年超重課。`lib/jidoshazei/`・NORMAL_BANDS税額表・テスト9件)・✅固定資産税 `/kotei-shisanzei`(固定資産税1.4%＋都市計画税0.3%・住宅用地特例[小規模1/6・一般1/3]・新築軽減[建物1/2]。`lib/kotei/`・テスト5件)。各計算機はShareButton(URL共有)＋WebApplication JSON-LD＋解説MDX(content/<slug>.mdx・早見表/計算例)付き。レジストリ(lib/calculators.ts・priority12,13)登録で一覧/sitemap/関連リンク自動配線。検証=2000cc新税率36,000円・固定資産税例176,000円。
+> **税金の新計算機2本を追加(2026-06-24・zeiカテゴリ)**: ✅自動車税 `/jidoshazei`(種別割・総排気量×初度登録の新旧税率・軽自動車・13年超重課。`lib/jidoshazei/`・NORMAL_BANDS税額表・テスト9件)・✅固定資産税 `/kotei-shisanzei`(固定資産税1.4%＋都市計画税0.3%・住宅用地特例[小規模1/6・一般1/3]・新築軽減[建物1/2]。`lib/kotei/`・テスト5件)。各計算機はShareButton(URL共有)＋WebApplication JSON-LD＋解説MDX(content/<slug>.mdx・早見表/計算例)付き。レジストリ(lib/calculators.ts・priority12,13)登録で一覧/sitemap/関連リンク自動配線。検証=2000cc新税率36,000円・固定資産税例176,000円。**相続税/年金深掘り＋新計算機の関連ガイド(2026-06-24・13本)**: ①相続税深掘り(zei・4)=小規模宅地等の特例(sozokuzei-shoukibo-takuchi・最大80%減)・生命保険の非課税枠(sozokuzei-seimei-hoken・500万×法定相続人)・申告期限10か月と必要書類(sozokuzei-shinkoku)・二次相続(sozokuzei-niji)。②公的年金深掘り(nenkin・4)=年収別受給見込み(nenkin-nenshu-betsu master)・厚生年金(nenkin-kousei)・国民年金(nenkin-kokumin)・専業主婦第3号(nenkin-sengyoshufu)。calculateNenkinで実算出(会社員40年: 年収300万月12.4万/500万月16.1万/700万月19.7万、基礎満額月69,308)。③新計算機の関連ガイド=自動車税(jidoshazei-itsumade/jidoshazei-kei)・固定資産税(kotei-heikin/kotei-shinchiku/kotei-itsumade)。新計算機にRelatedGuides自動配線済み。ガイド計121記事。
 >
 > ライフプラン系（FP相談で需要大）4本を追加完了: ✅老後資金 `/rougo-shikin`・✅公的年金見込み `/nenkin-mikomi`・✅教育資金 `/kyoiku-shikin`・✅ライフプラン表 `/life-plan`。新カテゴリ `life`「ライフプラン」を新設。
 >
