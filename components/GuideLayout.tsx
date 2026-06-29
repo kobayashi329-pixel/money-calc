@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { Breadcrumbs } from "./Breadcrumbs";
 import { JsonLd } from "./JsonLd";
-import { getGuide, relatedGuides } from "@/lib/guides";
+import { getGuide, relatedGuides, seriesNeighbors } from "@/lib/guides";
 import { getCalculator } from "@/lib/calculators";
 import { getGuideFaq } from "@/lib/faq";
+import { getGuideHeadings } from "@/lib/toc";
+import { getGuideHowTo } from "@/lib/howto";
 import { SITE_URL, SITE_NAME, AD_SLOTS, affiliateSlotForCategory } from "@/lib/site";
 import { AdSlot } from "./AdSlot";
 import { AffiliateCTA } from "./AffiliateCTA";
@@ -30,6 +32,9 @@ export function GuideLayout({
     .filter((c): c is NonNullable<typeof c> => !!c && c.status === "live");
   const related = relatedGuides(slug);
   const faq = getGuideFaq(slug);
+  const headings = getGuideHeadings(slug);
+  const howto = getGuideHowTo(slug);
+  const { prev, next } = seriesNeighbors(slug);
   const updatedISO = jpDateToISO(guide.updated);
   const ogImage = `${SITE_URL}/og/${guide.slug}`;
 
@@ -65,10 +70,30 @@ export function GuideLayout({
         }
       : null;
 
+  // 手順（ステップ）記事 → HowTo 構造化データ
+  const howToJsonLd =
+    howto.length >= 2
+      ? {
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          name: guide.title,
+          description: guide.description,
+          image: [ogImage],
+          step: howto.map((s, i) => ({
+            "@type": "HowToStep",
+            position: i + 1,
+            name: s.name,
+            text: s.text,
+            url: `${SITE_URL}/guide/${guide.slug}#${headings.find((h) => h.text.includes(s.name))?.id ?? ""}`,
+          })),
+        }
+      : null;
+
   return (
     <article>
       <JsonLd data={articleJsonLd} />
       {faqJsonLd && <JsonLd data={faqJsonLd} />}
+      {howToJsonLd && <JsonLd data={howToJsonLd} />}
       <Breadcrumbs
         items={[{ name: "ガイド", href: "/guide" }, { name: guide.shortTitle }]}
       />
@@ -96,6 +121,29 @@ export function GuideLayout({
             ))}
           </div>
         </div>
+      )}
+
+      {/* 目次（H2が3つ以上ある記事のみ表示） */}
+      {headings.length >= 3 && (
+        <nav
+          aria-label="目次"
+          className="my-5 rounded-xl border border-slate-200 bg-slate-50 p-4"
+        >
+          <div className="text-sm font-bold text-slate-700">目次</div>
+          <ol className="mt-2 space-y-1.5">
+            {headings.map((h, i) => (
+              <li key={h.id} className="text-sm leading-5">
+                <a
+                  href={`#${h.id}`}
+                  className="text-emerald-700 hover:text-emerald-900 hover:underline"
+                >
+                  <span className="mr-1.5 text-slate-400">{i + 1}.</span>
+                  {h.text}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
       )}
 
       {/* 本文（MDX） */}
@@ -128,6 +176,36 @@ export function GuideLayout({
             ))}
           </div>
         </section>
+      )}
+
+      {/* シリーズ前後ナビ（同じテーマの記事を回遊できるように） */}
+      {(prev || next) && (
+        <nav className="mt-8 grid gap-3 sm:grid-cols-2" aria-label="シリーズ内の前後の記事">
+          {prev ? (
+            <Link
+              href={`/guide/${prev.slug}`}
+              className="rounded-xl border border-slate-200 bg-white p-4 hover:shadow-md"
+            >
+              <div className="text-xs text-slate-400">← 前の記事</div>
+              <div className="mt-1 font-semibold text-slate-900">
+                {prev.emoji} {prev.shortTitle}
+              </div>
+            </Link>
+          ) : (
+            <span className="hidden sm:block" />
+          )}
+          {next && (
+            <Link
+              href={`/guide/${next.slug}`}
+              className="rounded-xl border border-slate-200 bg-white p-4 text-right hover:shadow-md"
+            >
+              <div className="text-xs text-slate-400">次の記事 →</div>
+              <div className="mt-1 font-semibold text-slate-900">
+                {next.emoji} {next.shortTitle}
+              </div>
+            </Link>
+          )}
+        </nav>
       )}
 
       {/* 計算機への再導線 */}

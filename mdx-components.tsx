@@ -1,5 +1,17 @@
 import type { MDXComponents } from "mdx/types";
 import { Figure } from "@/components/Figure";
+import { headingId } from "@/lib/toc";
+
+/** React の children（文字列・配列・要素）からプレーンテキストを取り出す。
+ *  目次リンク(#id)と一致するアンカーIDを見出しに付与するために使う。 */
+function nodeText(node: React.ReactNode): string {
+  if (node == null || node === false) return "";
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(nodeText).join("");
+  if (typeof node === "object" && "props" in node)
+    return nodeText((node as { props?: { children?: React.ReactNode } }).props?.children);
+  return "";
+}
 
 // @next/mdx は App Router でこのファイル（プロジェクト直下 mdx-components.tsx）を
 // 必須とする。MDX 内の各要素に Tailwind のスタイルを当てて読みやすくする。
@@ -7,8 +19,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // 記事内の図解画像（MDXで <Figure src="/fig/..." alt="..." /> として使える）
     Figure,
+    // 目次から飛べるよう、見出しテキストからアンカーIDを付与（scroll-mtで固定ヘッダー分ずらす）
     h2: ({ children }) => (
-      <h2 className="mt-10 mb-3 text-xl font-bold text-slate-900 border-l-4 border-emerald-500 pl-3">
+      <h2
+        id={headingId(nodeText(children))}
+        className="mt-10 mb-3 scroll-mt-24 text-xl font-bold text-slate-900 border-l-4 border-emerald-500 pl-3"
+      >
         {children}
       </h2>
     ),

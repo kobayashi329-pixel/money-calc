@@ -2177,3 +2177,20 @@ export function relatedGuides(slug: string): Guide[] {
     .map((s) => getGuide(s))
     .filter((x): x is Guide => x !== undefined && x.status === "live");
 }
+
+/** 同じシリーズ内の前後の記事（前後ナビ用）。
+ *  シリーズ＝guideSeriesKeyが同じ公開記事を compareGuides 順に並べた列。 */
+export function seriesNeighbors(slug: string): {
+  prev?: Guide;
+  next?: Guide;
+} {
+  const g = getGuide(slug);
+  if (!g) return {};
+  const key = guideSeriesKey(g);
+  const list = liveGuides()
+    .filter((x) => guideSeriesKey(x) === key)
+    .sort(compareGuides);
+  const i = list.findIndex((x) => x.slug === slug);
+  if (i < 0) return {};
+  return { prev: list[i - 1], next: list[i + 1] };
+}
