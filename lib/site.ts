@@ -39,6 +39,50 @@ export const FURUSATO_ASP: { name: string; feature: string; url: string }[] = [
   { name: "ふるなび", feature: "家電・金券系の返礼品に強い", url: "" },
 ];
 
+// 住宅ローン・証券などのアフィリエイト枠（ガイド記事の収益動線）。
+// FurusatoCTA と同じフラグ運用：AFFILIATE_ENABLED=false、または url が空の間は
+// <AffiliateCTA> は何も描画しない（審査・UX・CLSに影響なし）。
+// 提携が決まったら該当スロットの url にアフィリエイトリンクを入れ、ENABLED を true にする。
+export const AFFILIATE_ENABLED = false;
+
+export interface AffiliateItem {
+  name: string;
+  feature: string;
+  url: string;
+}
+export interface AffiliateSlotConfig {
+  heading: string;
+  note: string;
+  items: AffiliateItem[];
+}
+
+// カテゴリ等に対応するスロット。items の name/feature は提携先に合わせて書き換える。
+export const AFFILIATE_SLOTS: Record<string, AffiliateSlotConfig> = {
+  loan: {
+    heading: "住宅ローンを比較する",
+    note: "金利や諸費用は金融機関で大きく異なります。複数を比較して選びましょう。",
+    items: [
+      { name: "住宅ローン一括比較", feature: "複数銀行の金利をまとめて比較", url: "" },
+      { name: "借り換え診断", feature: "今より下がるか無料でチェック", url: "" },
+    ],
+  },
+  securities: {
+    heading: "NISA・iDeCoを始める証券会社",
+    note: "手数料や取扱商品は証券会社で異なります。口座開設は無料です。",
+    items: [
+      { name: "ネット証券（手数料重視）", feature: "売買手数料が安く初心者向け", url: "" },
+      { name: "ネット証券（商品数重視）", feature: "投資信託・米国株の取扱が豊富", url: "" },
+    ],
+  },
+};
+
+/** ガイドのカテゴリに対応するアフィリエイトスロット名（無ければ null）。 */
+export function affiliateSlotForCategory(category: string): string | null {
+  if (category === "loan") return "loan";
+  if (category === "toshi") return "securities";
+  return null;
+}
+
 // 運営者情報（運営者情報ページ・フッターで使用）。
 // ハンドルネームでOK。自由に書き換えてください。
 export const OPERATOR_NAME = "おかね計算ラボ";

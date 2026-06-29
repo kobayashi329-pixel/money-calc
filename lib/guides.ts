@@ -1282,6 +1282,131 @@ export const GUIDES: Guide[] = [
     updated: "2026年6月24日",
     emoji: "📝",
   },
+
+  // ===== 相続税クラスター（zei） =====
+  {
+    slug: "sozokuzei-isan-betsu",
+    title:
+      "相続税はいくら？遺産総額別・相続人別の早見表（5000万〜2億）",
+    shortTitle: "相続税の遺産総額別早見表",
+    description:
+      "相続税の納税額を遺産総額別・相続人別の早見表で確認。遺産5,000万〜2億円を配偶者あり/なし・子の人数別に試算した目安と、基礎控除・配偶者の税額軽減を解説します。",
+    category: "zei",
+    targets: ["sozokuzei"],
+    related: [
+      "sozokuzei-ikura-kara",
+      "sozokuzei-haiguusha-keigen",
+      "sozokuzei-1oku",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📊",
+  },
+  {
+    slug: "sozokuzei-haiguusha-keigen",
+    title: "配偶者の相続税はゼロになる？配偶者の税額軽減（1.6億円）を解説",
+    shortTitle: "配偶者の税額軽減",
+    description:
+      "配偶者が相続した財産は「1億6,000万円」または「法定相続分」まで相続税がかかりません。配偶者の税額軽減の仕組みと、使うときの注意点（二次相続）を解説します。",
+    category: "zei",
+    targets: ["sozokuzei"],
+    related: [
+      "sozokuzei-isan-betsu",
+      "sozokuzei-ikura-kara",
+      "sozokuzei-1oku",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "💑",
+  },
+  {
+    slug: "sozokuzei-5000man",
+    title: "遺産5000万円の相続税はいくら？相続人別の早見表と計算方法",
+    shortTitle: "遺産5000万の相続税",
+    description:
+      "遺産5,000万円の相続税は、配偶者と子2人なら約10万円、子2人のみなら約80万円が目安。基礎控除を超えた分にかかる相続税を相続人別に解説します。",
+    category: "zei",
+    targets: ["sozokuzei"],
+    related: [
+      "sozokuzei-1oku",
+      "sozokuzei-isan-betsu",
+      "sozokuzei-ikura-kara",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "💴",
+  },
+  {
+    slug: "sozokuzei-1oku",
+    title: "遺産1億円の相続税はいくら？相続人別の早見表と計算方法",
+    shortTitle: "遺産1億円の相続税",
+    description:
+      "遺産1億円の相続税は、配偶者と子2人なら約315万円、子2人のみなら約770万円が目安。配偶者の税額軽減を使った場合の負担と計算方法を相続人別に解説します。",
+    category: "zei",
+    targets: ["sozokuzei"],
+    related: [
+      "sozokuzei-5000man",
+      "sozokuzei-isan-betsu",
+      "sozokuzei-haiguusha-keigen",
+    ],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "💴",
+  },
+
+  // ===== NISA 年代別クラスター（toshi） =====
+  {
+    slug: "nisa-20dai",
+    title: "20代のNISAはいくら積み立てる？40年運用のシミュレーション",
+    shortTitle: "20代のNISA",
+    description:
+      "20代は運用期間が長く、複利の効果を最大限に活かせます。月1万〜5万円を年5%・40年積み立てた場合の将来額と、無理のない始め方を解説します。",
+    category: "toshi",
+    targets: ["nisa"],
+    related: ["nisa-30dai", "nisa-tsukini-ikura", "shin-nisa-waku"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📈",
+  },
+  {
+    slug: "nisa-30dai",
+    title: "30代のNISAはいくら積み立てる？30年運用のシミュレーション",
+    shortTitle: "30代のNISA",
+    description:
+      "30代は教育費・住宅とのバランスを取りつつ、30年の運用期間を活かせます。月1万〜5万円を年5%・30年積み立てた場合の将来額と始め方を解説します。",
+    category: "toshi",
+    targets: ["nisa"],
+    related: ["nisa-20dai", "nisa-40dai", "nisa-tsukini-ikura"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📈",
+  },
+  {
+    slug: "nisa-40dai",
+    title: "40代のNISAはいくら積み立てる？20年運用のシミュレーション",
+    shortTitle: "40代のNISA",
+    description:
+      "40代は老後資金づくりの本番。残り20年でも複利は十分に効きます。月1万〜5万円を年5%・20年積み立てた場合の将来額と、無理のない金額を解説します。",
+    category: "toshi",
+    targets: ["nisa"],
+    related: ["nisa-30dai", "nisa-50dai", "nisa-tsukini-ikura"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📈",
+  },
+  {
+    slug: "nisa-50dai",
+    title: "50代から新NISAは遅い？10年運用のシミュレーションと始め方",
+    shortTitle: "50代のNISA",
+    description:
+      "50代から新NISAを始めても遅くありません。月1万〜5万円を年5%・10年積み立てた場合の将来額と、退職金・年金とあわせた老後資金の考え方を解説します。",
+    category: "toshi",
+    targets: ["nisa"],
+    related: ["nisa-40dai", "nisa-tsukini-ikura", "rougo-2000man"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📈",
+  },
 ];
 
 // ---- ヘルパー ----
