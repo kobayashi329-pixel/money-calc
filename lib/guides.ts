@@ -1695,6 +1695,183 @@ export const GUIDES: Guide[] = [
     updated: "2026年6月24日",
     emoji: "🎓",
   },
+
+  // ===== 相続税 深掘り（zei） =====
+  {
+    slug: "sozokuzei-shoukibo-takuchi",
+    title: "小規模宅地等の特例とは｜自宅の土地の評価が最大80%減",
+    shortTitle: "小規模宅地等の特例",
+    description:
+      "小規模宅地等の特例を使うと、自宅の土地（330㎡まで）の相続税評価額が最大80%減額されます。対象・要件・減額割合と、使うときの注意点を解説します。",
+    category: "zei",
+    targets: ["sozokuzei"],
+    related: ["sozokuzei-isan-betsu", "sozokuzei-seimei-hoken", "sozokuzei-shinkoku"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏠",
+  },
+  {
+    slug: "sozokuzei-seimei-hoken",
+    title: "生命保険金の相続税は非課税枠あり｜500万円×法定相続人",
+    shortTitle: "生命保険の非課税枠",
+    description:
+      "死亡保険金には「500万円×法定相続人の数」の非課税枠があります。相続税対策としての生命保険の使い方と、課税される場合の計算方法を解説します。",
+    category: "zei",
+    targets: ["sozokuzei"],
+    related: ["sozokuzei-shoukibo-takuchi", "sozokuzei-isan-betsu", "zouyozei-rekinen"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🛡️",
+  },
+  {
+    slug: "sozokuzei-shinkoku",
+    title: "相続税の申告期限は10か月｜必要書類と申告の流れ",
+    shortTitle: "相続税の申告・期限",
+    description:
+      "相続税の申告・納税の期限は、相続開始を知った日の翌日から10か月以内です。必要書類・申告の流れ・期限に間に合わないときの対応を解説します。",
+    category: "zei",
+    targets: ["sozokuzei"],
+    related: ["sozokuzei-isan-betsu", "sozokuzei-shoukibo-takuchi", "sozokuzei-niji"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📝",
+  },
+  {
+    slug: "sozokuzei-niji",
+    title: "二次相続とは｜配偶者の税額軽減を使いすぎると損する理由",
+    shortTitle: "二次相続の対策",
+    description:
+      "一次相続で配偶者にすべて相続させると、二次相続（配偶者の相続）で子の相続税が高くなることがあります。二次相続まで見据えた分け方のポイントを解説します。",
+    category: "zei",
+    targets: ["sozokuzei"],
+    related: ["sozokuzei-haiguusha-keigen", "sozokuzei-isan-betsu", "zouyozei-rekinen"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "👪",
+  },
+
+  // ===== 公的年金 深掘り（nenkin） =====
+  {
+    slug: "nenkin-nenshu-betsu",
+    title: "年金は年収別にいくらもらえる？会社員の受給見込み早見表",
+    shortTitle: "年金の年収別早見表",
+    description:
+      "会社員の年金は、年収300万円で月約12万円、年収500万円で月約16万円、年収700万円で月約20万円が目安。年収別・加入年数別の受給見込み額を解説します。",
+    category: "nenkin",
+    targets: ["nenkin-mikomi"],
+    related: ["nenkin-kousei", "nenkin-kokumin", "nenkin-kurisage"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📊",
+  },
+  {
+    slug: "nenkin-kousei",
+    title: "厚生年金はいくらもらえる？年収・加入年数別の目安",
+    shortTitle: "厚生年金はいくら",
+    description:
+      "厚生年金（報酬比例部分）は、年収と加入年数で決まります。年収500万円で40年加入なら年約110万円が目安。基礎年金とあわせた受給額の計算方法を解説します。",
+    category: "nenkin",
+    targets: ["nenkin-mikomi"],
+    related: ["nenkin-nenshu-betsu", "nenkin-kokumin", "nenkin-kurisage"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🧾",
+  },
+  {
+    slug: "nenkin-kokumin",
+    title: "国民年金はいくら？満額・納付月数別の受給額（令和7年度）",
+    shortTitle: "国民年金はいくら",
+    description:
+      "国民年金（老齢基礎年金）の満額は、令和7年度で月約6.9万円・年約83万円。納付月数で変わる受給額と、自営業・フリーランスの年金の増やし方を解説します。",
+    category: "nenkin",
+    targets: ["nenkin-mikomi"],
+    related: ["nenkin-sengyoshufu", "nenkin-nenshu-betsu", "nenkin-kousei"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🗾",
+  },
+  {
+    slug: "nenkin-sengyoshufu",
+    title: "専業主婦（第3号）の年金はいくら？将来もらえる額と注意点",
+    shortTitle: "専業主婦の年金",
+    description:
+      "専業主婦・主夫（第3号被保険者）は、保険料負担なしで国民年金を受け取れます。満額で月約6.9万円。働き方が変わったときの切り替えと注意点を解説します。",
+    category: "nenkin",
+    targets: ["nenkin-mikomi"],
+    related: ["nenkin-kokumin", "nenkin-nenshu-betsu", "furusato-nozei-sengyoshufu"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏠",
+  },
+
+  // ===== 自動車税 関連ガイド（zei） =====
+  {
+    slug: "jidoshazei-itsumade",
+    title: "自動車税はいつ払う？納付期限と払い忘れたときの対応",
+    shortTitle: "自動車税はいつ払う",
+    description:
+      "自動車税（種別割）は毎年5月末まで（自治体により6月末）に納めます。納付方法・払い忘れたときの延滞金・車検への影響をわかりやすく解説します。",
+    category: "zei",
+    targets: ["jidoshazei"],
+    related: ["jidoshazei-kei", "kotei-itsumade"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🚗",
+  },
+  {
+    slug: "jidoshazei-kei",
+    title: "軽自動車税はいくら？普通車との違いと13年超の重課",
+    shortTitle: "軽自動車税はいくら",
+    description:
+      "軽自動車税（種別割）は自家用乗用で年10,800円。普通自動車の自動車税との違い、13年超の重課（12,900円）、いつ払うかを解説します。",
+    category: "zei",
+    targets: ["jidoshazei"],
+    related: ["jidoshazei-itsumade"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🚙",
+  },
+
+  // ===== 固定資産税 関連ガイド（zei） =====
+  {
+    slug: "kotei-heikin",
+    title: "固定資産税の平均はいくら？一戸建て・マンションの目安",
+    shortTitle: "固定資産税の平均",
+    description:
+      "固定資産税は、一戸建てで年10万〜15万円、マンションで年8万〜15万円が一つの目安。評価額・住宅用地の特例による違いと、平均の考え方を解説します。",
+    category: "zei",
+    targets: ["kotei-shisanzei"],
+    related: ["kotei-shinchiku", "kotei-itsumade"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏡",
+  },
+  {
+    slug: "kotei-shinchiku",
+    title: "新築の固定資産税はいくら？軽減措置と3年後に上がる理由",
+    shortTitle: "新築の固定資産税",
+    description:
+      "新築住宅は一定期間、建物の固定資産税が1/2に軽減されます。軽減の期間・要件と、軽減が終わって税額が上がるタイミングをわかりやすく解説します。",
+    category: "zei",
+    targets: ["kotei-shisanzei"],
+    related: ["kotei-heikin", "kotei-itsumade"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "🏠",
+  },
+  {
+    slug: "kotei-itsumade",
+    title: "固定資産税はいつ払う？納付時期と分割・一括の選び方",
+    shortTitle: "固定資産税はいつ払う",
+    description:
+      "固定資産税・都市計画税は、4〜6月ごろに納税通知書が届き、年4回の分割または一括で納めます。納付時期・支払方法・お得な払い方を解説します。",
+    category: "zei",
+    targets: ["kotei-shisanzei"],
+    related: ["kotei-heikin", "kotei-shinchiku"],
+    status: "live",
+    updated: "2026年6月24日",
+    emoji: "📅",
+  },
 ];
 
 // ---- ヘルパー ----
