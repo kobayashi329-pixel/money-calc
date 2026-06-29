@@ -3,9 +3,17 @@ import { Breadcrumbs } from "./Breadcrumbs";
 import { JsonLd } from "./JsonLd";
 import { getGuide, relatedGuides } from "@/lib/guides";
 import { getCalculator } from "@/lib/calculators";
+import { getGuideFaq } from "@/lib/faq";
 import { SITE_URL, SITE_NAME, AD_SLOTS, affiliateSlotForCategory } from "@/lib/site";
 import { AdSlot } from "./AdSlot";
 import { AffiliateCTA } from "./AffiliateCTA";
+
+/** 「2026年6月24日」→「2026-06-24」。失敗時はサイト公開時期を返す。 */
+function jpDateToISO(s: string): string {
+  const m = s.match(/(\d{4})年(\d{1,2})月(\d{1,2})日/);
+  if (!m) return "2026-06-23";
+  return `${m[1]}-${m[2].padStart(2, "0")}-${m[3].padStart(2, "0")}`;
+}
 
 // ガイド記事ページの共通レイアウト。
 // パンくず・更新日・本文(MDX)・送客先の計算機・関連ガイド・構造化データを描画。
@@ -21,6 +29,9 @@ export function GuideLayout({
     .map((s) => getCalculator(s))
     .filter((c): c is NonNullable<typeof c> => !!c && c.status === "live");
   const related = relatedGuides(slug);
+  const faq = getGuideFaq(slug);
+  const updatedISO = jpDateToISO(guide.updated);
+  const ogImage = `${SITE_URL}/og/${guide.slug}`;
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -28,14 +39,36 @@ export function GuideLayout({
     headline: guide.title,
     description: guide.description,
     url: `${SITE_URL}/guide/${guide.slug}`,
-    dateModified: "2026-06-23",
-    author: { "@type": "Organization", name: SITE_NAME },
-    publisher: { "@type": "Organization", name: SITE_NAME },
+    image: [ogImage],
+    datePublished: updatedISO,
+    dateModified: updatedISO,
+    author: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/icon.svg` },
+    },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/guide/${guide.slug}` },
   };
+
+  // よくある質問 → FAQPage 構造化データ
+  const faqJsonLd =
+    faq.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faq.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }
+      : null;
 
   return (
     <article>
       <JsonLd data={articleJsonLd} />
+      {faqJsonLd && <JsonLd data={faqJsonLd} />}
       <Breadcrumbs
         items={[{ name: "ガイド", href: "/guide" }, { name: guide.shortTitle }]}
       />
