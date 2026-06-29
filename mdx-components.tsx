@@ -1,9 +1,12 @@
 import type { MDXComponents } from "mdx/types";
+import { Figure } from "@/components/Figure";
 
 // @next/mdx は App Router でこのファイル（プロジェクト直下 mdx-components.tsx）を
 // 必須とする。MDX 内の各要素に Tailwind のスタイルを当てて読みやすくする。
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
+    // 記事内の図解画像（MDXで <Figure src="/fig/..." alt="..." /> として使える）
+    Figure,
     h2: ({ children }) => (
       <h2 className="mt-10 mb-3 text-xl font-bold text-slate-900 border-l-4 border-emerald-500 pl-3">
         {children}
