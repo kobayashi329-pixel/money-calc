@@ -181,10 +181,204 @@ function nenshuKabe() {
   );
 }
 
+// 縦棒グラフの共通描画（単色）
+function vbars(
+  title: string,
+  items: { label: string; value: number; display: string }[],
+  color: string,
+  max: number,
+) {
+  const areaH = 420;
+  return (
+    <Frame title={title}>
+      <div style={{ display: "flex", alignItems: "flex-end", height: areaH, width: "100%" }}>
+        {items.map((it) => (
+          <div
+            key={it.label}
+            style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: 1 }}
+          >
+            <div style={{ fontSize: 28, color: "#059669", marginBottom: 8, display: "flex" }}>
+              {it.display}
+            </div>
+            <div
+              style={{
+                width: 120,
+                height: Math.max(4, Math.round((it.value / max) * areaH)),
+                background: color,
+                borderRadius: "10px 10px 0 0",
+              }}
+            />
+            <div style={{ fontSize: 26, color: "#334155", marginTop: 12, display: "flex" }}>
+              {it.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    </Frame>
+  );
+}
+
+// 手取りの内訳（年収500万円）
+function tedoriUchiwake() {
+  const segs = [
+    { label: "手取り", value: 391, color: "#10b981" },
+    { label: "社会保険料", value: 73, color: "#94a3b8" },
+    { label: "所得税", value: 12, color: "#f59e0b" },
+    { label: "住民税", value: 24, color: "#3b82f6" },
+  ];
+  const total = 500;
+  return (
+    <Frame title="年収500万円の手取りの内訳">
+      <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
+        <div style={{ fontSize: 28, color: "#475569", marginBottom: 22, display: "flex" }}>
+          額面500万円から税金・社会保険料を引いた手取りは約391万円です。
+        </div>
+        <div style={{ display: "flex", width: "100%", height: 120, borderRadius: 14, overflow: "hidden" }}>
+          {segs.map((s) => (
+            <div
+              key={s.label}
+              style={{
+                width: `${(s.value / total) * 100}%`,
+                background: s.color,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#ffffff",
+                fontSize: 24,
+              }}
+            >
+              {s.value >= 40 ? `${s.value}万` : ""}
+            </div>
+          ))}
+        </div>
+        <div style={{ display: "flex", flexWrap: "wrap", marginTop: 28 }}>
+          {segs.map((s) => (
+            <div key={s.label} style={{ display: "flex", alignItems: "center", marginRight: 40, marginBottom: 12 }}>
+              <div style={{ width: 24, height: 24, background: s.color, borderRadius: 6, marginRight: 10 }} />
+              <div style={{ fontSize: 26, color: "#334155", display: "flex" }}>{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Frame>
+  );
+}
+
+// 会社員の年金（基礎＋厚生・年額・年収別）
+function nenkin2kai() {
+  const items = [
+    { label: "年収300万", kiso: 83, kousei: 66 },
+    { label: "年収500万", kiso: 83, kousei: 110 },
+    { label: "年収700万", kiso: 83, kousei: 154 },
+  ];
+  const max = 237;
+  const areaH = 380;
+  return (
+    <Frame title="会社員がもらえる年金（年額・40年加入の目安）">
+      <div style={{ display: "flex", flexDirection: "column", width: "100%" }}>
+        <div style={{ display: "flex", marginBottom: 16 }}>
+          <div style={{ display: "flex", alignItems: "center", marginRight: 40 }}>
+            <div style={{ width: 26, height: 26, background: "#fbbf24", borderRadius: 6, marginRight: 10 }} />
+            <div style={{ fontSize: 26, color: "#475569", display: "flex" }}>基礎年金</div>
+          </div>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <div style={{ width: 26, height: 26, background: "#10b981", borderRadius: 6, marginRight: 10 }} />
+            <div style={{ fontSize: 26, color: "#475569", display: "flex" }}>厚生年金</div>
+          </div>
+        </div>
+        <div style={{ display: "flex", alignItems: "flex-end", height: areaH }}>
+          {items.map((it) => (
+            <div key={it.label} style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: 1 }}>
+              <div style={{ fontSize: 28, color: "#059669", marginBottom: 8, display: "flex" }}>
+                {`約${it.kiso + it.kousei}万円`}
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", width: 140 }}>
+                <div style={{ height: Math.round((it.kousei / max) * areaH), background: "#10b981", borderRadius: "10px 10px 0 0" }} />
+                <div style={{ height: Math.round((it.kiso / max) * areaH), background: "#fbbf24" }} />
+              </div>
+              <div style={{ fontSize: 26, color: "#334155", marginTop: 12, display: "flex" }}>{it.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Frame>
+  );
+}
+
+// iDeCoの3つの税制優遇
+function ideco3yuugu() {
+  const steps = [
+    { n: "①拠出時", t: "掛金が全額所得控除", c: "#10b981" },
+    { n: "②運用時", t: "運用益が非課税", c: "#3b82f6" },
+    { n: "③受取時", t: "退職所得控除・公的年金等控除", c: "#8b5cf6" },
+  ];
+  return (
+    <Frame title="iDeCoの3つの税制優遇">
+      <div style={{ display: "flex", width: "100%", alignItems: "stretch" }}>
+        {steps.map((s) => (
+          <div
+            key={s.n}
+            style={{
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              margin: "0 12px",
+              border: `4px solid ${s.c}`,
+              borderRadius: 20,
+              padding: "32px 22px",
+            }}
+          >
+            <div style={{ fontSize: 36, color: s.c, marginBottom: 18, display: "flex" }}>{s.n}</div>
+            <div style={{ fontSize: 28, color: "#334155", display: "flex" }}>{s.t}</div>
+          </div>
+        ))}
+      </div>
+    </Frame>
+  );
+}
+
 const FIGS: Record<string, () => React.ReactElement> = {
   fukuri,
   "furusato-shikumi": furusatoShikumi,
   "nenshu-kabe": nenshuKabe,
+  "tedori-uchiwake": tedoriUchiwake,
+  "nenkin-2kai": nenkin2kai,
+  "ideco-3yuugu": ideco3yuugu,
+  "jutaku-hensai": () =>
+    vbars(
+      "住宅ローンの毎月返済額（金利1%・35年）",
+      [
+        { label: "1000万", value: 28229, display: "2.8万円" },
+        { label: "2000万", value: 56457, display: "5.6万円" },
+        { label: "3000万", value: 84686, display: "8.5万円" },
+        { label: "4000万", value: 112914, display: "11.3万円" },
+        { label: "5000万", value: 141143, display: "14.1万円" },
+      ],
+      "#10b981",
+      141143,
+    ),
+  "taishoku-kojo": () =>
+    vbars(
+      "退職金の非課税枠（退職所得控除）",
+      [
+        { label: "勤続20年", value: 800, display: "800万円" },
+        { label: "勤続30年", value: 1500, display: "1,500万円" },
+        { label: "勤続38年", value: 2060, display: "2,060万円" },
+      ],
+      "#8b5cf6",
+      2060,
+    ),
+  "sozoku-kiso": () =>
+    vbars(
+      "相続税の基礎控除（これ以下なら相続税は非課税）",
+      [
+        { label: "相続人1人", value: 3600, display: "3,600万円" },
+        { label: "相続人2人", value: 4200, display: "4,200万円" },
+        { label: "相続人3人", value: 4800, display: "4,800万円" },
+      ],
+      "#3b82f6",
+      4800,
+    ),
 };
 
 export async function GET(
