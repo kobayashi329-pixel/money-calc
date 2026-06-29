@@ -293,6 +293,42 @@ export const CALCULATORS: Calculator[] = [
     priority: 13,
     emoji: "🏡",
   },
+  {
+    slug: "juuminzei",
+    title: "住民税 計算機",
+    shortTitle: "住民税",
+    description:
+      "年収と家族構成から、住民税（所得割10%＋均等割）の年額を計算。所得控除・社会保険料を反映した概算を内訳つきで表示。",
+    category: "kyuyo",
+    status: "live",
+    related: ["tedori", "shahoken", "furusato-nozei"],
+    priority: 14,
+    emoji: "🏛️",
+  },
+  {
+    slug: "shahoken",
+    title: "社会保険料 計算機",
+    shortTitle: "社会保険料",
+    description:
+      "年収と年齢から、健康保険・介護保険・厚生年金・雇用保険の本人負担分（年額・月額）を計算。都道府県別の健康保険料率に対応。",
+    category: "kyuyo",
+    status: "live",
+    related: ["tedori", "juuminzei", "nenkin-mikomi"],
+    priority: 15,
+    emoji: "🩺",
+  },
+  {
+    slug: "zouyozei",
+    title: "贈与税 計算機（暦年課税）",
+    shortTitle: "贈与税",
+    description:
+      "1年間の贈与額から、贈与税（暦年課税）の税額を計算。基礎控除110万円・特例税率/一般税率に対応し、税引後の手取りも表示。",
+    category: "zei",
+    status: "live",
+    related: ["sozokuzei", "kotei-shisanzei", "tedori"],
+    priority: 16,
+    emoji: "🎁",
+  },
 ];
 
 // ---- ヘルパー ----

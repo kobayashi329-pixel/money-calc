@@ -400,7 +400,7 @@ export const GUIDES: Guide[] = [
     description:
       "住民税は所得割（約10%）と均等割（約5,000円）の合計。年収別の目安と計算方法、いつ・どう払うかを解説します。",
     category: "kyuyo",
-    targets: ["tedori"],
+    targets: ["juuminzei", "tedori"],
     related: ["nenshu-500man-tedori", "furusato-nozei-yarikata"],
     status: "live",
     updated: "2026年6月23日",
@@ -1635,7 +1635,7 @@ export const GUIDES: Guide[] = [
     description:
       "贈与税は年間110万円の基礎控除を超えた分にかかります。贈与額別の税額の早見表（特例税率・一般税率）と計算方法、非課税にする方法をわかりやすく解説します。",
     category: "zei",
-    targets: ["sozokuzei"],
+    targets: ["zouyozei", "sozokuzei"],
     related: ["zouyozei-rekinen", "zouyozei-jutaku", "sozokuzei-isan-betsu"],
     status: "live",
     updated: "2026年6月24日",
@@ -1648,7 +1648,7 @@ export const GUIDES: Guide[] = [
     description:
       "贈与税には年間110万円の基礎控除があり、その範囲内なら非課税です。暦年贈与を使った相続対策のポイントと、注意点（生前贈与加算）を解説します。",
     category: "zei",
-    targets: ["sozokuzei"],
+    targets: ["zouyozei", "sozokuzei"],
     related: ["zouyozei-ikura", "sozokuzei-isan-betsu", "sozokuzei-haiguusha-keigen"],
     status: "live",
     updated: "2026年6月24日",
@@ -1661,7 +1661,7 @@ export const GUIDES: Guide[] = [
     description:
       "マイホーム購入のための親・祖父母からの資金援助は、一定額まで贈与税が非課税になります。非課税の上限・条件と、住宅ローンとの組み合わせ方を解説します。",
     category: "zei",
-    targets: ["sozokuzei"],
+    targets: ["zouyozei", "sozokuzei"],
     related: ["zouyozei-ikura", "zouyozei-rekinen", "jutaku-loan-nenshu-betsu"],
     status: "live",
     updated: "2026年6月24日",
@@ -1674,7 +1674,7 @@ export const GUIDES: Guide[] = [
     description:
       "祖父母などからの教育資金は、一括贈与の特例で最大1,500万円まで非課税にできます。制度の条件・使い道・使い残しの扱いと、暦年贈与との違いを解説します。",
     category: "zei",
-    targets: ["sozokuzei"],
+    targets: ["zouyozei", "sozokuzei"],
     related: ["zouyozei-rekinen", "zouyozei-ikura", "daigaku-hiyou"],
     status: "live",
     updated: "2026年6月24日",
