@@ -63,6 +63,19 @@ export function EmbedCite({ slug, title }: { slug: string; title: string }) {
           <CopyRow label="埋め込み（iframe・計算機をそのまま設置）" code={embedCode} />
         )}
 
+        <div className="mt-3 flex items-center gap-2 border-t border-slate-100 pt-3">
+          <span className="text-xs font-semibold text-slate-600">SNS用シェア画像（縦長）</span>
+          <a
+            href={`/pin/${slug}`}
+            target="_blank"
+            rel="noopener"
+            className="rounded-md border border-emerald-200 bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 hover:bg-emerald-100"
+          >
+            画像を開く ↗
+          </a>
+          <span className="text-[11px] text-slate-400">Pinterest・Instagram向け</span>
+        </div>
+
         <p className="mt-3 text-[11px] leading-5 text-slate-400">
           ※埋め込みは計算機の高さに合わせて height を調整してください。
           掲載のご連絡は不要です。出典・引用の方針は

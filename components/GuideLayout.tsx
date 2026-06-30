@@ -114,7 +114,17 @@ export function GuideLayout({
         <h1 className="text-2xl font-extrabold leading-snug text-slate-900 sm:text-3xl">
           {guide.title}
         </h1>
-        <p className="mt-2 text-xs text-slate-400">最終更新: {guide.updated}</p>
+        <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-400">
+          <span>最終更新: {guide.updated}</span>
+          <a
+            href={`/pin/${guide.slug}`}
+            target="_blank"
+            rel="noopener"
+            className="font-semibold text-emerald-700 hover:underline"
+          >
+            📌 画像で保存・シェア（SNS用）
+          </a>
+        </div>
       </header>
 
       {/* 送客先の計算機（記事冒頭の主要導線） */}
