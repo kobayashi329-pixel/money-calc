@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CATEGORIES } from "@/lib/calculators";
-import { guidesInCategory, liveGuides } from "@/lib/guides";
+import {
+  guideSeriesGroups,
+  liveGuides,
+  type Guide,
+} from "@/lib/guides";
 
 export const metadata: Metadata = {
   title: "お金のガイド・解説記事一覧",
@@ -10,14 +14,47 @@ export const metadata: Metadata = {
   alternates: { canonical: "/guide" },
 };
 
+// シリーズ内で常に表示する件数（超過分は折りたたみ）
+const VISIBLE_PER_SERIES = 6;
+
+/** 一覧用のスリムなガイドカード（emoji＋短いタイトル＋1行説明） */
+function GuideCard({ g, lead }: { g: Guide; lead?: boolean }) {
+  return (
+    <Link
+      href={`/guide/${g.slug}`}
+      className="group flex gap-3 rounded-xl border border-slate-200 bg-white p-3.5 transition hover:border-emerald-300 hover:shadow-sm"
+    >
+      <span
+        aria-hidden
+        className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-50 text-base group-hover:bg-emerald-50"
+      >
+        {g.emoji}
+      </span>
+      <span className="flex min-w-0 flex-col">
+        <span className="flex items-center gap-1.5">
+          <span className="font-semibold text-slate-900">{g.shortTitle}</span>
+          {lead && (
+            <span className="shrink-0 rounded bg-emerald-50 px-1.5 py-0.5 text-[10px] font-bold text-emerald-700">
+              代表記事
+            </span>
+          )}
+        </span>
+        <span className="mt-0.5 line-clamp-1 text-xs leading-5 text-slate-500">
+          {g.description}
+        </span>
+      </span>
+    </Link>
+  );
+}
+
 export default function GuideIndexPage() {
   const count = liveGuides().length;
 
-  // ガイドのあるカテゴリだけを表示順に並べる
+  // ガイドのあるカテゴリだけを「シリーズ単位」に束ねて表示する
   const sections = CATEGORIES.map((cat) => ({
     cat,
-    guides: guidesInCategory(cat.slug),
-  })).filter((s) => s.guides.length > 0);
+    ...guideSeriesGroups(cat.slug),
+  })).filter((s) => s.groups.length > 0 || s.others.length > 0);
 
   return (
     <div>
@@ -34,12 +71,12 @@ export default function GuideIndexPage() {
         </p>
       </header>
 
-      {/* カテゴリへのクイックナビ（記事数が多いので素早く移動できるように） */}
+      {/* カテゴリへのクイックナビ */}
       <nav
         aria-label="カテゴリ"
         className="mb-8 flex flex-wrap gap-2 border-y border-slate-100 py-3"
       >
-        {sections.map(({ cat, guides }) => (
+        {sections.map(({ cat, groups, others }) => (
           <a
             key={cat.slug}
             href={`#${cat.slug}`}
@@ -47,46 +84,77 @@ export default function GuideIndexPage() {
           >
             <span aria-hidden>{cat.emoji}</span>
             {cat.name}
-            <span className="text-xs text-slate-400">{guides.length}</span>
+            <span className="text-xs text-slate-400">
+              {groups.reduce((n, g) => n + g.items.length, 0) + others.length}
+            </span>
           </a>
         ))}
       </nav>
 
-      {sections.map(({ cat, guides }) => (
-        <section key={cat.slug} id={cat.slug} className="mb-10 scroll-mt-24">
-          <div className="mb-3 flex items-center gap-2">
+      {sections.map(({ cat, groups, others }) => (
+        <section key={cat.slug} id={cat.slug} className="mb-12 scroll-mt-24">
+          <div className="mb-4 flex items-center gap-2 border-b border-slate-100 pb-2">
             <h2 className="text-lg font-bold text-slate-900">
               {cat.emoji} {cat.name}
             </h2>
-            <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-500">
-              {guides.length}記事
-            </span>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2">
-            {guides.map((g) => (
-              <Link
-                key={g.slug}
-                href={`/guide/${g.slug}`}
-                className="group flex h-full gap-3 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md"
-              >
-                <span
-                  aria-hidden
-                  className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-50 text-lg group-hover:bg-emerald-50"
-                >
-                  {g.emoji}
-                </span>
-                <span className="flex min-w-0 flex-col">
-                  <span className="font-bold text-slate-900">{g.shortTitle}</span>
-                  <span className="mt-1 line-clamp-3 flex-1 text-sm leading-6 text-slate-600">
-                    {g.description}
-                  </span>
-                  <span className="mt-3 text-sm font-semibold text-emerald-700">
-                    読む →
-                  </span>
-                </span>
-              </Link>
-            ))}
+          {/* シリーズ別グループ */}
+          <div className="space-y-7">
+            {groups.map((grp) => {
+              const visible = grp.items.slice(0, VISIBLE_PER_SERIES);
+              const hidden = grp.items.slice(VISIBLE_PER_SERIES);
+              return (
+                <div key={grp.key}>
+                  <h3 className="mb-2.5 flex items-baseline gap-2 text-sm font-bold text-slate-700">
+                    {grp.label}
+                    <span className="text-xs font-medium text-slate-400">
+                      {grp.items.length}記事
+                    </span>
+                  </h3>
+                  <div className="grid gap-2.5 sm:grid-cols-2">
+                    {visible.map((g) => (
+                      <GuideCard
+                        key={g.slug}
+                        g={g}
+                        lead={g.slug === grp.lead.slug}
+                      />
+                    ))}
+                  </div>
+                  {hidden.length > 0 && (
+                    <details className="mt-2.5 group">
+                      <summary className="cursor-pointer list-none text-sm font-semibold text-emerald-700 hover:underline">
+                        ＋ ほかの{hidden.length}記事を表示
+                      </summary>
+                      <div className="mt-2.5 grid gap-2.5 sm:grid-cols-2">
+                        {hidden.map((g) => (
+                          <GuideCard key={g.slug} g={g} />
+                        ))}
+                      </div>
+                    </details>
+                  )}
+                </div>
+              );
+            })}
+
+            {/* どのシリーズにも属さない単発記事 */}
+            {others.length > 0 && (
+              <div>
+                {groups.length > 0 && (
+                  <h3 className="mb-2.5 flex items-baseline gap-2 text-sm font-bold text-slate-700">
+                    その他
+                    <span className="text-xs font-medium text-slate-400">
+                      {others.length}記事
+                    </span>
+                  </h3>
+                )}
+                <div className="grid gap-2.5 sm:grid-cols-2">
+                  {others.map((g) => (
+                    <GuideCard key={g.slug} g={g} />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </section>
       ))}

@@ -2162,6 +2162,66 @@ export function guidesInCategory(categorySlug: string): Guide[] {
     .sort(compareGuides);
 }
 
+// シリーズキー → 人が読めるシリーズ名（一覧のサブ見出し用）。
+// 未登録のキーは記事数が少ない（「その他」へまとめる）ので先頭記事名で代用する。
+const SERIES_LABELS: Record<string, string> = {
+  nenshu: "年収別の手取り",
+  kabe: "年収の壁・扶養",
+  "furusato-nozei": "ふるさと納税",
+  setsuzei: "節税対策",
+  sozokuzei: "相続税",
+  zouyozei: "贈与税",
+  jidoshazei: "自動車税",
+  kotei: "固定資産税",
+  "jutaku-loan": "住宅ローン 借入可能額",
+  "jutaku-hensai": "住宅ローン 返済額",
+  nisa: "NISA・投資",
+  ideco: "iDeCo",
+  taishokukin: "退職金",
+  nenkin: "年金",
+  kyoiku: "教育費",
+};
+
+export interface SeriesGroup {
+  key: string;
+  label: string;
+  /** シリーズの代表記事（早見表/master 等・先頭にピン留め表示する） */
+  lead: Guide;
+  /** lead を含むシリーズ全記事（表示順） */
+  items: Guide[];
+}
+
+/** カテゴリ内のガイドをシリーズ単位にまとめる。
+ *  一定数（threshold）以上のシリーズは独立した group に、
+ *  少数シリーズ・単発記事は others にまとめて「壁」になるのを防ぐ。 */
+export function guideSeriesGroups(
+  categorySlug: string,
+  threshold = 3,
+): { groups: SeriesGroup[]; others: Guide[] } {
+  const guides = guidesInCategory(categorySlug); // 整列済み
+  const map = new Map<string, Guide[]>();
+  for (const g of guides) {
+    const k = guideSeriesKey(g);
+    if (!map.has(k)) map.set(k, []);
+    map.get(k)!.push(g);
+  }
+  const groups: SeriesGroup[] = [];
+  const others: Guide[] = [];
+  for (const [key, items] of map) {
+    if (items.length >= threshold) {
+      groups.push({
+        key,
+        label: SERIES_LABELS[key] ?? items[0].shortTitle,
+        lead: items[0],
+        items,
+      });
+    } else {
+      others.push(...items);
+    }
+  }
+  return { groups, others };
+}
+
 /** ある計算機に紐づく公開済みガイド（計算機ページの「関連ガイド」用・整列済み） */
 export function guidesForCalculator(calcSlug: string): Guide[] {
   return liveGuides()
