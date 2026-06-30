@@ -54,7 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   // 固定ページ（信頼性ページ）
-  for (const path of ["/about", "/editorial-policy", "/sources", "/privacy", "/disclaimer", "/contact"]) {
+  for (const path of ["/about", "/press", "/editorial-policy", "/sources", "/privacy", "/disclaimer", "/contact"]) {
     entries.push({
       url: `${SITE_URL}${path}`,
       lastModified,

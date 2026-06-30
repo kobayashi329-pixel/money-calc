@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalculators } from "@/components/RelatedCalculators";
 import { RelatedGuides } from "@/components/RelatedGuides";
 import { AdSlot } from "@/components/AdSlot";
+import { EmbedCite } from "@/components/EmbedCite";
 import { JsonLd } from "@/components/JsonLd";
 import { TrustNote } from "@/components/TrustNote";
 import { getCalculator, getCategory } from "@/lib/calculators";
@@ -60,6 +61,8 @@ export default function KarikaePage() {
       <RelatedCalculators slug="karikae" />
 
       <RelatedGuides slug="karikae" />
+
+      <EmbedCite slug={CALC.slug} title={CALC.title} />
 
       <AdSlot slot={AD_SLOTS.calcBottom} />
 
