@@ -2103,6 +2103,183 @@ export const GUIDES: Guide[] = [
     updated: "2026年6月29日",
     emoji: "🔁",
   },
+
+  // ===== 失業保険（基本手当）クラスター（teate）=====
+  {
+    slug: "shitsugyo-ikura",
+    title: "失業保険はいくらもらえる？月給別の早見表と給付日数【2026年】",
+    shortTitle: "失業保険はいくら",
+    description:
+      "失業保険（基本手当）の受給額を月給別の早見表で確認。月給20万〜50万の基本手当日額・給付日数・受給総額の目安と、自己都合・会社都合での違いを解説します。",
+    category: "teate",
+    targets: ["shitsugyo-hoken"],
+    related: ["shitsugyo-itsumade", "shitsugyo-jiko-kaisha", "shitsugyo-keisan"],
+    status: "live",
+    updated: "2026年6月30日",
+    emoji: "📊",
+  },
+  {
+    slug: "shitsugyo-itsumade",
+    title: "失業保険はいつから・いつまでもらえる？給付日数と給付制限",
+    shortTitle: "失業保険はいつまで",
+    description:
+      "失業保険はいつから受け取れて、いつまで続くのかを解説。待期7日・自己都合の給付制限2か月、被保険者期間と離職理由で決まる給付日数（90〜330日）の目安をまとめます。",
+    category: "teate",
+    targets: ["shitsugyo-hoken"],
+    related: ["shitsugyo-ikura", "shitsugyo-jiko-kaisha"],
+    status: "live",
+    updated: "2026年6月30日",
+    emoji: "📅",
+  },
+  {
+    slug: "shitsugyo-jiko-kaisha",
+    title: "失業保険 自己都合と会社都合の違い｜給付日数・給付制限を比較",
+    shortTitle: "自己都合と会社都合の違い",
+    description:
+      "失業保険は離職理由で大きく変わります。自己都合（一般）と会社都合（特定受給資格者）の給付日数・給付制限・受給開始時期の違いを早見表で比較します。",
+    category: "teate",
+    targets: ["shitsugyo-hoken"],
+    related: ["shitsugyo-ikura", "shitsugyo-itsumade"],
+    status: "live",
+    updated: "2026年6月30日",
+    emoji: "⚖️",
+  },
+  {
+    slug: "shitsugyo-keisan",
+    title: "失業保険の計算方法｜賃金日額・給付率・基本手当日額の出し方",
+    shortTitle: "失業保険の計算方法",
+    description:
+      "失業保険の基本手当日額の計算方法を解説。賃金日額（離職前6か月の賃金÷180）と給付率（50〜80%）、年齢別の上限額（令和7年8月改定）の仕組みをわかりやすく。",
+    category: "teate",
+    targets: ["shitsugyo-hoken"],
+    related: ["shitsugyo-ikura", "shitsugyo-jiko-kaisha"],
+    status: "live",
+    updated: "2026年6月30日",
+    emoji: "🧮",
+  },
+
+  // ===== 育児休業給付金クラスター（teate）=====
+  {
+    slug: "ikukyu-ikura",
+    title: "育休手当はいくらもらえる？月給別の早見表【67%・50%】",
+    shortTitle: "育休手当はいくら",
+    description:
+      "育児休業給付金の受給額を月給別の早見表で確認。月給20万〜50万の月額（最初6か月67%・以降50%）と1年の総額の目安、支給上限額（令和7年8月）を解説します。",
+    category: "teate",
+    targets: ["ikukyu-kyufu"],
+    related: ["ikukyu-itsu", "ikukyu-tedori"],
+    status: "live",
+    updated: "2026年6月30日",
+    emoji: "📊",
+  },
+  {
+    slug: "ikukyu-itsu",
+    title: "育休手当はいつ振り込まれる？申請から入金までの流れ",
+    shortTitle: "育休手当はいつ振り込まれる",
+    description:
+      "育児休業給付金がいつ振り込まれるかを解説。初回は育休開始から約2〜3か月後、その後は原則2か月ごと。申請の手順と入金が遅れる場合の注意点をまとめます。",
+    category: "teate",
+    targets: ["ikukyu-kyufu"],
+    related: ["ikukyu-ikura", "ikukyu-tedori"],
+    status: "live",
+    updated: "2026年6月30日",
+    emoji: "📅",
+  },
+  {
+    slug: "ikukyu-tedori",
+    title: "育休手当は実質手取り8割？非課税・社会保険料免除の理由",
+    shortTitle: "育休手当は実質手取り8割",
+    description:
+      "育児休業給付金は支給率67%でも実質手取りの約8割になる理由を解説。非課税で所得税・住民税がかからず、社会保険料も免除されるため、額面ほど手取りは下がりません。",
+    category: "teate",
+    targets: ["ikukyu-kyufu"],
+    related: ["ikukyu-ikura", "ikukyu-itsu"],
+    status: "live",
+    updated: "2026年6月30日",
+    emoji: "💴",
+  },
+
+  // ===== 傷病手当金クラスター（teate）=====
+  {
+    slug: "shoubyo-ikura",
+    title: "傷病手当金はいくらもらえる？月給別の早見表と計算方法",
+    shortTitle: "傷病手当金はいくら",
+    description:
+      "傷病手当金の受給額を月給別の早見表で確認。月給20万〜50万の1日あたりの額（標準報酬日額の2/3）と、30日休んだ場合の受給総額の目安を解説します。",
+    category: "teate",
+    targets: ["shoubyo-teate"],
+    related: ["shoubyo-kikan", "shoubyo-taishoku"],
+    status: "live",
+    updated: "2026年6月30日",
+    emoji: "📊",
+  },
+  {
+    slug: "shoubyo-kikan",
+    title: "傷病手当金はいつまで？待期3日と通算1年6か月の仕組み",
+    shortTitle: "傷病手当金はいつまで",
+    description:
+      "傷病手当金は連続3日の待期のあと4日目から支給され、同一の傷病で通算1年6か月まで受け取れます。支給開始日・待期の数え方・支給期間の仕組みを解説します。",
+    category: "teate",
+    targets: ["shoubyo-teate"],
+    related: ["shoubyo-ikura", "shoubyo-taishoku"],
+    status: "live",
+    updated: "2026年6月30日",
+    emoji: "📅",
+  },
+  {
+    slug: "shoubyo-taishoku",
+    title: "退職後も傷病手当金はもらえる？継続給付の条件を解説",
+    shortTitle: "退職後の傷病手当金",
+    description:
+      "退職後も傷病手当金を受け取れる「継続給付」の条件を解説。被保険者期間が継続して1年以上・退職日に受給しているか受給できる状態などの要件をわかりやすく。",
+    category: "teate",
+    targets: ["shoubyo-teate"],
+    related: ["shoubyo-ikura", "shoubyo-kikan"],
+    status: "live",
+    updated: "2026年6月30日",
+    emoji: "🚪",
+  },
+
+  // ===== 残業代クラスター（kyuyo）=====
+  {
+    slug: "zangyo-ikura",
+    title: "残業代はいくら？月給×残業時間の早見表【割増率つき】",
+    shortTitle: "残業代はいくら",
+    description:
+      "残業代を月給×残業時間の早見表で確認。月給25万〜40万の時給単価と、時間外10〜60時間の残業代の目安、深夜・休日の割増もあわせて解説します。",
+    category: "kyuyo",
+    targets: ["zangyodai"],
+    related: ["zangyo-keisan", "zangyo-minashi"],
+    status: "live",
+    updated: "2026年6月30日",
+    emoji: "📊",
+  },
+  {
+    slug: "zangyo-keisan",
+    title: "残業代の計算方法と割増率｜時間外25%・深夜25%・休日35%",
+    shortTitle: "残業代の計算方法",
+    description:
+      "残業代の計算方法を解説。1時間あたりの基礎賃金の出し方、時間外25%（月60時間超50%）・深夜25%加算・法定休日35%の割増率と、組み合わせた場合の計算をまとめます。",
+    category: "kyuyo",
+    targets: ["zangyodai"],
+    related: ["zangyo-ikura", "zangyo-minashi"],
+    status: "live",
+    updated: "2026年6月30日",
+    emoji: "🧮",
+  },
+  {
+    slug: "zangyo-minashi",
+    title: "みなし残業（固定残業代）とは？超えた分は請求できる",
+    shortTitle: "みなし残業とは",
+    description:
+      "みなし残業（固定残業代）の仕組みと注意点を解説。固定残業時間を超えた分の残業代は別途請求でき、深夜・休日割増も対象。求人票の見方や違法になるケースもまとめます。",
+    category: "kyuyo",
+    targets: ["zangyodai"],
+    related: ["zangyo-ikura", "zangyo-keisan"],
+    status: "live",
+    updated: "2026年6月30日",
+    emoji: "📄",
+  },
 ];
 
 // ---- ヘルパー ----
@@ -2180,6 +2357,10 @@ const SERIES_LABELS: Record<string, string> = {
   taishokukin: "退職金",
   nenkin: "年金",
   kyoiku: "教育費",
+  shitsugyo: "失業保険",
+  ikukyu: "育児休業給付金",
+  shoubyo: "傷病手当金",
+  zangyo: "残業代",
 };
 
 export interface SeriesGroup {
