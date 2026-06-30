@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Breadcrumbs } from "./Breadcrumbs";
 import { JsonLd } from "./JsonLd";
-import { getGuide, relatedGuides, seriesNeighbors } from "@/lib/guides";
-import { getCalculator } from "@/lib/calculators";
+import { getGuide, relatedGuides, seriesNeighbors, guideSeriesInfo } from "@/lib/guides";
+import { getCalculator, getCategory } from "@/lib/calculators";
 import { getGuideFaq } from "@/lib/faq";
 import { getGuideHeadings } from "@/lib/toc";
 import { getGuideHowTo } from "@/lib/howto";
@@ -35,6 +35,8 @@ export function GuideLayout({
   const headings = getGuideHeadings(slug);
   const howto = getGuideHowTo(slug);
   const { prev, next } = seriesNeighbors(slug);
+  const series = guideSeriesInfo(slug);
+  const category = getCategory(guide.category);
   const updatedISO = jpDateToISO(guide.updated);
   const ogImage = `${SITE_URL}/og/${guide.slug}`;
 
@@ -99,7 +101,13 @@ export function GuideLayout({
       {faqJsonLd && <JsonLd data={faqJsonLd} />}
       {howToJsonLd && <JsonLd data={howToJsonLd} />}
       <Breadcrumbs
-        items={[{ name: "ガイド", href: "/guide" }, { name: guide.shortTitle }]}
+        items={[
+          { name: "ガイド", href: "/guide" },
+          ...(category
+            ? [{ name: category.name, href: `/guide#${guide.category}` }]
+            : []),
+          { name: guide.shortTitle },
+        ]}
       />
 
       <header className="mb-2">
@@ -124,6 +132,48 @@ export function GuideLayout({
               </Link>
             ))}
           </div>
+        </div>
+      )}
+
+      {/* シリーズのサブピラー：master記事は全記事一覧（ハブ）、各記事はmasterへの導線 */}
+      {series?.isMaster && (
+        <nav
+          aria-label={`${series.label}シリーズの記事一覧`}
+          className="my-5 rounded-xl border border-emerald-200 bg-white p-4"
+        >
+          <div className="flex items-baseline gap-2">
+            <span className="text-sm font-bold text-slate-800">
+              📚 {series.label}シリーズ
+            </span>
+            <span className="text-xs text-slate-400">{series.items.length}記事</span>
+          </div>
+          <ul className="mt-2.5 grid gap-1.5 sm:grid-cols-2">
+            {series.items
+              .filter((g) => g.slug !== slug)
+              .map((g) => (
+                <li key={g.slug} className="text-sm leading-5">
+                  <Link
+                    href={`/guide/${g.slug}`}
+                    className="text-emerald-700 hover:text-emerald-900 hover:underline"
+                  >
+                    {g.emoji} {g.shortTitle}
+                  </Link>
+                </li>
+              ))}
+          </ul>
+        </nav>
+      )}
+      {series && !series.isMaster && (
+        <div className="my-5 rounded-xl border border-slate-200 bg-slate-50 p-3.5 text-sm">
+          <Link
+            href={`/guide/${series.master.slug}`}
+            className="font-semibold text-emerald-700 hover:underline"
+          >
+            📚 {series.label}の総まとめ：{series.master.shortTitle} →
+          </Link>
+          <span className="ml-1.5 text-xs text-slate-400">
+            （シリーズ全{series.items.length}記事）
+          </span>
         </div>
       )}
 

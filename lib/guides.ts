@@ -2125,7 +2125,7 @@ const GUIDE_INDEX = new Map(GUIDES.map((g, i) => [g.slug, i]));
 function guideSeriesKey(g: Guide): string {
   if (g.slug.startsWith("furusato-nozei")) return "furusato-nozei";
   if (g.slug.startsWith("jutaku-loan")) return "jutaku-loan"; // 借入可能額（年収別）
-  if (g.slug.endsWith("-hensai")) return "jutaku-hensai"; // 返済額（借入額別）
+  if (g.slug.includes("-hensai")) return "jutaku-hensai"; // 返済額（借入額別・早見表 jutaku-hensai-betsu 含む）
   const m = g.slug.match(/^[a-z]+/);
   return m ? m[0] : g.slug;
 }
@@ -2251,6 +2251,37 @@ export function relatedGuides(slug: string): Guide[] {
   return g.related
     .map((s) => getGuide(s))
     .filter((x): x is Guide => x !== undefined && x.status === "live");
+}
+
+export interface SeriesInfo {
+  key: string;
+  label: string;
+  /** シリーズの代表記事（早見表 📊 があれば優先・無ければ先頭）＝サブピラー */
+  master: Guide;
+  /** シリーズ全記事（表示順） */
+  items: Guide[];
+  /** この記事が master 自身か */
+  isMaster: boolean;
+}
+
+/** 記事が属するシリーズの情報（master記事のサブピラー化用）。
+ *  3記事未満のシリーズはハブ不要なので null を返す。 */
+export function guideSeriesInfo(slug: string): SeriesInfo | null {
+  const g = getGuide(slug);
+  if (!g) return null;
+  const key = guideSeriesKey(g);
+  const items = liveGuides()
+    .filter((x) => guideSeriesKey(x) === key)
+    .sort(compareGuides);
+  if (items.length < 3) return null;
+  const master = items.find((x) => x.emoji === "📊") ?? items[0];
+  return {
+    key,
+    label: SERIES_LABELS[key] ?? master.shortTitle,
+    master,
+    items,
+    isMaster: slug === master.slug,
+  };
 }
 
 /** 同じシリーズ内の前後の記事（前後ナビ用）。
