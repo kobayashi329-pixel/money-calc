@@ -89,6 +89,14 @@ export const CATEGORIES: Category[] = [
       "老後資金・教育資金・生涯のお金の計画など、人生の大きなお金を見通すための計算機をまとめています。退職時に必要な老後資金と毎月の積立額、子どもの進路別の教育費、そして現在から想定寿命までの収入・支出・貯蓄残高を年表にするライフプラン表まで対応。ファイナンシャルプランナーに相談するようなテーマを、無料で試算できます。",
     emoji: "🗓️",
   },
+  {
+    slug: "teate",
+    name: "手当・給付金",
+    description: "失業・育休・病気のときに受け取れる手当や給付金を計算",
+    intro:
+      "退職・出産・病気など、働けない期間の収入を支える手当・給付金の計算機をまとめたカテゴリです。失業時の雇用保険（基本手当）の日額と給付日数、育児休業給付金（67%・50%）の総額、病気やケガで休んだときの傷病手当金（標準報酬日額の3分の2）を概算できます。ハローワークや協会けんぽなどの公的資料に基づく目安で、退職や休業の前に受け取れる金額を把握する出発点としてお使いいただけます。",
+    emoji: "💼",
+  },
 ];
 
 // ---- 計算機 ----
@@ -328,6 +336,54 @@ export const CALCULATORS: Calculator[] = [
     related: ["sozokuzei", "kotei-shisanzei", "tedori"],
     priority: 16,
     emoji: "🎁",
+  },
+  {
+    slug: "zangyodai",
+    title: "残業代 計算機（割増賃金）",
+    shortTitle: "残業代",
+    description:
+      "月給と残業時間から、時間外（25%・60h超50%）・深夜（25%）・休日（35%）の割増賃金を計算。1時間あたりの基礎賃金も表示。",
+    category: "kyuyo",
+    status: "live",
+    related: ["tedori", "jikyu-nenshu", "shahoken"],
+    priority: 17,
+    emoji: "⏰",
+  },
+  {
+    slug: "shitsugyo-hoken",
+    title: "失業保険（基本手当）計算機",
+    shortTitle: "失業保険",
+    description:
+      "離職前の月給・年齢・被保険者期間・離職理由から、雇用保険の基本手当日額・給付日数・受給総額の目安を計算。",
+    category: "teate",
+    status: "live",
+    related: ["ikukyu-kyufu", "shoubyo-teate", "tedori"],
+    priority: 18,
+    emoji: "📋",
+  },
+  {
+    slug: "ikukyu-kyufu",
+    title: "育児休業給付金 計算機",
+    shortTitle: "育休給付金",
+    description:
+      "休業前の月給と育休の取得月数から、育児休業給付金（最初の6か月67%・以降50%）の月額と総額を計算。支給上限に対応。",
+    category: "teate",
+    status: "live",
+    related: ["shitsugyo-hoken", "shoubyo-teate", "tedori"],
+    priority: 19,
+    emoji: "👶",
+  },
+  {
+    slug: "shoubyo-teate",
+    title: "傷病手当金 計算機",
+    shortTitle: "傷病手当金",
+    description:
+      "標準報酬月額（月給）と休んだ日数から、傷病手当金（標準報酬日額の2/3）の1日あたり・受給総額の目安を計算。待期3日に対応。",
+    category: "teate",
+    status: "live",
+    related: ["ikukyu-kyufu", "shitsugyo-hoken", "shahoken"],
+    priority: 20,
+    emoji: "🩹",
   },
 ];
 
