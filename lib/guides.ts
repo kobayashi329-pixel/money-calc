@@ -2191,14 +2191,13 @@ export interface SeriesGroup {
   items: Guide[];
 }
 
-/** カテゴリ内のガイドをシリーズ単位にまとめる。
+/** 任意のガイド配列（整列済み前提）をシリーズ単位にまとめる。
  *  一定数（threshold）以上のシリーズは独立した group に、
  *  少数シリーズ・単発記事は others にまとめて「壁」になるのを防ぐ。 */
-export function guideSeriesGroups(
-  categorySlug: string,
+export function groupBySeries(
+  guides: Guide[],
   threshold = 3,
 ): { groups: SeriesGroup[]; others: Guide[] } {
-  const guides = guidesInCategory(categorySlug); // 整列済み
   const map = new Map<string, Guide[]>();
   for (const g of guides) {
     const k = guideSeriesKey(g);
@@ -2220,6 +2219,22 @@ export function guideSeriesGroups(
     }
   }
   return { groups, others };
+}
+
+/** カテゴリ内のガイドをシリーズ単位にまとめる（/guide 一覧用）。 */
+export function guideSeriesGroups(
+  categorySlug: string,
+  threshold = 3,
+): { groups: SeriesGroup[]; others: Guide[] } {
+  return groupBySeries(guidesInCategory(categorySlug), threshold);
+}
+
+/** ある計算機に紐づくガイドをシリーズ単位にまとめる（計算機ページのピラー用）。 */
+export function guidesForCalculatorGrouped(
+  calcSlug: string,
+  threshold = 3,
+): { groups: SeriesGroup[]; others: Guide[] } {
+  return groupBySeries(guidesForCalculator(calcSlug), threshold);
 }
 
 /** ある計算機に紐づく公開済みガイド（計算機ページの「関連ガイド」用・整列済み） */
