@@ -445,6 +445,18 @@ export const CALCULATORS: Calculator[] = [
     priority: 10.6,
     emoji: "💊",
   },
+  {
+    slug: "kokumin-kenkohoken",
+    title: "国民健康保険料 計算機",
+    shortTitle: "国民健康保険料",
+    description:
+      "前年の所得と加入人数から、国民健康保険料（医療分＋支援金分＋介護分）の年額・月額の目安を計算。標準モデル（東京23区）を既定に、料率は自治体の値に変更できます。",
+    category: "kyuyo",
+    status: "live",
+    related: ["shahoken", "tedori", "juuminzei"],
+    priority: 15.5,
+    emoji: "🏥",
+  },
 ];
 
 // ---- ヘルパー ----

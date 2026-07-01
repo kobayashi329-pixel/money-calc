@@ -2628,6 +2628,34 @@ export const GUIDES: Guide[] = [
     updated: "2026年7月2日",
     emoji: "📊",
   },
+
+  // ===== 新計算機クラスター：国民健康保険料（kyuyo）=====
+  {
+    slug: "kokuho-ikura",
+    title: "国民健康保険料はいくら？所得別の目安と計算方法",
+    shortTitle: "国民健康保険料はいくら",
+    description:
+      "国民健康保険料は「所得割＋均等割」で計算します。前年の所得別の目安（標準モデル）と、40歳以上の介護分、自治体で料率が違う点をわかりやすく解説します。",
+    category: "kyuyo",
+    targets: ["kokumin-kenkohoken"],
+    related: ["kokuho-taishoku", "freelance-tedori", "shahoken-4-6gatsu"],
+    status: "live",
+    updated: "2026年7月2日",
+    emoji: "📊",
+  },
+  {
+    slug: "kokuho-taishoku",
+    title: "退職後・フリーランスの国民健康保険はいくら？社保との違い",
+    shortTitle: "退職後・フリーランスの国保",
+    description:
+      "退職すると会社の健康保険（社保）から国民健康保険に切り替わり、負担が増えることも。国保・任意継続・家族の扶養の3択の比較と、フリーランスの国保の目安を解説します。",
+    category: "kyuyo",
+    targets: ["kokumin-kenkohoken"],
+    related: ["kokuho-ikura", "freelance-tedori"],
+    status: "live",
+    updated: "2026年7月2日",
+    emoji: "🚪",
+  },
 ];
 
 // ---- ヘルパー ----
