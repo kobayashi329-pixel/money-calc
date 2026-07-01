@@ -506,6 +506,54 @@ const FIGS: Record<string, () => React.ReactElement> = {
       "#f59e0b",
       50,
     ),
+  kokuho: () =>
+    vbars(
+      "国民健康保険料の目安（所得別・標準モデル・1人・40歳未満）",
+      [
+        { label: "所得200万", value: 227300, display: "約22.7万" },
+        { label: "所得300万", value: 331300, display: "約33.1万" },
+        { label: "所得400万", value: 435300, display: "約43.5万" },
+        { label: "所得500万", value: 539300, display: "約53.9万" },
+        { label: "所得600万", value: 643300, display: "約64.3万" },
+      ],
+      "#0ea5e9",
+      643300,
+    ),
+  shotokuzei: () =>
+    vbars(
+      "課税所得別の所得税（復興特別所得税込み）",
+      [
+        { label: "200万", value: 104600, display: "約10万円" },
+        { label: "300万", value: 206700, display: "約21万円" },
+        { label: "500万", value: 584500, display: "約58万円" },
+        { label: "700万", value: 994400, display: "約99万円" },
+        { label: "1000万", value: 1801000, display: "約180万円" },
+      ],
+      "#f59e0b",
+      1801000,
+    ),
+  ikukyu: () =>
+    vbars(
+      "育児休業給付金の月額（最初の6か月・支給率67%）",
+      [
+        { label: "月給20万", value: 134000, display: "約13.4万" },
+        { label: "月給30万", value: 201000, display: "約20.1万" },
+        { label: "月給40万", value: 268000, display: "約26.8万" },
+      ],
+      "#10b981",
+      268000,
+    ),
+  shoubyo: () =>
+    vbars(
+      "傷病手当金の1日あたりの目安（月給別）",
+      [
+        { label: "月給20万", value: 4447, display: "4,447円" },
+        { label: "月給30万", value: 6667, display: "6,667円" },
+        { label: "月給40万", value: 8887, display: "8,887円" },
+      ],
+      "#3b82f6",
+      8887,
+    ),
 };
 
 export async function GET(
