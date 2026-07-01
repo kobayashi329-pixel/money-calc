@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import {
   SITE_URL,
@@ -45,6 +45,10 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: "#10b981",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -53,6 +57,11 @@ export default function RootLayout({
   return (
     <html lang="ja" className="h-full antialiased">
       <head>
+        {/* サードパーティ接続の先読み（LCP/接続時間の短縮・特にモバイル） */}
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         {/* Google AdSense（審査用スニペット／広告配信）。
             AdSenseクローラが生HTMLの<head>で検出できるよう、素のscriptタグで出力する。 */}
         <script
