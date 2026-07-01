@@ -2280,6 +2280,91 @@ export const GUIDES: Guide[] = [
     updated: "2026年6月30日",
     emoji: "📄",
   },
+
+  // ===== サーチコンソール需要対応：退職金クラスター深掘り（nenkin）=====
+  {
+    slug: "taishokukin-ideco",
+    title:
+      "退職金とiDeCoを一緒に受け取るときの税金｜退職所得控除の重複と10年ルール【2026年改正】",
+    shortTitle: "退職金とiDeCoの受け取り",
+    description:
+      "退職金とiDeCo（確定拠出年金）の一時金を近い年に受け取ると、退職所得控除が重複して税金が増えることがあります。2026年施行の「10年ルール」と、税負担を抑える受け取り方を解説します。",
+    category: "nenkin",
+    targets: ["taishokukin", "ideco"],
+    related: ["taishokukin-zeikin", "taishokukin-ichiji-nenkin", "ideco-uketori"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "🔀",
+  },
+  {
+    slug: "taishokukin-ichiji-nenkin",
+    title: "退職金は一時金と年金受取どっちが得？税金・手取りで比較",
+    shortTitle: "退職金 一時金と年金どっち",
+    description:
+      "退職金の受け取り方は「一時金」と「年金」で税金が大きく変わります。退職所得控除が使える一時金と、公的年金等控除の年金受取を、税金・社会保険料・手取りの観点で比較します。",
+    category: "nenkin",
+    targets: ["taishokukin"],
+    related: ["taishokukin-zeikin", "taishokukin-ideco", "taishokukin-kingaku-betsu"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "⚖️",
+  },
+
+  // ===== サーチコンソール需要対応：フリーランス・個人事業主（kyuyo/zei）=====
+  {
+    slug: "freelance-tedori",
+    title: "フリーランス・個人事業主の手取りはいくら？会社員との違いと計算方法",
+    shortTitle: "フリーランスの手取り",
+    description:
+      "フリーランス・個人事業主の手取りは、会社員と計算方法が違います。国民健康保険・国民年金・青色申告特別控除・個人事業税をふまえ、売上からの手取りの目安と会社員との違いを解説します。",
+    category: "kyuyo",
+    targets: ["tedori"],
+    related: ["setsuzei-freelance", "kojin-jigyouzei", "nisa-kojin-jigyounushi"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "🧑‍💻",
+  },
+  {
+    slug: "kojin-jigyouzei",
+    title: "個人事業税とは？税率・計算方法・かからない条件【個人事業主】",
+    shortTitle: "個人事業税とは",
+    description:
+      "個人事業税は、事業所得から事業主控除290万円を引いた額に3〜5%かかる都道府県税です。税率・計算方法・かからない条件（所得290万円以下など）を、計算例つきで解説します。",
+    category: "zei",
+    targets: ["tedori"],
+    related: ["freelance-tedori", "setsuzei-freelance"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "🏢",
+  },
+
+  // ===== サーチコンソール需要対応：住宅ローン需要クエリ（loan）=====
+  {
+    slug: "jutaku-loan-setai-1000man",
+    title: "世帯年収1000万円の住宅ローンはいくら借りられる？共働き・ペアローン",
+    shortTitle: "世帯年収1000万の住宅ローン",
+    description:
+      "世帯年収1000万円（共働き）の住宅ローン借入可能額は、無理のない目安で約6,800万円、審査上限で約7,580万円。収入合算・ペアローンの違いと、共働きならではの注意点を解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: ["jutaku-loan-pair", "jutaku-loan-1000man", "jutaku-loan-nenshu-betsu"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "👫",
+  },
+  {
+    slug: "karikae-simulation",
+    title: "住宅ローンの借り換えはいくら得？諸費用込みの損益分岐シミュレーション",
+    shortTitle: "借り換えはいくら得",
+    description:
+      "住宅ローンの借り換えは「金利差0.5%以上・残債1000万円以上・残期間10年以上」が得の目安。諸費用を引いた正味メリットを、残債・金利別のシミュレーション例で解説します。",
+    category: "loan",
+    targets: ["karikae"],
+    related: ["kuriage-karikae-dochira", "jutaku-loan-nenshu-betsu"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "🔁",
+  },
 ];
 
 // ---- ヘルパー ----
