@@ -2572,6 +2572,34 @@ export const GUIDES: Guide[] = [
     updated: "2026年7月1日",
     emoji: "📋",
   },
+
+  // ===== 既存クラスターの拡充：総合ピラー早見表 =====
+  {
+    slug: "nenshu-zeikin-ichiran",
+    title: "年収別の税金・社会保険料・手取り 総合早見表【2025年】",
+    shortTitle: "年収別の税金・手取り早見表",
+    description:
+      "年収300万〜1000万の社会保険料・所得税・住民税・手取りを1つの早見表に。額面からいくら引かれ、手取りは何割かをまとめて確認できます（独身・会社員の目安）。",
+    category: "kyuyo",
+    targets: ["tedori"],
+    related: ["nenshu-tedori-ichiran", "nenshu-500man-tedori", "juuminzei-ikura"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "📊",
+  },
+  {
+    slug: "kaishain-koujo-ichiran",
+    title: "会社員が使える控除・節税の一覧｜戻るお金を総まとめ",
+    shortTitle: "会社員の控除・節税一覧",
+    description:
+      "ふるさと納税・iDeCo・医療費控除・住宅ローン控除・生命保険料控除など、会社員が使える控除と節税策を一覧で整理。それぞれの上限・戻るお金の目安と、対応する計算機へまとめてリンクします。",
+    category: "zei",
+    targets: ["furusato-nozei", "ideco", "iryouhi-koujo"],
+    related: ["setsuzei-nenshu-betsu", "iryouhi-koujo-ikura", "jutaku-loan-kojo-ikura"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "🧮",
+  },
 ];
 
 // ---- ヘルパー ----
