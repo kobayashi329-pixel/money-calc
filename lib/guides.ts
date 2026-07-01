@@ -2445,6 +2445,62 @@ export const GUIDES: Guide[] = [
     updated: "2026年7月1日",
     emoji: "📅",
   },
+
+  // ===== 新計算機クラスター：出産手当金（teate）=====
+  {
+    slug: "shussan-teate-ikura",
+    title: "出産手当金はいくらもらえる？月給別の早見表と計算方法",
+    shortTitle: "出産手当金はいくら",
+    description:
+      "出産手当金は標準報酬日額の2/3×98日。月給20万〜40万の1日あたり・受給総額の目安を早見表で確認できます。育児休業給付金との違いや支給期間も解説します。",
+    category: "teate",
+    targets: ["shussan-teate"],
+    related: ["shussan-teate-itsu", "ikukyu-ikura", "shoubyo-ikura"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "📊",
+  },
+  {
+    slug: "shussan-teate-itsu",
+    title: "出産手当金はいつもらえる？産休手当の申請から入金までの流れ",
+    shortTitle: "出産手当金はいつもらえる",
+    description:
+      "出産手当金は産後休業のあと、申請から1〜2か月後に振り込まれるのが一般的です。支給期間（産前42日＋産後56日）・申請の流れ・育休給付金との時期の違いを解説します。",
+    category: "teate",
+    targets: ["shussan-teate"],
+    related: ["shussan-teate-ikura", "ikukyu-itsu"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "📅",
+  },
+
+  // ===== 新計算機クラスター：児童手当（life）=====
+  {
+    slug: "jido-teate-ikura",
+    title: "児童手当はいくら？年齢・人数別の早見表【2024年10月拡充】",
+    shortTitle: "児童手当はいくら",
+    description:
+      "児童手当は0〜3歳未満15,000円、3歳〜高校生10,000円、第3子以降は月3万円。人数・年齢別の月額と、生まれてから高校卒業までの総額の目安を早見表で解説します。",
+    category: "life",
+    targets: ["jido-teate"],
+    related: ["jido-teate-daisanshi", "kyoikuhi-ikura", "shussan-teate-ikura"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "📊",
+  },
+  {
+    slug: "jido-teate-daisanshi",
+    title: "児童手当 第3子の数え方は？月3万円になる条件【2024年拡充】",
+    shortTitle: "児童手当 第3子の数え方",
+    description:
+      "児童手当の第3子以降は月3万円。数え方は22歳年度末までの子を年齢順に数え、大学生年代も算定に含めます。第3子の判定・所得制限撤廃をわかりやすく解説します。",
+    category: "life",
+    targets: ["jido-teate"],
+    related: ["jido-teate-ikura", "kyoikuhi-ikura"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "👨‍👩‍👧‍👦",
+  },
 ];
 
 // ---- ヘルパー ----
@@ -2526,6 +2582,8 @@ const SERIES_LABELS: Record<string, string> = {
   ikukyu: "育児休業給付金",
   shoubyo: "傷病手当金",
   zangyo: "残業代",
+  shussan: "出産手当金",
+  jido: "児童手当",
 };
 
 export interface SeriesGroup {

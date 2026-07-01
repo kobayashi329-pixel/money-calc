@@ -385,6 +385,30 @@ export const CALCULATORS: Calculator[] = [
     priority: 20,
     emoji: "🩹",
   },
+  {
+    slug: "shussan-teate",
+    title: "出産手当金 計算機",
+    shortTitle: "出産手当金",
+    description:
+      "標準報酬月額（月給）から、出産手当金（標準報酬日額の2/3×98日）の受給総額の目安を計算。単胎・多胎に対応。",
+    category: "teate",
+    status: "live",
+    related: ["ikukyu-kyufu", "shoubyo-teate", "jido-teate"],
+    priority: 21,
+    emoji: "🤰",
+  },
+  {
+    slug: "jido-teate",
+    title: "児童手当 計算機（2024年10月拡充対応）",
+    shortTitle: "児童手当",
+    description:
+      "子どもの人数と年齢から、児童手当の月額・年額を計算。2024年10月の拡充（高校生まで・第3子以降月3万円・所得制限なし）に対応。",
+    category: "life",
+    status: "live",
+    related: ["ikukyu-kyufu", "kyoiku-shikin", "shussan-teate"],
+    priority: 7.65,
+    emoji: "👶",
+  },
 ];
 
 // ---- ヘルパー ----
