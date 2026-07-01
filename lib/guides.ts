@@ -2544,6 +2544,34 @@ export const GUIDES: Guide[] = [
     updated: "2026年7月1日",
     emoji: "🧮",
   },
+
+  // ===== 新計算機クラスター：医療費控除（zei）=====
+  {
+    slug: "iryouhi-koujo-ikura",
+    title: "医療費控除でいくら戻る？金額別の早見表と計算方法",
+    shortTitle: "医療費控除はいくら戻る",
+    description:
+      "医療費控除は「医療費−10万円」×税率が戻る目安。医療費20万〜100万の軽減額を所得別の早見表で確認できます。家族分の合算や計算方法もわかりやすく解説します。",
+    category: "zei",
+    targets: ["iryouhi-koujo"],
+    related: ["iryouhi-koujo-taishou", "shotokuzei-keisan"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "📊",
+  },
+  {
+    slug: "iryouhi-koujo-taishou",
+    title: "医療費控除の対象になるもの・ならないもの一覧",
+    shortTitle: "医療費控除の対象",
+    description:
+      "医療費控除の対象になるもの（治療・入院・通院交通費・歯科など）とならないもの（予防・美容・自家用車のガソリン代など）を一覧で整理。セルフメディケーション税制との違いも解説します。",
+    category: "zei",
+    targets: ["iryouhi-koujo"],
+    related: ["iryouhi-koujo-ikura"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "📋",
+  },
 ];
 
 // ---- ヘルパー ----

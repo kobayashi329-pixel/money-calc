@@ -433,6 +433,18 @@ export const CALCULATORS: Calculator[] = [
     priority: 10.5,
     emoji: "🧾",
   },
+  {
+    slug: "iryouhi-koujo",
+    title: "医療費控除 計算機｜いくら戻るか計算",
+    shortTitle: "医療費控除",
+    description:
+      "年間の医療費と所得から、医療費控除でいくら税金が戻るかを計算。10万円の足切り・補填額・所得税率＋住民税10%を反映した軽減額の目安を表示します。",
+    category: "zei",
+    status: "live",
+    related: ["shotokuzei", "furusato-nozei", "tedori"],
+    priority: 10.6,
+    emoji: "💊",
+  },
 ];
 
 // ---- ヘルパー ----

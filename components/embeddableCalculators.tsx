@@ -28,6 +28,7 @@ import { ShussanCalculator } from "./ShussanCalculator";
 import { JidoCalculator } from "./JidoCalculator";
 import { JuloanKojoCalculator } from "./JuloanKojoCalculator";
 import { ShotokuCalculator } from "./ShotokuCalculator";
+import { IryouhiCalculator } from "./IryouhiCalculator";
 
 export const EMBEDDABLE: Record<string, ComponentType> = {
   tedori: TakeHomeCalculator,
@@ -58,4 +59,5 @@ export const EMBEDDABLE: Record<string, ComponentType> = {
   "jido-teate": JidoCalculator,
   "jutaku-loan-kojo": JuloanKojoCalculator,
   shotokuzei: ShotokuCalculator,
+  "iryouhi-koujo": IryouhiCalculator,
 };
