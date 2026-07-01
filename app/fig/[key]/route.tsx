@@ -554,6 +554,24 @@ const FIGS: Record<string, () => React.ReactElement> = {
       "#3b82f6",
       8887,
     ),
+  "bonus-tedori": () =>
+    stackBars(
+      "ボーナスの手取りと引かれるもの（30歳・扶養0）",
+      [
+        { color: "#10b981", label: "手取り" },
+        { color: "#94a3b8", label: "社会保険料・所得税" },
+      ],
+      [
+        { label: "賞与40万", lower: 33, upper: 7 },
+        { label: "賞与50万", lower: 41, upper: 9 },
+        { label: "賞与60万", lower: 49, upper: 11 },
+        { label: "賞与80万", lower: 63, upper: 17 },
+        { label: "賞与100万", lower: 73, upper: 27 },
+      ],
+      "#10b981",
+      "#94a3b8",
+      100,
+    ),
 };
 
 export async function GET(

@@ -8,12 +8,21 @@
 ## 🔖 引き継ぎサマリ（2026-07-02・最新）
 
 ### 現在の規模
-- **計算機 30本**（`lib/calculators.ts` の `CALCULATORS`。真実は `liveCalculators()`）
-- **ガイド 178本**（`lib/guides.ts` の `GUIDES`。真実は `liveGuides()`）
+- **計算機 31本**（`lib/calculators.ts` の `CALCULATORS`。真実は `liveCalculators()`）
+- **ガイド 180本**（`lib/guides.ts` の `GUIDES`。真実は `liveGuides()`）
 - **カテゴリ 7**（kyuyo/loan/zei/toshi/nenkin/life/**teate**=手当・給付金）
-- **図解 23種**（`app/fig/[key]/route.tsx` の `FIGS`）
-- 本番ページ 264（うちサイトマップ収録 225ページURL＋画像）／テスト 258 passed／本番 `https://www.okane-keisan.net`（Vercel自動デプロイ）
-- git: **クリーン・全push済み**（`main` 最新 = `c1b3592`）
+- **図解 24種**（`app/fig/[key]/route.tsx` の `FIGS`）
+- 本番ページ 約267／テスト 272 passed／本番 `https://www.okane-keisan.net`（Vercel自動デプロイ）
+- git: 未コミットの変更あり（ボーナス手取り計算機。commit/push は未実施＝ユーザー確認待ち）
+
+### 直近の追加（2026-07-02・ボーナス手取り計算機クラスター）
+- **`/bonus-tedori` ボーナス手取り計算機**（kyuyo・priority 1.5）。賞与総支給額＋前月給与＋年齢＋扶養人数 →
+  社会保険料（標準賞与額×折半料率・健保573万/年・厚年150万/月の上限）＋所得税（源泉）を差し引いた手取り。
+  **所得税は国税庁「賞与に対する源泉徴収税額の算出率の表（令和8年分）」甲欄をコード化**（`lib/bonus/calculate.ts` の `RATE_ROWS`＝扶養0〜7人×前月社保控除後給与で率0〜45.945%）。社会保険料率は令和7年度・協会けんぽ東京を再利用。
+  **住民税は賞与から天引きされない**旨を明記（手取りに含めない）。テスト14件（計272）。検証: 賞与50万・前月30万・30歳・扶養0＝手取り409,298円。
+- 関連ガイド2本＝`bonus-nanwari`（ボーナスは手取り何割・早見表📊）・`bonus-zeikin`（ボーナスの税金・社保内訳）。既存ガイド`bonus-tedori`(guide)のtargetsに計算機を追加し双方向配線。
+- 図解 `bonus-tedori`（賞与額別の手取り＋社保・税の積み上げ・stackBars）を追加し計算機MDX/ガイドに`<Figure>`埋込。sitemap画像に自動収録。
+- **注意**: /guide/bonus-tedori（ガイド）と /bonus-tedori（計算機）はURL名前空間が別で衝突しない。
 
 ### 網羅済みの主要テーマ（ほぼフルカバー）
 手取り・住宅ローン(借入/返済/借換/繰上/控除)・ふるさと納税・NISA/iDeCo/積立・相続/贈与・退職金・年金・失業保険・育休/出産手当金/傷病手当金・児童手当・残業代・所得税/住民税/社会保険料/国民健康保険料・自動車税/固定資産税・消費税・医療費控除・教育費/老後/ライフプラン。各クラスターに早見表(master📊)＋解説ガイド＋図解＋計算機の相互内部リンク(自動配線)。

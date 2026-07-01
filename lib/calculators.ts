@@ -110,7 +110,7 @@ export const CALCULATORS: Calculator[] = [
       "額面年収から所得税・住民税・社会保険料を引いた手取りを、内訳とグラフで即計算。令和7年改正対応。",
     category: "kyuyo",
     status: "live",
-    related: ["furusato-nozei", "ideco", "jutaku-loan"],
+    related: ["bonus-tedori", "furusato-nozei", "ideco", "jutaku-loan"],
     priority: 1,
     emoji: "💴",
   },
@@ -276,6 +276,18 @@ export const CALCULATORS: Calculator[] = [
     related: ["tedori"],
     priority: 11,
     emoji: "⏱️",
+  },
+  {
+    slug: "bonus-tedori",
+    title: "ボーナス手取り計算機",
+    shortTitle: "ボーナス手取り",
+    description:
+      "賞与の総支給額から社会保険料・所得税（源泉徴収）を引いた手取りを計算。前月給与と扶養人数で源泉税率を求める、給与計算に近い概算。",
+    category: "kyuyo",
+    status: "live",
+    related: ["tedori", "shahoken", "furusato-nozei"],
+    priority: 1.5,
+    emoji: "🎉",
   },
   {
     slug: "jidoshazei",
