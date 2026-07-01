@@ -2365,6 +2365,86 @@ export const GUIDES: Guide[] = [
     updated: "2026年7月1日",
     emoji: "🔁",
   },
+
+  // ===== 需要対応クラスター 第2弾（住宅ローン/フリーランス/NISA/退職金）=====
+  {
+    slug: "jutaku-loan-nenshu-baisuu",
+    title: "住宅ローンは年収の何倍まで借りられる？無理のない年収倍率",
+    shortTitle: "住宅ローンは年収の何倍",
+    description:
+      "住宅ローンの借入額は年収の約7倍が目安ですが、無理なく返すなら年収の約5〜6倍が安心です。年収倍率の考え方と、返済負担率から見た無理のない借入額を年収別に解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: ["jutaku-loan-nenshu-betsu", "jutaku-loan-atamakin-nashi", "jutaku-loan-500man"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "📐",
+  },
+  {
+    slug: "jutaku-loan-atamakin-nashi",
+    title: "頭金なし（フルローン）で住宅ローンは組める？メリットと注意点",
+    shortTitle: "頭金なしで住宅ローン",
+    description:
+      "頭金なしのフルローンでも住宅ローンは組めます。頭金なしのメリット・デメリット、諸費用の扱い、返済負担が重くなりやすい点や審査への影響をわかりやすく解説します。",
+    category: "loan",
+    targets: ["jutaku-loan"],
+    related: ["jutaku-loan-atamakin", "jutaku-loan-nenshu-baisuu", "jutaku-loan-nenshu-betsu"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "🏠",
+  },
+  {
+    slug: "shokibo-kyosai",
+    title: "小規模企業共済とは？フリーランス・個人事業主の節税と退職金づくり",
+    shortTitle: "小規模企業共済とは",
+    description:
+      "小規模企業共済は、掛金が全額所得控除になり、将来は退職金として受け取れる制度です。掛金（月1,000〜7万円）・節税額の目安・iDeCoとの違いを、フリーランス視点で解説します。",
+    category: "zei",
+    targets: ["ideco", "tedori"],
+    related: ["setsuzei-freelance", "freelance-tedori", "nisa-kojin-jigyounushi"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "🏦",
+  },
+  {
+    slug: "invoice-kojin",
+    title: "インボイス制度は個人事業主にどう影響する？2割特例もわかりやすく",
+    shortTitle: "インボイスと個人事業主",
+    description:
+      "インボイス制度で、免税事業者だった個人事業主も課税事業者になるか判断が必要に。登録の要否、消費税の負担、当面の「2割特例」による軽減をわかりやすく解説します。",
+    category: "zei",
+    targets: ["shohizei"],
+    related: ["kojin-jigyouzei", "freelance-tedori", "setsuzei-freelance"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "🧾",
+  },
+  {
+    slug: "nisa-hikidashi",
+    title: "NISAは途中で引き出せる？売却のルールと非課税枠の復活",
+    shortTitle: "NISAは途中で引き出せる",
+    description:
+      "NISAはいつでも売却・引き出しが可能です。売却した分の非課税枠は翌年に復活し、再利用できます。引き出しの注意点と、長期運用を続けるための考え方を解説します。",
+    category: "toshi",
+    targets: ["nisa"],
+    related: ["nisa-deguchi", "nisa-demerit", "nisa-tsukini-ikura"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "💸",
+  },
+  {
+    slug: "taishokukin-itsu",
+    title: "退職金はいつもらえる？支給時期と受け取りまでの流れ",
+    shortTitle: "退職金はいつもらえる",
+    description:
+      "退職金は、退職後おおむね1〜2か月後に支給されるのが一般的です。支給時期は就業規則で決まります。受け取りまでの流れ・必要な手続き（退職所得の受給に関する申告書）を解説します。",
+    category: "nenkin",
+    targets: ["taishokukin"],
+    related: ["taishokukin-kingaku-betsu", "taishokukin-zeikin", "taishokukin-kakutei-shinkoku"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "📅",
+  },
 ];
 
 // ---- ヘルパー ----
