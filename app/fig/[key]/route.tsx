@@ -436,6 +436,76 @@ const FIGS: Record<string, () => React.ReactElement> = {
       "#10b981",
       6800,
     ),
+  "jido-teate": () =>
+    vbars(
+      "児童手当の月額（子1人あたり・2024年10月〜）",
+      [
+        { label: "0〜3歳未満", value: 15000, display: "15,000円" },
+        { label: "3歳〜高校生", value: 10000, display: "10,000円" },
+        { label: "第3子以降", value: 30000, display: "30,000円" },
+      ],
+      "#f472b6",
+      30000,
+    ),
+  "shitsugyo-hoken": () =>
+    vbars(
+      "失業保険の受給総額の目安（自己都合・被保険者10年）",
+      [
+        { label: "月給20万", value: 589920, display: "約59万円" },
+        { label: "月給30万", value: 724320, display: "約72万円" },
+        { label: "月給40万", value: 799920, display: "約80万円" },
+        { label: "月給50万", value: 966600, display: "約97万円" },
+      ],
+      "#10b981",
+      966600,
+    ),
+  "shussan-teate": () =>
+    vbars(
+      "出産手当金の受給総額の目安（産前産後98日）",
+      [
+        { label: "月給20万", value: 435806, display: "約44万円" },
+        { label: "月給30万", value: 653366, display: "約65万円" },
+        { label: "月給40万", value: 870926, display: "約87万円" },
+      ],
+      "#f472b6",
+      870926,
+    ),
+  iryouhi: () =>
+    vbars(
+      "医療費控除で軽減される税金（課税所得500万・税率30%）",
+      [
+        { label: "医療費20万", value: 30000, display: "約3万円" },
+        { label: "医療費30万", value: 60000, display: "約6万円" },
+        { label: "医療費50万", value: 120000, display: "約12万円" },
+        { label: "医療費100万", value: 270000, display: "約27万円" },
+      ],
+      "#3b82f6",
+      270000,
+    ),
+  "jutaku-loan-kojo": () =>
+    vbars(
+      "住宅ローン控除の年間控除額（年末残高×0.7%）",
+      [
+        { label: "残高2000万", value: 140000, display: "14万円" },
+        { label: "残高3000万", value: 210000, display: "21万円" },
+        { label: "残高4000万", value: 280000, display: "28万円" },
+        { label: "残高5000万", value: 350000, display: "35万円" },
+      ],
+      "#10b981",
+      350000,
+    ),
+  "zangyo-wari": () =>
+    vbars(
+      "残業代の割増率（労働基準法）",
+      [
+        { label: "時間外", value: 25, display: "25%増" },
+        { label: "深夜", value: 25, display: "25%加算" },
+        { label: "月60時間超", value: 50, display: "50%増" },
+        { label: "法定休日", value: 35, display: "35%増" },
+      ],
+      "#f59e0b",
+      50,
+    ),
 };
 
 export async function GET(
