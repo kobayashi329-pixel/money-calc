@@ -1,7 +1,57 @@
 # 引き継ぎドキュメント（money-calc）
 
 > 新しいセッションはこのファイルと `CLAUDE.md`、元ブリーフ（`Downloads/money-calculator-brief.md`）を読めば全体を把握できます。
-> 最終更新: 2026-06-23（消費税・時給換算公開、レジストリ全11本live化）
+> 最終更新: 2026-07-02
+
+---
+
+## 🔖 引き継ぎサマリ（2026-07-02・最新）
+
+### 現在の規模
+- **計算機 30本**（`lib/calculators.ts` の `CALCULATORS`。真実は `liveCalculators()`）
+- **ガイド 178本**（`lib/guides.ts` の `GUIDES`。真実は `liveGuides()`）
+- **カテゴリ 7**（kyuyo/loan/zei/toshi/nenkin/life/**teate**=手当・給付金）
+- **図解 23種**（`app/fig/[key]/route.tsx` の `FIGS`）
+- 本番ページ 264（うちサイトマップ収録 225ページURL＋画像）／テスト 258 passed／本番 `https://www.okane-keisan.net`（Vercel自動デプロイ）
+- git: **クリーン・全push済み**（`main` 最新 = `c1b3592`）
+
+### 網羅済みの主要テーマ（ほぼフルカバー）
+手取り・住宅ローン(借入/返済/借換/繰上/控除)・ふるさと納税・NISA/iDeCo/積立・相続/贈与・退職金・年金・失業保険・育休/出産手当金/傷病手当金・児童手当・残業代・所得税/住民税/社会保険料/国民健康保険料・自動車税/固定資産税・消費税・医療費控除・教育費/老後/ライフプラン。各クラスターに早見表(master📊)＋解説ガイド＋図解＋計算機の相互内部リンク(自動配線)。
+
+### SEO/収益の実装状況
+- **SEO技術=完成**: 構造化データ(WebApplication/Article/FAQPage/HowTo/BreadcrumbList/ItemList/Organization/WebSite+SearchAction)・OGP(/og)・図解(/fig)・SNS縦長(/pin)・画像サイトマップ・robots/canonical/noindex適正・CWV良好(CLS=0/JS244KB/preconnect)。
+- **IA=完成**: hub-and-spoke内部リンク・シリーズ前後ナビ・master サブピラー・パンくず階層・/guide一覧シリーズ再編。
+- **被リンク装置=完成(未活用)**: 埋め込みiframe(/embed)・引用ボックス(EmbedCite)・プレスキット(/press)・SNS画像(/pin)・アウトリーチ用メール文面(チャットで提供済)。
+- **収益=枠のみ設置・未有効化**: `lib/site.ts` の `ADS_ENABLED=false`(AdSense審査中)・`AFFILIATE_ENABLED=false`・`FURUSATO_ASP_ENABLED=false`。提携が決まったらフラグtrue＋URLで一括反映。CTA枠=住宅ローン/証券(AffiliateCTA)・ふるさと納税(FurusatoCTA)を全ページ設置済。
+- **GSC**: サイトマップ送信「成功」・ドメインプロパティ okane-keisan.net。**開設初期(表示少・平均掲載順位60台=正常な立ち上がり)**。0クリックは権威・時間の問題でオンページでは直せない。
+
+### 次にやること（優先順・正直な評価）
+1. **【ユーザー・最重要】被リンク獲得のアウトリーチ**（順位を上げる唯一の実効レバー。装置は完備）。手順とメール文面は提供済。
+2. **【ユーザー】ASP提携申請＋AdSense審査通過**（PVが来た瞬間に収益化できる状態に）。案件別の推奨ASP早見表は提供済(証券→アクセストレード、住宅ローン→TCS、ふるさと納税→バリューコマース/楽天、会計→もしも/A8、保険相談→afb)。
+3. **【ユーザー】GSC「URL検査」で主要ページのインデックス登録リクエスト**（優先30URLは過去チャットに一覧）。
+4. **【私＝Claudeが実行可・任意】** ①提携が決まった案件のCTA文言作成＋有効化実装、②収益CTA枠(転職/会計/保険)の追加、③さらなる需要クエリの深掘り、④**1〜2か月後にGSCデータ再確認→データ起点の精密改善（最も費用対効果が高い）**。
+- **供給側(コンテンツ/SEO/被リンク装置)は充実しきっており、追加コンテンツの限界効用は逓減。今後の伸びは被リンク×時間×収益有効化が主軸。**
+
+### 新しい計算機/ガイドの追加手順（レシピ）
+1. `lib/<name>/calculate.ts`（純粋関数・出典コメント・年度定数）＋ `calculate.test.ts`（既知の正解値で照合）
+2. `components/<X>Calculator.tsx`（"use client"・MoneyInput・ShareButton・概算の免責）
+3. `app/<slug>/page.tsx`（`openGraph:{images:["/og/<slug>"]}` 付き・WebApplication JSON-LD）
+4. `content/<slug>.mdx`（早見表/計算例/FAQ/出典）
+5. `lib/calculators.ts` にエントリ追加（必要なら新カテゴリ）
+6. `components/embeddableCalculators.tsx` に登録（/embed対応）
+7. 関連ガイドは `lib/guides.ts` にエントリ＋`content/guides/<slug>.mdx`＋`app/guide/<slug>/page.tsx`（定型・過去のbash loopで量産可）
+- レジストリ登録だけで一覧/sitemap/カテゴリ/パンくず/関連リンク/シリーズ/OGP/embedが**自動配線**される。
+- 数値は必ず計算ロジックで実算出（一時テストでJSON出力→MDXに転記）。改定される制度はWebSearchで最新値を確認。
+- **図解**は `app/fig/[key]/route.tsx` の `FIGS` にkey追加（`vbars`/`stackBars`/`hbar`＋`Frame` ヘルパー使用）→ MDXに `<Figure src="/fig/<key>" alt=".." caption=".." />`。
+
+### 運用の注意（ハマりどころ）
+- **dev稼働中に `npm run build` すると dev の `.next` が壊れる** → `preview_stop` → `rm -rf .next` → `preview_start`（fresh・reused:falseを確認）。
+- Vercelデプロイは push後 ~1〜3分。`curl` でHTTP200＆値を確認してから完了とする（本番は数分404が続くことがある）。
+- Next16のビルド出力に各ルートのJSサイズ列は出ない → 本番の実転送は `curl --compressed` で実測。
+- 計算精度が最優先（YMYL）。虚偽の監修・資格表記は禁止。屋号「おかね計算ラボ」。個人名は出さない。
+- 別プロジェクト: `../shikaku-affiliate`（資格コンパス）・`../design-agent`（画像生成）。混同注意。
+
+---
 
 ## 0. プロジェクトの目的
 
