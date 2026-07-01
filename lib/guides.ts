@@ -2501,6 +2501,49 @@ export const GUIDES: Guide[] = [
     updated: "2026年7月1日",
     emoji: "👨‍👩‍👧‍👦",
   },
+
+  // ===== 新計算機クラスター：住宅ローン控除（loan）=====
+  {
+    slug: "jutaku-loan-kojo-ikura",
+    title: "住宅ローン控除はいくら戻る？残高別の早見表【2025年】",
+    shortTitle: "住宅ローン控除はいくら",
+    description:
+      "住宅ローン控除は年末残高の0.7%。残高3,000万円なら年21万円が目安です。残高別の年間控除額、住宅性能別の借入限度額（子育て世帯は最大5,000万円）を早見表で解説します。",
+    category: "loan",
+    targets: ["jutaku-loan-kojo"],
+    related: ["jutaku-loan-kojo-joken", "jutaku-loan-nenshu-betsu", "jutaku-hendou-kotei"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "📊",
+  },
+  {
+    slug: "jutaku-loan-kojo-joken",
+    title: "住宅ローン控除の条件は？年末調整と確定申告の手続き",
+    shortTitle: "住宅ローン控除の条件・手続き",
+    description:
+      "住宅ローン控除の主な条件（床面積50㎡以上・合計所得2,000万円以下・省エネ基準など）と、1年目の確定申告・2年目以降の年末調整の手続きをわかりやすく解説します。",
+    category: "loan",
+    targets: ["jutaku-loan-kojo"],
+    related: ["jutaku-loan-kojo-ikura", "jutaku-loan-atamakin"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "📝",
+  },
+
+  // ===== 新計算機クラスター：所得税（zei）=====
+  {
+    slug: "shotokuzei-keisan",
+    title: "所得税の計算方法と速算表｜課税所得からいくら？",
+    shortTitle: "所得税の計算方法",
+    description:
+      "所得税は「課税所得×税率−控除額」で計算します。5〜45%の速算表、課税所得と所得の違い、復興特別所得税（2.1%）、課税所得別の税額の目安をわかりやすく解説します。",
+    category: "zei",
+    targets: ["shotokuzei", "tedori"],
+    related: ["juuminzei-ikura", "nenshu-500man-tedori"],
+    status: "live",
+    updated: "2026年7月1日",
+    emoji: "🧮",
+  },
 ];
 
 // ---- ヘルパー ----

@@ -409,6 +409,30 @@ export const CALCULATORS: Calculator[] = [
     priority: 7.65,
     emoji: "👶",
   },
+  {
+    slug: "jutaku-loan-kojo",
+    title: "住宅ローン控除 計算機",
+    shortTitle: "住宅ローン控除",
+    description:
+      "年末のローン残高と住宅の性能から、住宅ローン控除（減税）の年間控除額を計算。控除率0.7%・住宅性能別の借入限度額・子育て世帯の上乗せに対応（2024・2025年入居）。",
+    category: "loan",
+    status: "live",
+    related: ["jutaku-loan", "karikae", "tedori"],
+    priority: 6.5,
+    emoji: "🏡",
+  },
+  {
+    slug: "shotokuzei",
+    title: "所得税 計算機（速算表）",
+    shortTitle: "所得税",
+    description:
+      "課税所得から所得税（速算表・超過累進）と復興特別所得税を計算。5〜45%の税率と控除額に対応し、限界税率も表示します。",
+    category: "zei",
+    status: "live",
+    related: ["tedori", "juuminzei", "furusato-nozei"],
+    priority: 10.5,
+    emoji: "🧾",
+  },
 ];
 
 // ---- ヘルパー ----
