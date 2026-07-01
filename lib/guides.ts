@@ -2600,6 +2600,34 @@ export const GUIDES: Guide[] = [
     updated: "2026年7月1日",
     emoji: "🧮",
   },
+
+  // ===== 総合早見表 第2弾（積立・年金）=====
+  {
+    slug: "tsumitate-ichiran",
+    title: "積立シミュレーション 総合早見表｜毎月の積立額×年数（年5%）",
+    shortTitle: "積立の総合早見表",
+    description:
+      "毎月1万〜10万円を年5%で10〜40年積み立てた場合の将来額を1つの早見表に。NISA・iDeCoの積立で「いくらになるか」を、金額と期間の組み合わせでまとめて確認できます。",
+    category: "toshi",
+    targets: ["nisa", "ideco"],
+    related: ["nisa-tsukini-ikura", "fukuri", "nisa-ideco-dochira"],
+    status: "live",
+    updated: "2026年7月2日",
+    emoji: "📊",
+  },
+  {
+    slug: "nenkin-ichiran",
+    title: "年金はいくらもらえる？総合早見表（年収×厚生年金の加入年数）",
+    shortTitle: "年金の総合早見表",
+    description:
+      "会社員の公的年金（基礎＋厚生）の受給見込みを、平均年収×厚生年金の加入年数の早見表に。年収300万〜700万・加入20〜40年の月あたりの受給額の目安をまとめて確認できます。",
+    category: "nenkin",
+    targets: ["nenkin-mikomi"],
+    related: ["nenkin-nenshu-betsu", "nenkin-kousei", "rougo-2000man"],
+    status: "live",
+    updated: "2026年7月2日",
+    emoji: "📊",
+  },
 ];
 
 // ---- ヘルパー ----
