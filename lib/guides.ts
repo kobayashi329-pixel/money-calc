@@ -1561,10 +1561,10 @@ export const GUIDES: Guide[] = [
     description:
       "年収550万円の手取りは約427万円・月約36万円。所得税・住民税・社会保険料の内訳と、手取りを増やす方法をわかりやすく解説します。",
     category: "kyuyo",
-    targets: ["tedori"],
-    related: ["nenshu-500man-tedori", "nenshu-600man-tedori", "nenshu-tedori-ichiran"],
+    targets: ["tedori", "bonus-tedori"],
+    related: ["nenshu-500man-tedori", "nenshu-600man-tedori", "nenshu-tedori-ichiran", "bonus-nanwari"],
     status: "live",
-    updated: "2026年6月24日",
+    updated: "2026年7月3日",
     emoji: "💴",
   },
   {

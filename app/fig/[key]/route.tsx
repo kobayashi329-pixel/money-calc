@@ -554,6 +554,18 @@ const FIGS: Record<string, () => React.ReactElement> = {
       "#3b82f6",
       8887,
     ),
+  "nenshu-550-uchiwake": () =>
+    hbar(
+      "年収550万円の手取りの内訳",
+      "額面550万円から税金・社会保険料を引いた手取りは約427万円です（単位：万円）。",
+      [
+        { label: "手取り 427万", value: 427, color: "#10b981" },
+        { label: "社会保険料 81万", value: 81, color: "#94a3b8" },
+        { label: "所得税 15万", value: 15, color: "#f59e0b" },
+        { label: "住民税 27万", value: 27, color: "#3b82f6" },
+      ],
+      40,
+    ),
   "bonus-tedori": () =>
     stackBars(
       "ボーナスの手取りと引かれるもの（30歳・扶養0）",
