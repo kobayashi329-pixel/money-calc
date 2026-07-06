@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ASP提携管理（事業戦略・非公開。ローカルのみ）
+/asp/

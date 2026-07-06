@@ -74,12 +74,40 @@ export const AFFILIATE_SLOTS: Record<string, AffiliateSlotConfig> = {
       { name: "ネット証券（商品数重視）", feature: "投資信託・米国株の取扱が豊富", url: "" },
     ],
   },
+  job: {
+    heading: "転職・年収アップを相談する",
+    note: "今の手取りに満足していないなら、転職で年収を上げる選択肢もあります。登録・相談は無料です。",
+    items: [
+      { name: "転職エージェント（総合）", feature: "非公開求人の紹介・年収交渉まで代行", url: "" },
+      { name: "年収診断（市場価値チェック）", feature: "あなたの想定年収を無料で診断", url: "" },
+    ],
+  },
+  accounting: {
+    heading: "確定申告・会計ソフトを比較する",
+    note: "フリーランス・個人事業主の確定申告は、会計ソフトを使うと大幅に楽になります。",
+    items: [
+      { name: "クラウド会計ソフト", feature: "帳簿付けから確定申告書の作成・e-Taxまで自動化", url: "" },
+      { name: "開業サポート（無料）", feature: "開業届・青色申告承認申請書を無料で作成", url: "" },
+    ],
+  },
+  insurance: {
+    heading: "保険・家計を無料で相談する",
+    note: "老後資金や教育資金の準備は、家計の無料相談で見直せます。特定の商品を押し売りしない中立的な窓口を選びましょう。",
+    items: [
+      { name: "保険・家計の無料相談", feature: "FPが家計・保険・老後資金を中立的に診断", url: "" },
+      { name: "オンライン家計診断", feature: "スマホで完結・無料で家計をチェック", url: "" },
+    ],
+  },
 };
 
 /** ガイドのカテゴリに対応するアフィリエイトスロット名（無ければ null）。 */
 export function affiliateSlotForCategory(category: string): string | null {
   if (category === "loan") return "loan";
   if (category === "toshi") return "securities";
+  if (category === "kyuyo") return "job"; // 手取り・年収 → 転職/年収アップ
+  if (category === "zei") return "accounting"; // 税金・確定申告 → 会計ソフト
+  if (category === "life") return "insurance"; // 老後・教育・ライフプラン → 家計/保険相談
+  if (category === "nenkin") return "securities"; // 退職金・年金 → 資産運用（iDeCo/NISA）
   return null;
 }
 

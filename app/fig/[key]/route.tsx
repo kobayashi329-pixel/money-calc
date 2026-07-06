@@ -554,6 +554,42 @@ const FIGS: Record<string, () => React.ReactElement> = {
       "#3b82f6",
       8887,
     ),
+  "nenshu-450-uchiwake": () =>
+    hbar(
+      "年収450万円の手取りの内訳",
+      "額面450万円から税金・社会保険料を引いた手取りは約355万円です（単位：万円）。",
+      [
+        { label: "手取り 355万", value: 355, color: "#10b981" },
+        { label: "社会保険料 66万", value: 66, color: "#94a3b8" },
+        { label: "所得税 8万", value: 8, color: "#f59e0b" },
+        { label: "住民税 21万", value: 21, color: "#3b82f6" },
+      ],
+      40,
+    ),
+  "nenshu-600-uchiwake": () =>
+    hbar(
+      "年収600万円の手取りの内訳",
+      "額面600万円から税金・社会保険料を引いた手取りは約463万円です（単位：万円）。",
+      [
+        { label: "手取り 463万", value: 463, color: "#10b981" },
+        { label: "社会保険料 88万", value: 88, color: "#94a3b8" },
+        { label: "所得税 19万", value: 19, color: "#f59e0b" },
+        { label: "住民税 31万", value: 31, color: "#3b82f6" },
+      ],
+      40,
+    ),
+  "nenshu-650-uchiwake": () =>
+    hbar(
+      "年収650万円の手取りの内訳",
+      "額面650万円から税金・社会保険料を引いた手取りは約499万円です（単位：万円）。",
+      [
+        { label: "手取り 499万", value: 499, color: "#10b981" },
+        { label: "社会保険料 95万", value: 95, color: "#94a3b8" },
+        { label: "所得税 22万", value: 22, color: "#f59e0b" },
+        { label: "住民税 34万", value: 34, color: "#3b82f6" },
+      ],
+      40,
+    ),
   "nenshu-550-uchiwake": () =>
     hbar(
       "年収550万円の手取りの内訳",

@@ -36,10 +36,10 @@ export const GUIDES: Guide[] = [
     description:
       "年収500万円の手取りは約390万円・月約32万円。所得税・住民税・社会保険料の内訳と、手取りを増やす方法を解説します。",
     category: "kyuyo",
-    targets: ["tedori"],
-    related: ["nenshu-400man-tedori", "nenshu-600man-tedori"],
+    targets: ["tedori", "bonus-tedori"],
+    related: ["nenshu-400man-tedori", "nenshu-600man-tedori", "bonus-nanwari"],
     status: "live",
-    updated: "2026年6月23日",
+    updated: "2026年7月3日",
     emoji: "💴",
   },
   {
@@ -62,10 +62,10 @@ export const GUIDES: Guide[] = [
     description:
       "年収600万円の手取りは約463万円・月約38万円。所得税・住民税・社会保険料の内訳と節税の選択肢を解説します。",
     category: "kyuyo",
-    targets: ["tedori"],
-    related: ["nenshu-500man-tedori", "nenshu-400man-tedori"],
+    targets: ["tedori", "bonus-tedori"],
+    related: ["nenshu-500man-tedori", "nenshu-650man-tedori", "bonus-nanwari"],
     status: "live",
-    updated: "2026年6月23日",
+    updated: "2026年7月3日",
     emoji: "💴",
   },
   {
@@ -1548,10 +1548,10 @@ export const GUIDES: Guide[] = [
     description:
       "年収450万円の手取りは約355万円・月約30万円。所得税・住民税・社会保険料の内訳と、手取りを増やす方法をわかりやすく解説します。",
     category: "kyuyo",
-    targets: ["tedori"],
-    related: ["nenshu-400man-tedori", "nenshu-500man-tedori", "nenshu-tedori-ichiran"],
+    targets: ["tedori", "bonus-tedori"],
+    related: ["nenshu-400man-tedori", "nenshu-500man-tedori", "nenshu-tedori-ichiran", "bonus-nanwari"],
     status: "live",
-    updated: "2026年6月24日",
+    updated: "2026年7月3日",
     emoji: "💴",
   },
   {
@@ -1574,10 +1574,10 @@ export const GUIDES: Guide[] = [
     description:
       "年収650万円の手取りは約499万円・月約42万円。所得税・住民税・社会保険料の内訳と、手取りを増やす方法をわかりやすく解説します。",
     category: "kyuyo",
-    targets: ["tedori"],
-    related: ["nenshu-600man-tedori", "nenshu-700man-tedori", "nenshu-tedori-ichiran"],
+    targets: ["tedori", "bonus-tedori"],
+    related: ["nenshu-600man-tedori", "nenshu-700man-tedori", "nenshu-tedori-ichiran", "bonus-nanwari"],
     status: "live",
-    updated: "2026年6月24日",
+    updated: "2026年7月3日",
     emoji: "💴",
   },
 
