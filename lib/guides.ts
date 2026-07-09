@@ -239,15 +239,15 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: "jikyu-1000-1500",
-    title: "時給1000円・1500円は月収・年収いくら？フルタイム・パート別に解説",
-    shortTitle: "時給→月収・年収はいくら",
+    title: "時給1500円・1000円の手取り・月収・年収はいくら？早見表つき",
+    shortTitle: "時給1500円の手取り・月収",
     description:
-      "時給1000円・1500円で働くと月収・年収はいくら？労働時間・日数別の換算と、手取りの目安をわかりやすく解説します。",
+      "時給1500円はフルタイムで手取り月約19万円・年約231万円が目安。時給1000円・1500円の月収・年収・手取りを、労働時間・日数別の早見表でわかりやすく解説します。",
     category: "kyuyo",
-    targets: ["jikyu-nenshu"],
-    related: ["nenshu-no-kabe"],
+    targets: ["jikyu-nenshu", "tedori"],
+    related: ["nenshu-no-kabe", "nenshu-300man-tedori"],
     status: "live",
-    updated: "2026年6月23日",
+    updated: "2026年7月10日",
     emoji: "⏱️",
   },
   {
@@ -486,7 +486,7 @@ export const GUIDES: Guide[] = [
       "furusato-nozei-yarikata",
     ],
     status: "live",
-    updated: "2026年6月24日",
+    updated: "2026年7月10日",
     emoji: "📊",
   },
   {
@@ -1186,7 +1186,7 @@ export const GUIDES: Guide[] = [
       "taishokukin-heikin",
     ],
     status: "live",
-    updated: "2026年6月24日",
+    updated: "2026年7月10日",
     emoji: "📊",
   },
   {
