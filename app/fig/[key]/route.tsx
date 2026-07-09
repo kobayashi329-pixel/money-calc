@@ -554,6 +554,66 @@ const FIGS: Record<string, () => React.ReactElement> = {
       "#3b82f6",
       8887,
     ),
+  "nenshu-300-uchiwake": () =>
+    hbar(
+      "年収300万円の手取りの内訳",
+      "額面300万円から税金・社会保険料を引いた手取りは約241万円です（単位：万円）。",
+      [
+        { label: "手取り 241万", value: 241, color: "#10b981" },
+        { label: "社会保険料 44万", value: 44, color: "#94a3b8" },
+        { label: "所得税 4万", value: 4, color: "#f59e0b" },
+        { label: "住民税 12万", value: 12, color: "#3b82f6" },
+      ],
+      40,
+    ),
+  "nenshu-350-uchiwake": () =>
+    hbar(
+      "年収350万円の手取りの内訳",
+      "額面350万円から税金・社会保険料を引いた手取りは約279万円です（単位：万円）。",
+      [
+        { label: "手取り 279万", value: 279, color: "#10b981" },
+        { label: "社会保険料 51万", value: 51, color: "#94a3b8" },
+        { label: "所得税 5万", value: 5, color: "#f59e0b" },
+        { label: "住民税 15万", value: 15, color: "#3b82f6" },
+      ],
+      40,
+    ),
+  "nenshu-400-uchiwake": () =>
+    hbar(
+      "年収400万円の手取りの内訳",
+      "額面400万円から税金・社会保険料を引いた手取りは約317万円です（単位：万円）。",
+      [
+        { label: "手取り 317万", value: 317, color: "#10b981" },
+        { label: "社会保険料 59万", value: 59, color: "#94a3b8" },
+        { label: "所得税 7万", value: 7, color: "#f59e0b" },
+        { label: "住民税 18万", value: 18, color: "#3b82f6" },
+      ],
+      40,
+    ),
+  "nenshu-700-uchiwake": () =>
+    hbar(
+      "年収700万円の手取りの内訳",
+      "額面700万円から税金・社会保険料を引いた手取りは約531万円です（単位：万円）。",
+      [
+        { label: "手取り 531万", value: 531, color: "#10b981" },
+        { label: "社会保険料 103万", value: 103, color: "#94a3b8" },
+        { label: "所得税 29万", value: 29, color: "#f59e0b" },
+        { label: "住民税 38万", value: 38, color: "#3b82f6" },
+      ],
+      40,
+    ),
+  "nenshu-1000-uchiwake": () =>
+    hbar(
+      "年収1000万円の手取りの内訳",
+      "額面1000万円から税金・社会保険料を引いた手取りは約727万円です（単位：万円）。",
+      [
+        { label: "手取り 727万", value: 727, color: "#10b981" },
+        { label: "社会保険料 126万", value: 126, color: "#94a3b8" },
+        { label: "所得税 83万", value: 83, color: "#f59e0b" },
+        { label: "住民税 64万", value: 64, color: "#3b82f6" },
+      ],
+      50,
+    ),
   "nenshu-450-uchiwake": () =>
     hbar(
       "年収450万円の手取りの内訳",
