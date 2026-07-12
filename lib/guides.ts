@@ -1520,12 +1520,12 @@ export const GUIDES: Guide[] = [
     title: "年収別の手取り早見表【2026年】300〜1000万の手取り・月収・税金一覧",
     shortTitle: "年収別手取りの早見表",
     description:
-      "年収別の手取りを早見表で確認。年収300万〜1,000万円の社会保険料・税金・手取り額・月収・手取り率の一覧と、年収が上がるほど手取り率が下がる理由を解説します。",
+      "年収別の手取りを早見表で確認。年収300万〜1,000万円の社会保険料・税金・手取り額・月収・手取り率の一覧に加え、「手取り○○万円は年収いくら？」の逆引きにも対応。年収が上がるほど手取り率が下がる理由も解説します。",
     category: "kyuyo",
     targets: ["tedori", "bonus-tedori"],
-    related: ["nenshu-500man-tedori", "nenshu-450man-tedori", "juuminzei-ikura", "bonus-nanwari"],
+    related: ["nenshu-550man-tedori", "nenshu-500man-tedori", "juuminzei-ikura", "bonus-nanwari"],
     status: "live",
-    updated: "2026年7月3日",
+    updated: "2026年7月12日",
     emoji: "📊",
   },
   {
